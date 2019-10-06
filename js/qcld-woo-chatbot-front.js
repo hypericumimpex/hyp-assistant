@@ -134,7 +134,86 @@ jQuery(function ($) {
                 });
             }
             //Exit Intent
-            if (wooChatBotVar.enable_exit_intent == 1 && (wooChatBotVar.exitintent_all_page=='on' || wooChatBotVar.exitintent_pages.indexOf(wooChatBotVar.current_pageid)>-1)) {
+            if (wooChatBotVar.exit_intent_bargain_pro_single_page == 1 && wooChatBotVar.exit_intent_bargain_is_product_page ){
+                window.addEventListener("mouseout", function (e) {
+                    e = e ? e : window.event;
+
+                    // If this is an autocomplete element.
+                    if (e.target.tagName.toLowerCase() == "input")
+                        return;
+
+                    // Get the current viewport width.
+                    var vpWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+                    // If the current mouse X position is within 50px of the right edge
+                    // of the viewport, return.
+                    if (e.clientX >= (vpWidth - 50))
+                        return;
+
+                    // If the current mouse Y position is not within 50px of the top
+                    // edge of the viewport, return.
+                    if (e.clientY >= 50)
+                        return;
+
+                    // Reliable, works on mouse exiting window and
+                    // user switching active program
+                    var from = e.relatedTarget || e.toElement;
+                    if (!from)
+                    //if will open once if setup from backend.
+                        var exitIntentOpen = true;
+                    if ($.cookie('exit_intent') == 'yes' && wooChatBotVar.exit_intent_once == 1) {
+                        exitIntentOpen = false;
+                    }
+                    if ($('.active-chat-board').length == 0 && exitIntentOpen == true) {
+                        if (wooChatBotVar.exit_intent_handler == 0) {
+                           
+                           if($('.woo-saas-live-chat').is(':visible')){
+                                return;
+                            }
+                           
+                           $('#woo-chatbot-ball').removeClass('woobot_chatclose_iconanimation');
+                            $('#woo-chatbot-ball').addClass('woobot_chatopen_iconanimation');
+                            $('#woo-chatbot-ball').find('img').attr('src', wooChatBotVar.imgurl+'woowbot-close-icon.png');
+                            //$('.woo-chatbot-ball').css('background', 'unset');
+                           
+                           
+                           
+                            $("#woo-chatbot-board-container").addClass('active-chat-board');
+                            $('.woo-chatcontainer_mini-mode').css({'transform': 'translateX(0px)'});
+                            $("#woo-chatbot-ball").addClass('chat_active');
+                            setTimeout(function(){  woow_fbicon_position(); },1000);
+                            
+                            wooChatBotVar.exit_intent_handler++;
+                            wooChatBotVar.re_target_handler = 9;
+                            woowbot_board_action();
+                            //Shopper Name
+                            if (localStorage.getItem('shopperw')) {
+                                var shopper = localStorage.getItem('shopperw');
+                            } else {
+                                var shopper = wooChatBotVar.shopper_demo_name;
+                            }
+                            setTimeout(function () {
+                                if (localStorage.getItem("woowHitory")) {
+                                    var confirmBtn='<span class="qcld-modal-bargin-confirm-exit-intent-btn"><span class="qcld-modal-bargin-bot-confirm-exit-intent" confirm-data="yes" >'+ wooChatBotVar.yes +'</span> <span> '+ wooChatBotVar.or +' </span><span class="qcld-chatbot-reset-btn"  reset-data="no">'+wooChatBotVar.no+'</span></span>';
+                                    
+                                    showing_proactive_msg(wooChatBotVar.ret_greet + ' ' + shopper + ', ' + wooChatBotVar.exit_intent_bargain_msg  + ' ' + confirmBtn)
+
+                                } else {
+                                    var confirmBtn='<span class="qcld-modal-bargin-confirm-exit-intent-btn"><span class="qcld-modal-bargin-bot-confirm-exit-intent" confirm-data="yes" >'+ wooChatBotVar.yes +'</span> <span> '+ wooChatBotVar.or +' </span><span class="qcld-chatbot-reset-btn"  reset-data="no">'+wooChatBotVar.no+'</span></span>';
+                                    
+                                    showing_proactive_double_msg(wooChatBotVar.ret_greet + ' ' + shopper + ', ' + wooChatBotVar.exit_intent_bargain_msg + ' ' + confirmBtn)
+
+                                }
+                                $.cookie('exit_intent', 'yes');
+                                //pro active sound
+                                proactive_retargeting_sound();
+                                //Window foucus meta title change.
+                                window_focus_change_meta_title();
+                            }, 1000)
+                        }
+                    }
+                });
+            }else if (wooChatBotVar.enable_exit_intent == 1 && (wooChatBotVar.exitintent_all_page=='on' || wooChatBotVar.exitintent_pages.indexOf(wooChatBotVar.current_pageid)>-1)) {
                 window.addEventListener("mouseout", function (e) {
                     e = e ? e : window.event;
 
@@ -863,6 +942,19 @@ jQuery(function ($) {
 
 
     });
+
+    
+    // $(document).on('click','.qcld-modal-bargin-confirm-exit-intent',function (e) {
+    //     e.preventDefault();
+    //     var shopperChoice=$(this).text();
+    //     woowMsg.shopper_choice(shopperChoice);
+
+    //     var actionType=$(this).attr('confirm-data');
+    //     if(actionType=='yes'){
+    //         $('#woo_minimum_accept_price-field').click();
+    //         return;
+    //     }
+    // });
 	
 	
 	

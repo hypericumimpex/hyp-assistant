@@ -521,7 +521,7 @@ i.qc_sld_btn {
     display: inline-block;
     text-align: center;
   }
-  
+ 
   #wpbot-fab_listen {
     float: left;
     background: rgba(0, 0, 0, 0);
@@ -545,3 +545,5 @@ i.qc_sld_btn {
     color: #263238;
   }
   .tab-content{display:block !important;}
+  #woo-chatbot-bottom-icons-setting .cxsc-settings-blocks .row{ margin: 20px 0px !important;}
+  .qcld_wpbot_download_statuses{margin-top:10px}

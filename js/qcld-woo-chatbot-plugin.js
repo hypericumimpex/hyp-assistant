@@ -522,22 +522,141 @@
             return jQuery.post(globalwoow.settings.obj.ajax_url, data);
 
         },
-        dailogAIOAction:function(text){
-            return  jQuery.ajax({
-                type : "POST",
-                url :"https://api.dialogflow.com/v1/query?v=20170712",
-                contentType : "application/json; charset=utf-8",
-                dataType : "json",
-                headers : {
-                    "Authorization" : "Bearer "+globalwoow.settings.obj.ai_df_token
-                },
-                data: JSON.stringify( {
-                    query: text,
-                    lang : globalwoow.settings.obj.df_agent_lan,
-                    //lang : 'en-US',
-                    sessionId: 'WoowBot_df_2018071'
-                } )
-            });
+		dailogAIOAction:function(text){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                return  jQuery.ajax({
+                    type : "POST",
+                    url :"https://api.dialogflow.com/v1/query?v=20170712",
+                    contentType : "application/json; charset=utf-8",
+                    dataType : "json",
+                    headers : {
+                        "Authorization" : "Bearer "+globalwoow.settings.obj.ai_df_token
+                    },
+                    
+                    data: JSON.stringify( {
+                        query: text,
+                        
+                        lang : globalwoow.settings.obj.df_agent_lan,
+                        sessionId: localStorage.getItem('wowsessionid')?localStorage.getItem('wowsessionid'):'woowBot_df_2018071'
+                    } )
+                });
+            }else{
+                return jQuery.post(globalwoow.settings.obj.v2_client_url, {
+                    'dfquery': text,
+                    'sessionid': localStorage.getItem('wowsessionid')?localStorage.getItem('wowsessionid'):'woowBot_df_2018071'
+                });
+            }
+            
+        },
+        responseIsOk(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                if(response.status.code==200){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                if(typeof response.responseId !== "undefined"){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        },
+        getIntentName(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                return response.result.metadata.intentName;
+            }else{
+                return response.queryResult.intent.displayName;
+            }
+        },
+        getParameters(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                return response.result.parameters;
+            }else{
+                return response.queryResult.parameters;
+            }
+            
+        },
+        getFulfillmentText(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                return response.result.fulfillment.messages;
+            }else{
+                return response.queryResult.fulfillmentText;
+            }
+            
+        },
+        getFulfillmentSpeech(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                return response.result.fulfillment.speech;
+            }else{
+                return response.queryResult.fulfillmentText;
+            }
+            
+        },
+        getScore(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                return response.result.score;
+            }else{
+                return response.queryResult.intentDetectionConfidence;
+            }
+            
+        },
+        getAction(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                return response.result.action;
+            }else{
+                if(typeof response.queryResult.action !=="undefined"){
+                    return response.queryResult.action;
+                }else{
+                    return '';
+                }
+                
+            }
+            
+        },
+        queryText(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                return response.result.resolvedQuery;
+            }else{
+                return response.queryResult.queryText;
+            }
+        },
+        isActionComplete(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                if(!response.result.actionIncomplete){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+
+                return response.queryResult.allRequiredParamsPresent;
+
+            }
+            
+        },
+        isConversationEnd(response){
+            if(globalwoow.settings.obj.df_api_version=='v1'){
+                if(typeof(response.result.metadata.endConversation)!=="undefined" && response.result.metadata.endConversation){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+
+                if(typeof response.queryResult.diagnosticInfo !=="undefined"){
+                    if(typeof response.queryResult.diagnosticInfo.end_conversation !== "undefined"){
+                        return response.queryResult.diagnosticInfo.end_conversation;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
+
+            }
+            
         },
         sugestCat:function () {
             var productSuggest=woowKits.randomMsg(globalwoow.settings.obj.product_suggest);
@@ -735,45 +854,6 @@
                 //When intialize 1 and don't have cookies then keep  the name of shooper in in cookie
                 if(globalwoow.initialize==1 && !localStorage.getItem('shopperw')  && globalwoow.wildCard==0 && globalwoow.ai_step==0 ){
 					
-					/*if(globalwoow.settings.obj.df_agent_lan!='en'){
-						
-						msg=woowKits.toTitlecase(msg);
-						$.cookie("shopperw", msg, { expires : 365 });
-						localStorage.setItem('shopperw',msg);
-						globalwoow.hasNameCookie=msg;
-						//Greeting with name and suggesting the wildcard.
-						var NameGreeting=woowKits.randomMsg(globalwoow.settings.obj.i_am) +" <strong>"+globalwoow.settings.obj.agent+"</strong>! "+woowKits.randomMsg(globalwoow.settings.obj.name_greeting)+", <strong>"+msg+"</strong>!";
-						var serviceOffer=woowKits.randomMsg(globalwoow.settings.obj.wildcard_msg);
-						
-						if(globalwoow.settings.obj.ask_email_woo_greetings==1){
-							
-							var emailsharetext = woowKits.randomMsg(globalwoow.settings.obj.asking_emailaddress);
-							//woowMsg.double(NameGreeting, emailsharetext);
-							
-							if(globalwoow.settings.obj.enable_gdpr){
-								
-                                woowMsg.triple(NameGreeting, emailsharetext, globalwoow.settings.obj.gdpr_text);
-                            }else{
-                                woowMsg.double(NameGreeting, emailsharetext);
-                            }
-							
-						}else{
-							
-							//this data should be conditional
-							//var serviceOffer=woowKits.randomMsg(globalwoow.settings.obj.wildcard_msg);
-							//After completing two steps messaging showing wildcards.
-							woowMsg.double(NameGreeting,serviceOffer);
-							globalwoow.ai_step=1;
-							globalwoow.wildCard=0;
-							localStorage.setItem("wildCard",  globalwoow.wildCard);
-							localStorage.setItem("aiStep", globalwoow.ai_step);
-						}
-					
-						//After completing two steps messaging showing wildcards.
-						//console.log(NameGreeting,serviceOffer);	
-						//woowMsg.double(NameGreeting,serviceOffer);
-						
-					}else{*/
 							
 						var main_text = msg;
 						msg=woowKits.toTitlecase(msg);
@@ -781,14 +861,19 @@
 						var dfReturns=woowKits.dailogAIOAction(msg);
 						
 						dfReturns.done(function( response ) {
-							console.log(response);
-							if(response.status.code==200){
-								var intent = response.result.metadata.intentName;
+							
+							
+							if(globalwoow.settings.obj.df_api_version=='v2'){
+                                response = $.parseJSON(response);
+                            }
+							
+							if(woowKits.responseIsOk(response)){
+								var intent = woowKits.getIntentName(response);
 								
 								if(intent=="get name"){
 									
-									given_name = response.result.parameters.given_name;
-									last_name = response.result.parameters.last_name;
+									given_name = woowKits.getParameters(response).given_name;
+									last_name = woowKits.getParameters(response).last_name;
 									fullname = given_name+' '+last_name;
 									if(fullname.length<2){
 										fullname = msg
@@ -862,37 +947,46 @@
 									
 								}else{
 									
-									var filterMsg=woowKits.filterStopWords(msg);
-									if(filterMsg!=''){
+									if(woowKits.getFulfillmentSpeech(response)!=''){
 										
-										var NameGreeting=woowKits.randomMsg(globalwoow.settings.obj.i_am) +" <strong>"+globalwoow.settings.obj.agent+"</strong>! "+woowKits.randomMsg(globalwoow.settings.obj.name_greeting);
-										
-										$.cookie("shopperw", filterMsg, { expires : 365 });
-										localStorage.setItem('shopperw',filterMsg);
-										globalwoow.hasNameCookie=filterMsg;
-										globalwoow.ai_step=1;
-										globalwoow.wildCard=0;
-										localStorage.setItem("wildCard",  globalwoow.wildCard);
-										localStorage.setItem("aiStep", globalwoow.ai_step);
-										//woowMsg.single(globalwoow.settings.obj.shopper_call_you+' '+globalwoow.settings.obj.shopper_demo_name);
-										
-										var serviceOffer=woowKits.randomMsg(globalwoow.settings.obj.wildcard_msg);
-										woowMsg.double(NameGreeting,serviceOffer);
+										var secondMsg=woowKits.randomMsg(globalwoow.settings.obj.asking_name);
+										woowMsg.double(woowKits.getFulfillmentSpeech(response),secondMsg);
 										
 									}else{
 										
-										$.cookie("shopperw", globalwoow.settings.obj.shopper_demo_name, { expires : 365 });
-										localStorage.setItem('shopperw',globalwoow.settings.obj.shopper_demo_name);
-										globalwoow.hasNameCookie=globalwoow.settings.obj.shopper_demo_name;
-										globalwoow.ai_step=1;
-										globalwoow.wildCard=0;
-										localStorage.setItem("wildCard",  globalwoow.wildCard);
-										localStorage.setItem("aiStep", globalwoow.ai_step);
-										woowMsg.single(globalwoow.settings.obj.shopper_call_you+' '+globalwoow.settings.obj.shopper_demo_name);
-										setTimeout(function(){
+										var filterMsg=woowKits.filterStopWords(msg);
+										if(filterMsg!=''){
+											
+											var NameGreeting=woowKits.randomMsg(globalwoow.settings.obj.i_am) +" <strong>"+globalwoow.settings.obj.agent+"</strong>! "+woowKits.randomMsg(globalwoow.settings.obj.name_greeting);
+											
+											$.cookie("shopperw", filterMsg, { expires : 365 });
+											localStorage.setItem('shopperw',filterMsg);
+											globalwoow.hasNameCookie=filterMsg;
+											globalwoow.ai_step=1;
+											globalwoow.wildCard=0;
+											localStorage.setItem("wildCard",  globalwoow.wildCard);
+											localStorage.setItem("aiStep", globalwoow.ai_step);
+											//woowMsg.single(globalwoow.settings.obj.shopper_call_you+' '+globalwoow.settings.obj.shopper_demo_name);
+											
 											var serviceOffer=woowKits.randomMsg(globalwoow.settings.obj.wildcard_msg);
-											woowMsg.single(serviceOffer);
-										},globalwoow.settings.preLoadingTime)
+											woowMsg.double(NameGreeting,serviceOffer);
+											
+										}else{
+											
+											$.cookie("shopperw", globalwoow.settings.obj.shopper_demo_name, { expires : 365 });
+											localStorage.setItem('shopperw',globalwoow.settings.obj.shopper_demo_name);
+											globalwoow.hasNameCookie=globalwoow.settings.obj.shopper_demo_name;
+											globalwoow.ai_step=1;
+											globalwoow.wildCard=0;
+											localStorage.setItem("wildCard",  globalwoow.wildCard);
+											localStorage.setItem("aiStep", globalwoow.ai_step);
+											woowMsg.single(globalwoow.settings.obj.shopper_call_you+' '+globalwoow.settings.obj.shopper_demo_name);
+											setTimeout(function(){
+												var serviceOffer=woowKits.randomMsg(globalwoow.settings.obj.wildcard_msg);
+												woowMsg.single(serviceOffer);
+											},globalwoow.settings.preLoadingTime)
+											
+										}
 										
 									}
 									
@@ -900,18 +994,22 @@
 							}
 						})
 						
-					
-					/*}*/
                 }
+				
                 //When returning shopper then greeting with name and wildcards.
                 else if(localStorage.getItem('shopperw')  && globalwoow.wildCard==0 && globalwoow.ai_step==0){
 					if(globalwoow.settings.obj.ask_email_woo_greetings==1){
 						var dfReturns=woowKits.dailogAIOAction(msg);
 						dfReturns.done(function( response ) {
-							if(response.status.code==200){
-								var intent = response.result.metadata.intentName;
+							
+							if(globalwoow.settings.obj.df_api_version=='v2'){
+                                response = $.parseJSON(response);
+                            }
+							
+							if(woowKits.responseIsOk(response)){
+								var intent = woowKits.getIntentName(response);
 								if(intent=="get email"){
-									var email = response.result.parameters.email;
+									var email = woowKits.getParameters(response).email;
 									$.cookie("shopperemail", email, { expires : 365 });
 									localStorage.setItem('shopperemail',email);
 									if(email!=''){
@@ -984,10 +1082,15 @@
                 else if(globalwoow.wildCard==0 && globalwoow.ai_step==1){
                     var dfReturns=woowKits.dailogAIOAction(msg);
                     dfReturns.done(function( response ) {
+						
+						if(globalwoow.settings.obj.df_api_version=='v2'){
+                            response = $.parseJSON(response);
+                        }
+						
                         //console.log('Ai result',JSON.stringify(response));
-                        if(response.status.code==200){
+                        if(woowKits.responseIsOk(response)){
                             //For custom intent and step by step search
-                            var userIntent=response.result.metadata.intentName;
+                            var userIntent=woowKits.getIntentName(response);
                             var intentNamesIndex=globalwoow.settings.obj.custom_intent_names.indexOf(userIntent);
                             var intentSysKey=globalwoow.settings.obj.custom_intent_kewords[intentNamesIndex];
                             if(intentSysKey==msg && $.inArray(userIntent, globalwoow.settings.obj.custom_intent_names) !== -1 && globalwoow.settings.obj.custom_search_enable==1){
@@ -995,12 +1098,12 @@
                             }
                             if( $.inArray(userIntent, globalwoow.settings.obj.custom_intent_names) !== -1 && globalwoow.settings.obj.custom_search_enable==1 && globalwoow.sbs_search_flag==1){
 
-                                if(response.result.actionIncomplete==true){
-                                    var sMgs=response.result.fulfillment.speech;
+                                if(!woowKits.isActionComplete(response)){
+                                    var sMgs=woowKits.getFulfillmentSpeech(response);
                                     woowMsg.single(sMgs);
                                 }else{
-                                    var parameters=response.result.parameters;
-                                    var sMgs=response.result.fulfillment.speech;
+                                    var parameters=woowKits.getParameters(response);
+                                    var sMgs=woowKits.getFulfillmentSpeech(response);
                                     var data = { 'action':'qcld_woo_chatbot_step_by_step_search','params':parameters};
                                     woowKits.ajax(data).done(function( response ) {
                                         globalwoow.sbs_search_flag=0;
@@ -1087,8 +1190,8 @@
 								
 							}*/else if(userIntent=='get name'){
 								
-								given_name = response.result.parameters.given_name;
-								last_name = response.result.parameters.last_name;
+								given_name = woowKits.getParameters(response).given_name;
+								last_name = woowKits.getParameters(response).last_name;
 								fullname = given_name+' '+last_name;
 								
 								$.cookie("shopperw", fullname, { expires : 365 });
@@ -1105,44 +1208,71 @@
 								localStorage.setItem("aiStep", globalwoow.ai_step);
 								
 							}
-                            else if(response.result.score!=0){ // checking is responding from dialogflow.
-                                if(response.result.action=="" || "input.welcome"==response.result.action){
-                                    if(response.result.fulfillment.speech!="" && globalwoow.settings.obj.custom_intent_enable==1 && $.inArray(userIntent, globalwoow.settings.obj.custom_intent_names)==-1 ){
+                            else if(woowKits.getScore(response)!=0){ // checking is responding from dialogflow.
+                                if(woowKits.getAction(response)=="" || "input.welcome"==woowKits.getAction(response)){
+                                    if(woowKits.getFulfillmentSpeech(response)!="" && globalwoow.settings.obj.custom_intent_enable==1 && $.inArray(userIntent, globalwoow.settings.obj.custom_intent_names)==-1 ){
                                         //DialogFlow all defualt message will be printed.
-                                        var DFMsg=response.result.fulfillment.speech;
+                                        var DFMsg=woowKits.getFulfillmentSpeech(response);
                                         woowMsg.single(DFMsg);
-                                    }else if(response.result.fulfillment.speech=="" && response.result.fulfillment.hasOwnProperty('messages') && globalwoow.settings.obj.rich_response_enable==1 && globalwoow.settings.obj.custom_intent_enable==1 ){
+                                    }else if(globalwoow.settings.obj.rich_response_enable==1 && globalwoow.settings.obj.custom_intent_enable==1 ){
                                         //DialogFlow all defualt message will be printed.
                                         var DFMsg="";
-                                        var messages = response.result.fulfillment.messages;
-                                        var numMessages = messages.length;
-                                        var index = 0;
-                                        for (index; index<numMessages; index++) {
-                                            var message = messages[index];
-                                            switch (message.type) {
-                                                case 0: // For text response
-                                                    DFMsg+=message.speech;
-                                                    break;
-                                                case 1: // For card part
-                                                    DFMsg+=woowKits.cardResponse(message.title, message.subtitle, message.imageUrl, message.buttons, message.text, message.postback);
-                                                    break;
-                                                case 2: // For quick replies
-                                                    DFMsg+=woowKits.quickRepliesResponse(message.title, message.replies);
-                                                    break;
-                                                case 3: // For image response
-                                                    DFMsg+=woowKits.imageResponse(message.imageUrl);
-                                                    break;
-                                                case 3: // custom payload
+										if(globalwpw.settings.obj.df_api_version=='v1'){
+											var messages = response.result.fulfillment.messages;
+											var numMessages = messages.length;
+											var index = 0;
+											for (index; index<numMessages; index++) {
+												var message = messages[index];
+												switch (message.type) {
+													case 0: // For text response
+														DFMsg+=message.speech;
+														break;
+													case 1: // For card part
+														DFMsg+=woowKits.cardResponse(message.title, message.subtitle, message.imageUrl, message.buttons, message.text, message.postback);
+														break;
+													case 2: // For quick replies
+														DFMsg+=woowKits.quickRepliesResponse(message.title, message.replies);
+														break;
+													case 3: // For image response
+														DFMsg+=woowKits.imageResponse(message.imageUrl);
+														break;
+													case 3: // custom payload
 
-                                                    break;
-                                                default:
-                                            }
-                                        }
+														break;
+													default:
+												}
+											}
+										}else{
+											var messages = response.queryResult.fulfillmentMessages;
+											var numMessages = messages.length;
+											var index = 0;
+											for (index; index<numMessages; index++) {
+												var message = messages[index];
+
+												if(typeof message.quickReplies !=="undefined"){
+													
+													DFMsg+=woowKits.quickRepliesResponse(message.quickReplies.title, message.quickReplies.quickReplies);
+
+												}
+												//handleing default response
+												else if(typeof message.text !=="undefined"){
+													if(typeof message.text.text !=="undefined" && message.text.text.length>0){
+														DFMsg+= message.text.text[0];
+														
+													}
+												}
+												else if(typeof message.card !=="undefined"){
+													DFMsg+=woowKits.cardResponse(message.card.title, message.card.subtitle, message.card.imageUri, message.buttons, '', '');
+												}
+												
+												
+											}
+										}
 
                                         woowMsg.single(DFMsg);
                                     }else if(globalwoow.settings.obj.disable_product_search!=1){
                                         //Default is considered as product searching in the system if its not smalltalk && no respone message from DF
-                                        var searchQuery=woowKits.filterStopWords(response.result.resolvedQuery);
+                                        var searchQuery=woowKits.filterStopWords(woowKits.queryText(response));
                                         globalwoow.wildCard=1;
                                         globalwoow.productStep='search'
                                         woowAction.bot(searchQuery);
@@ -1153,16 +1283,16 @@
                                         var dfDefaultMsg=globalwoow.settings.obj.df_defualt_reply;
                                         woowMsg.single(dfDefaultMsg);
                                     }
-                                } else if(response.result.action!=""){
+                                } else if(woowKits.getAction(response)!=""){
                                     //Working for smalltalk
-                                    var sTalkAction=response.result.action;
-                                    var sTalkActionArr=sTalkAction.split('.');
-                                    if(sTalkActionArr[0]=='smalltalk'){
-                                        var sMgs=response.result.fulfillment.speech;
-                                        woowMsg.single(sMgs);
-                                    }else{
+                                    var sTalkAction=woowKits.getAction(response);
+                                    if(sTalkAction!='' && sTalkAction.indexOf('smalltalk') != -1 ){
+										var sMgs=woowKits.getFulfillmentSpeech(response);
 										
-                                        var searchQuery=woowKits.filterStopWords(response.result.resolvedQuery);
+										woowMsg.single(sMgs);
+									}else{
+										
+                                        var searchQuery=woowKits.filterStopWords(woowKits.queryText(response));
                                         globalwoow.wildCard=1;
                                         globalwoow.productStep='search'
                                         woowAction.bot(searchQuery);
@@ -1176,7 +1306,7 @@
                                 }
 
                             }else{
-                                var searchQuery=woowKits.filterStopWords(response.result.resolvedQuery);
+                                var searchQuery=woowKits.filterStopWords(woowKits.queryText(response));
                                 globalwoow.wildCard=1;
                                 globalwoow.productStep='search'
                                 woowAction.bot(searchQuery);
@@ -1251,11 +1381,11 @@
 									woowKits.ajax(data).done(function( response ) {
 										var json=$.parseJSON(response);
 										if(json.status=='success'){
-											
 											woowMsg.single2(json.html);
-											
 										}else{
-											woowMsg.single(json.html);
+											if(json.html!='' && json.html!==null){
+												woowMsg.single(json.html);
+											}
 											setTimeout(function(){
 												woowKits.sugestCat();
 											},parseInt(globalwoow.settings.preLoadingTime*2.1));
@@ -1276,7 +1406,7 @@
 							var productSucces= woowKits.randomMsg(globalwoow.settings.obj.product_success)+" <strong>"+msg+"</strong>!";
 							woowMsg.double_nobg(productSucces,response.html);
 							if(globalwoow.settings.obj.ai_df_enable==1 && globalwoow.df_status_lock==0){
-								console.log('hello tester1');
+								
 								globalwoow.wildCard=0;
 								globalwoow.ai_step=1;
 								localStorage.setItem("wildCard",  globalwoow.wildCard);
@@ -1298,7 +1428,7 @@
 								
 								
 							}else{
-								console.log('hello tester2');
+								
 								//Infinite asking to break dead end.
 								if(globalwoow.settings.obj.is_extended_search){
 									setTimeout(function(){
@@ -1850,7 +1980,13 @@
 
             if(globalwoow.wildCard==9 && globalwoow.bargainStep == 'welcome' && globalwoow.bargainId != ''){
 
-                var data = {'action':'qcld_woo_bargin_product','qcld_woo_map_product_id':globalwoow.bargainId,'qcld_woo_map_variation_id':globalwoow.bargainVId};
+                var data = {
+                    'action':'qcld_woo_bargin_product',
+                    'qcld_woo_map_product_id':globalwoow.bargainId,
+                    'qcld_woo_map_variation_id':globalwoow.bargainVId,
+                    'security': globalwoow.settings.obj.map_get_ajax_nonce
+
+                };
                 woowKits.ajax(data).done(function (response) {
 
                     var restWarning = response.html;
@@ -1886,7 +2022,12 @@
 					
 						var msg = string.match(/\d+/g).map(Number);
 
-						var data = {'action':'qcld_woo_bargin_product_price','qcld_woo_map_product_id':globalwoow.bargainId,'qcld_woo_map_variation_id':globalwoow.bargainVId, 'price': parseInt(msg)};
+						var data = {'action':'qcld_woo_bargin_product_price',
+                                'qcld_woo_map_product_id':globalwoow.bargainId,
+                                'qcld_woo_map_variation_id':globalwoow.bargainVId, 
+                                'price': parseInt(msg),
+                                'security': globalwoow.settings.obj.map_get_ajax_nonce
+                        };
 						woowKits.ajax(data).done(function (response) {
 							
 							globalwoow.bargainStep  = 'bargain';
@@ -1922,7 +2063,11 @@
 								var restWarning= response.html;
 								woowMsg.single(restWarning);
 								setTimeout(function(){
-									var data = {'action':'qcld_woo_bargin_product_confirm','qcld_woo_map_product_id':globalwoow.bargainId, 'price': globalwoow.bargainPrice};
+									var data = {'action':'qcld_woo_bargin_product_confirm',
+                                    'qcld_woo_map_product_id':globalwoow.bargainId, 
+                                    'price': globalwoow.bargainPrice,
+                                    'security': globalwoow.settings.obj.map_get_ajax_nonce
+                                };
 									woowKits.ajax(data).done(function (response) {
 
 
@@ -1957,7 +2102,11 @@
 
                 setTimeout(function(){
 
-                    var data = {'action':'qcld_woo_bargin_product_confirm','qcld_woo_map_product_id':globalwoow.bargainId, 'price': globalwoow.bargainPrice};
+                    var data = {'action':'qcld_woo_bargin_product_confirm',
+                            'qcld_woo_map_product_id':globalwoow.bargainId, 
+                            'price': globalwoow.bargainPrice,
+                            'security': globalwoow.settings.obj.map_get_ajax_nonce
+                        };
                     woowKits.ajax(data).done(function (response) {
 
                         // map_acceptable_price
@@ -1986,11 +2135,21 @@
 
                     if(globalwoow.bargainVId != ''){
 
-                        var data = {'action':'qcld_woo_bargin_product_variation_add_to_cart','product_id':globalwoow.bargainId,'variation_id':globalwoow.bargainVId, 'price': globalwoow.bargainPrice};
+                        var data = {'action':'qcld_woo_bargin_product_variation_add_to_cart',
+                                'product_id':globalwoow.bargainId,
+                                'variation_id':globalwoow.bargainVId, 
+                                'price': globalwoow.bargainPrice,
+                                'security': globalwoow.settings.obj.map_get_ajax_nonce
+                            };
 
                     }else{
 
-                       var data = {'action':'qcld_woo_bargin_product_add_to_cart','product_id':globalwoow.bargainId, 'price': globalwoow.bargainPrice};
+                       var data = {
+                        'action':'qcld_woo_bargin_product_add_to_cart',
+                        'product_id':globalwoow.bargainId, 
+                        'price': globalwoow.bargainPrice,
+                        'security': globalwoow.settings.obj.map_get_ajax_nonce
+                        };
                     }
 
 
@@ -2065,7 +2224,12 @@
                     
                     woowMsg.single(confirmBtn); 
 
-                    var data = {'action':'qcld_woo_bargin_send_query','qcld_woo_map_product_id':globalwoow.bargainId, 'price':  localStorage.getItem("finalprice"), 'email': msg};
+                    var data = {'action':'qcld_woo_bargin_send_query',
+                                'qcld_woo_map_product_id':globalwoow.bargainId, 
+                                'price':  localStorage.getItem("finalprice"), 
+                                'email': msg,
+                                'security': globalwoow.settings.obj.map_get_ajax_nonce
+                            };
                     
                     woowKits.ajax(data).done(function (response) {
                         //console.log(response);
@@ -2284,6 +2448,37 @@
         }
     };
 
+        //search load more
+        $(document).on('click', '.wp-chatbot-loadmore', function(e){
+            e.preventDefault();
+            var obj = $(this);
+
+            var keyword = obj.attr('data-keyword');
+            var post_type = obj.attr('data-post_type');
+            var page = obj.attr('data-page');
+            obj.text('Loading...');
+            var data = {'action':'wpbo_search_site_pagination','name':globalwoow.hasNameCookie,'keyword':keyword, 'type': post_type, 'page': page};
+            woowKits.ajax(data).done(function (res) {
+                var json=$.parseJSON(res);
+                if(json.status=='success'){
+                    $('span[data-wildcart="back"]').remove();
+                    
+                    woowMsg.single_nobg(json.html+'<span class="qcld-chatbot-wildcard qcld_back_to_start"  data-wildcart="back">' + woowKits.randomMsg(globalwoow.settings.obj.back_to_start) + '</span>');
+                    obj.remove();
+                }else{                    
+					woowMsg.single(json.html);
+					setTimeout(function(){
+						var serviceOffer=woowKits.randomMsg(globalwoow.settings.obj.support_option_again);
+						woowMsg.double_nobg(serviceOffer,globalwoow.wildcards);
+					},globalwoow.settings.preLoadingTime)
+
+                }
+                globalwoow.wildCard=0;
+            });
+
+
+        })
+	
 	//bargain initiate function
 	$(document).on('click', '.woo_minimum_accept_price-bargin', function(e){
         var product_id = $(this).attr('product_id');
@@ -2322,6 +2517,7 @@
 		
 		if($('.active-chat-board').length>0){
 			woowTree.bargain();
+       
 		}else{
 			$('#woo-chatbot-ball').trigger('click');
 			
@@ -2333,7 +2529,6 @@
 		}
 		
 	});
-
 
     // bargain confirm ...
     $(document).on('click','.qcld-chatbot-bargin-confirm-btn',function (e) {
@@ -2354,6 +2549,7 @@
             woowTree.bargain();
         }
     });
+
     $(document).on('click','.qcld-modal-bargin-confirm-add-to-cart',function (e) {
         e.preventDefault();
         var shopperChoice=$(this).text();
@@ -2370,22 +2566,20 @@
         localStorage.setItem("bargainStep",  globalwoow.bargainStep);
         woowTree.bargain();
 
-        // var actionType=$(this).attr('confirm-data');
-        // if(actionType=='yes'){
-
-        //     globalwoow.bargainStep = 'confirm';
-        //     localStorage.setItem("wildCard",  globalwoow.bargainStep);
-        //     woowTree.bargain();
-        // } else if(actionType=='no'){
-        //     globalwoow.bargainStep = 'disagree';
-        //     localStorage.setItem("wildCard",  globalwoow.bargainStep);
-        //     globalwoow.bargainLoop = 0;
-        //     localStorage.setItem("wildCard",  globalwoow.bargainLoop);
-        //     woowTree.bargain();
-        // }
     });
 	
 	
+    
+    $(document).on('click','.qcld-modal-bargin-bot-confirm-exit-intent',function (e) {
+        e.preventDefault();
+        var shopperChoice=$(this).text();
+        woowMsg.shopper_choice(shopperChoice);
+
+        var actionType=$(this).attr('confirm-data');
+        if(actionType=='yes'){
+            $('.woo_minimum_accept_price-bargin').click();
+        }
+    });
 	
 	$(document).on('click','.qcld-chatbot-custom-intent',function (e) {
 		var shopperChoice=$(this).attr('data-text');
@@ -2505,6 +2699,10 @@
                 woowWelcome.greeting();
                 //update the value for initializing.
                 globalwoow.initialize=1;
+            }else if(globalwoow.initialize==0 && globalwoow.wildCard==0 && globalwoow.settings.obj.re_target_handler==9){
+               // woowWelcome.greeting();
+                //update the value for initializing.
+                globalwoow.initialize=1;
             }else{  // re targeting part .
                 setTimeout(function (e) {
                     woowWelcome.greeting();
@@ -2522,44 +2720,6 @@
         });
 
 		
-		$(document).on('click', '.wp-chatbot-loadmore', function(e){
-            e.preventDefault();
-            var obj = $(this);
-
-            var keyword = obj.attr('data-keyword');
-            var post_type = obj.attr('data-post_type');
-            var page = obj.attr('data-page');
-            obj.text('Loading...');
-            var data = {'action':'wpbo_search_site_pagination','name':globalwoow.hasNameCookie,'keyword':keyword, 'type': post_type, 'page': page};
-            woowKits.ajax(data).done(function (res) {
-                var json=$.parseJSON(res);
-                if(json.status=='success'){
-                    
-                    
-                    woowMsg.single2(json.html);
-                    obj.remove();
-                }else{
-                    
-                    if(globalwoow.counter == globalwoow.settings.obj.no_result_attempt_count || globalwoow.settings.obj.no_result_attempt_count == 0 ){
-                        
-                        woowMsg.single(json.html);
-                        setTimeout(function(){
-                            var serviceOffer=woowKits.randomMsg(globalwoow.settings.obj.support_option_again);
-                            woowMsg.double_nobg(serviceOffer,globalwoow.wildcards);
-                        },globalwoow.settings.preLoadingTime)
-                        globalwoow.counter = 0;
-                        
-                    }else{
-                        globalwoow.counter++;
-                        woowTree.df_reply(response);
-                    }
-
-                }
-                globalwoow.wildCard=0;
-            });
-
-
-        })
 		
         /*
          * Or when shopper press the ENTER key
@@ -3094,6 +3254,8 @@
         });
         $(document).on('click','.qcld-chatbot-reset-btn',function (e) {
             e.preventDefault();
+            var shopperChoice=$(this).text();
+            woowMsg.shopper_choice(shopperChoice);
             var actionType=$(this).attr('reset-data');
             if(actionType=='yes'){
                 $('#woo-chatbot-messages-container').html('');

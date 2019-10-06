@@ -21,7 +21,6 @@
 if( !get_woowbot_enter_license_notice_dismiss_transient() ){
 	add_action('admin_notices', 'qcld_woowbot_license_enter_notice');
 	function qcld_woowbot_license_enter_notice(){
-		return true;
 
 		if( (get_woowbot_licensing_buy_from() != '') && (get_woowbot_invalid_license() != 1) ){
 

@@ -678,6 +678,77 @@ $(document).on('click','.woo-chatbot-lng-item-remove',function () {
 
     }
 
+	
+	    //for downloading gc-client
+    $('#qc_wpbot_gc_download').on('click', function(e){
+        e.preventDefault();
+        
+        $.ajax(
+            {
+              type: 'POST', // 'POST' here so that _upload_ progress _also_ makes sense; 
+                            // Change to 'GET' if you need. 
+              url: ajax_object.ajax_url, data: {
+                  'action': 'qcld_woo_chatbot_gc_client_download'
+              },
+              beforeSend: function()
+              {
+                $('.qcld_wpbot_download_statuses').append('<p>Downloading...</p>');
+
+              },            
+              success: function(data){
+                $('.qcld_wpbot_download_statuses').append('<p>'+data.content+'</p>');
+                if(data.status=='success'){
+
+                    $.ajax(
+                        {
+                            type: 'POST', // 'POST' here so that _upload_ progress _also_ makes sense; 
+                                        // Change to 'GET' if you need. 
+                            url: ajax_object.ajax_url, data: {
+                                'action': 'qcld_woo_chatbot_gc_client_extract'
+                            },
+                            beforeSend: function()
+                            {
+                                $('.qcld_wpbot_download_statuses').append('<p>Extracting files...</p>');
+            
+                            },            
+                            success: function(data){
+                                $('.qcld_wpbot_download_statuses').append('<p>'+data.content+'</p>');
+                                if(data.status=='success'){
+                                    $('.qcld_wpbot_download_statuses').append('<p>Done.</p>');
+                                }
+
+                            }
+                    });
+                }                
+                
+              }
+        });
+
+    })
+	
+	jQuery("input[name='woo_chatbot_df_api']").on('change', function(e){
+        e.preventDefault();
+        if($(this).val()=='v1'){
+            $('#woo-chatbot-df-section-v1').show('slow');
+            $('#woo-chatbot-df-section-v2').hide('slow');
+        }else{
+            $('#woo-chatbot-df-section-v1').hide('slow');
+            $('#woo-chatbot-df-section-v2').show('slow');
+        }
+     })
+
+    if($("input[type=radio][name='woo_chatbot_df_api']:checked").val()=='v1'){
+        $('#woo-chatbot-df-section-v1').show('slow');
+    }else{
+        $('#woo-chatbot-df-section-v1').hide();
+    }
+
+    if($("input[type=radio][name='woo_chatbot_df_api']:checked").val()=='v2'){
+        $('#woo-chatbot-df-section-v2').show('slow');
+    }else{
+        $('#woo-chatbot-df-section-v2').hide();
+    }
+	
     //on change.
 
     $('.woo-chatbot-show-pages').on('change',function (e) {

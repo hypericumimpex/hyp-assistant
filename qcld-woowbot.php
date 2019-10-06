@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/hypericumimpex/hyp-assistant/
  * Description: HYP Asisstant, asistentul meu destept...
  * Donate link: https://github.com/hypericumimpex/
- * Version: 12.1.0
+ * Version: 12.2.0
  * @author    Romeo C.
  * @category  WooCommerce
  * Author: Romeo C
@@ -25,6 +25,7 @@ define('QCLD_WOOCHATBOT_IMG_URL', QCLD_WOOCHATBOT_PLUGIN_URL . "images/");
 define('QCLD_WOOCHATBOT_IMG_ABSOLUTE_PATH', plugin_dir_path(__FILE__) . "images");
 define('QCLD_WOOCHATBOT_INDEX_TABLE', 'woowbot_index');
 //define('QCLD_WOOCHATBOT_CACHE_TABLE', 'woowbot_cache');
+define('QCLD_wooCHATBOT_GC_DIRNAME', 'wp-content/wpbot-dfv2-client');
 require_once("qcld-woowbot-search.php");
 require_once('plugin-upgrader/plugin-upgrader.php');
 require_once("functions.php");
@@ -34,6 +35,8 @@ if(file_exists(QCLD_WOOCHATBOT_PLUGIN_DIR_PATH. "/conversion-tracker/class-qc-co
 if(file_exists(QCLD_WOOCHATBOT_PLUGIN_DIR_PATH. "/includes/WoowBot_api.php")){
     require_once (QCLD_WOOCHATBOT_PLUGIN_DIR_PATH. "/includes/WoowBot_api.php");
 }
+require_once('qcld_df_api.php');
+require_once('includes/class-woowbot-gc-download.php');
 /**
  * Main Class.
  */
@@ -279,7 +282,10 @@ class QCLD_Woo_Chatbot
             'ret_greet' => get_option('qlcd_woo_chatbot_ret_greet'),
             'enable_exit_intent' => get_option('enable_woo_chatbot_exit_intent'),
             'exit_intent_msg' => str_replace('\\', '', get_option('woo_chatbot_exit_intent_msg')),
+            'exit_intent_bargain_msg' => str_replace('\\', '', get_option('woo_chatbot_exit_intent_bargain_msg')),
             'exit_intent_once' => get_option('woo_chatbot_exit_intent_once'),
+            'exit_intent_bargain_pro_single_page' => get_option('woo_chatbot_exit_intent_bargain_pro_single_page'),
+            'exit_intent_bargain_is_product_page' => is_product(),
             'enable_scroll_open' => get_option('enable_woo_chatbot_scroll_open'),
             'scroll_open_msg' => str_replace('\\', '', get_option('woo_chatbot_scroll_open_msg')),
             'scroll_open_percent' => get_option('woo_chatbot_scroll_percent'),
@@ -339,6 +345,9 @@ class QCLD_Woo_Chatbot
             'map_acceptable_price' => (get_option('qcld_minimum_accept_price_acceptable_price')!=''?get_option('qcld_minimum_accept_price_acceptable_price'):'Your offered price {offer price} is acceptable.'),
             'map_checkout_now_button_text' => (get_option('qcld_minimum_accept_modal_checkout_now_button_text')!=''?get_option('qcld_minimum_accept_modal_checkout_now_button_text'):'Checkout Now'),
             'map_get_checkout_url' => (wc_get_checkout_url()),
+            'map_get_ajax_nonce' => (wp_create_nonce( 'woo-minimum-acceptable-price')),
+			'df_api_version' => (get_option('woo_chatbot_df_api')==''?'v1':get_option('woo_chatbot_df_api')),
+			'v2_client_url'=> esc_url(get_site_url().'/?action=qcld_dfv2_api')
         );
         wp_register_script('qcld-woo-chatbot-slimscroll-js', plugins_url(basename(plugin_dir_path(__FILE__)) . '/js/jquery.slimscroll.min.js', basename(__FILE__)), array('jquery'), QCLD_WOOCHATBOT_VERSION, true);
         wp_enqueue_script('qcld-woo-chatbot-slimscroll-js');
@@ -787,6 +796,15 @@ class QCLD_Woo_Chatbot
 				update_option('qcld_woo_chatbot_custom_icon_chat', stripslashes($qcld_woo_chatbot_custom_icon_chat));
 				
 				
+				$qlcd_woo_chatbot_dialogflow_project_id= $_POST["qlcd_woo_chatbot_dialogflow_project_id"];
+                update_option('qlcd_woo_chatbot_dialogflow_project_id', sanitize_text_field($qlcd_woo_chatbot_dialogflow_project_id));
+
+                $woo_chatbot_df_api= $_POST["woo_chatbot_df_api"];
+                update_option('woo_chatbot_df_api', sanitize_text_field($woo_chatbot_df_api));
+
+                $qlcd_woo_chatbot_dialogflow_project_key= $_POST["qlcd_woo_chatbot_dialogflow_project_key"];
+                update_option('qlcd_woo_chatbot_dialogflow_project_key', stripslashes($qlcd_woo_chatbot_dialogflow_project_key));
+				
 				
 				//Theme custom background option
                 if(isset( $_POST["qcld_woo_chatbot_change_bg"])) {
@@ -1157,6 +1175,9 @@ class QCLD_Woo_Chatbot
                 $woo_chatbot_exit_intent_msg = $_POST["woo_chatbot_exit_intent_msg"];
                 update_option('woo_chatbot_exit_intent_msg', stripslashes($woo_chatbot_exit_intent_msg));
 
+                $woo_chatbot_exit_intent_bargain_msg = $_POST["woo_chatbot_exit_intent_bargain_msg"];
+                update_option('woo_chatbot_exit_intent_bargain_msg', stripslashes($woo_chatbot_exit_intent_bargain_msg));
+
                 if(isset( $_POST["woo_chatbot_exit_intent_once"])) {
                     $woo_chatbot_exit_intent_once = $_POST["woo_chatbot_exit_intent_once"];
                 }else{ $woo_chatbot_exit_intent_once='';}
@@ -1324,9 +1345,19 @@ class QCLD_Woo_Chatbot
 
                 $qlcd_woo_chatbot_dialogflow_defualt_reply= $_POST["qlcd_woo_chatbot_dialogflow_defualt_reply"];
                 update_option('qlcd_woo_chatbot_dialogflow_defualt_reply', sanitize_text_field($qlcd_woo_chatbot_dialogflow_defualt_reply));
-				
-				 $qlcd_woo_chatbot_dialogflow_agent_language= $_POST["qlcd_woo_chatbot_dialogflow_agent_language"];
+                
+                 $qlcd_woo_chatbot_dialogflow_agent_language= $_POST["qlcd_woo_chatbot_dialogflow_agent_language"];
                 update_option('qlcd_woo_chatbot_dialogflow_agent_language', sanitize_text_field($qlcd_woo_chatbot_dialogflow_agent_language));
+
+
+
+                // exit intent product single page
+                if(isset( $_POST["woo_chatbot_exit_intent_bargain_pro_single_page"])) {
+                    $woo_chatbot_exit_intent_bargain_pro_single_page = $_POST["woo_chatbot_exit_intent_bargain_pro_single_page"];
+                }else{ $woo_chatbot_exit_intent_bargain_pro_single_page='';}
+                update_option('woo_chatbot_exit_intent_bargain_pro_single_page', sanitize_text_field($woo_chatbot_exit_intent_bargain_pro_single_page));
+
+
 
             }
         }
@@ -1607,7 +1638,7 @@ function qcld_woo_chatboot_defualt_options(){
     if(!get_option('woo_chatbot_show_pages')){
         update_option('woo_chatbot_show_pages', 'on');
     }
-	if(!get_option('woo_chatbot_exitintent_show_pages')){
+    if(!get_option('woo_chatbot_exitintent_show_pages')){
         update_option('woo_chatbot_exitintent_show_pages', 'on');
     }
     if(!get_option('woo_chatbot_show_pages_list')) {
@@ -1683,7 +1714,18 @@ function qcld_woo_chatboot_defualt_options(){
 	if(!get_option('qcld_woo_chatbot_custom_icon_chat')) {
         update_option('qcld_woo_chatbot_custom_icon_chat', '');
     }
+	
+	if(!get_option('qlcd_woo_chatbot_dialogflow_project_id')) {
+        update_option('qlcd_woo_chatbot_dialogflow_project_id', '');
+    }
+    if(!get_option('woo_chatbot_df_api')) {
+        update_option('woo_chatbot_df_api', '');
+    }
 
+    
+    if(!get_option('qlcd_woo_chatbot_dialogflow_project_key')) {
+        update_option('qlcd_woo_chatbot_dialogflow_project_key', '');
+	}
 	if(!get_option('qcld_woo_chatbot_change_bg')) {
         update_option('qcld_woo_chatbot_change_bg', '');
     }
@@ -2115,6 +2157,9 @@ function qcld_woo_chatboot_defualt_options(){
     if(!get_option('woo_chatbot_exit_intent_msg')) {
         update_option('woo_chatbot_exit_intent_msg', 'WAIT, WE HAVE A SPECIAL OFFER FOR YOU! Get Your 50% Discount Now. Use Coupon Code QC50 during checkout.');
     }
+    if(!get_option('woo_chatbot_exit_intent_bargain_msg')) {
+        update_option('woo_chatbot_exit_intent_bargain_msg', "Don't like the price? If you have something on your mind, let us know your best offer. Maybe we can work something out together.");
+    }
     if(!get_option('woo_chatbot_exit_intent_once')) {
         update_option('woo_chatbot_exit_intent_once', '');
     }
@@ -2275,6 +2320,11 @@ function qcld_woo_chatboot_defualt_options(){
         update_option('custom_intent_kewords', serialize(array()));
     }
 
+    // exit intent bargain product single page.
+    if(!get_option('woo_chatbot_exit_intent_bargain_pro_single_page')){
+        update_option('woo_chatbot_exit_intent_bargain_pro_single_page', '');
+    }
+
 
 }
 /*
@@ -2345,6 +2395,9 @@ function qcld_woo_chatboot_delete_all_options(){
 	delete_option('qcld_woo_chatbot_custom_icon_cart');
 	delete_option('qcld_woo_chatbot_custom_icon_chat');
 	
+	delete_option( 'qlcd_woo_chatbot_dialogflow_project_id');
+    delete_option( 'woo_chatbot_df_api');    
+    delete_option( 'qlcd_woo_chatbot_dialogflow_project_key');
 	
 	delete_option('qcld_woo_chatbot_change_bg');
     delete_option('woo_chatbot_custom_css');
@@ -2476,6 +2529,7 @@ function qcld_woo_chatboot_delete_all_options(){
     delete_option( 'qlcd_woo_chatbot_ret_greet');
     delete_option( 'enable_woo_chatbot_exit_intent');
     delete_option( 'woo_chatbot_exit_intent_msg');
+    delete_option( 'woo_chatbot_exit_intent_bargain_msg');
     delete_option( 'woo_chatbot_exit_intent_once');
 
     delete_option( 'enable_woo_chatbot_scroll_open');
@@ -2534,6 +2588,9 @@ function qcld_woo_chatboot_delete_all_options(){
     delete_option( 'custom_intent_names');
     delete_option( 'custom_intent_labels');
     delete_option( 'custom_intent_kewords');
+
+    // exit intent bargain product single page.
+    delete_option( 'woo_chatbot_exit_intent_bargain_pro_single_page');
 
     qcld_woo_chatboot_defualt_options();
     $html='Reset all options to default successfully.';

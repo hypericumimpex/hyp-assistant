@@ -3083,6 +3083,7 @@ function qcld_woochatbot_config_api()
         'enable_exit_intent' => get_option('enable_woo_chatbot_exit_intent'),
         'exit_intent_msg' => str_replace('\\', '', get_option('woo_chatbot_exit_intent_msg')),
         'exit_intent_once' => get_option('woo_chatbot_exit_intent_once'),
+        'exit_intent_bargain_pro_single_page' => get_option('woo_chatbot_exit_intent_bargain_pro_single_page'),
         'enable_scroll_open' => get_option('enable_woo_chatbot_scroll_open'),
         'scroll_open_msg' => str_replace('\\', '', get_option('woo_chatbot_scroll_open_msg')),
         'scroll_open_percent' => get_option('woo_chatbot_scroll_percent'),

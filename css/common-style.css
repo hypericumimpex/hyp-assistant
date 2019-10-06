@@ -586,11 +586,20 @@ span.qcld-chatbot-product-category, span.qcld-chatbot-support-items, span.qcld-c
     padding: 12px 30px;
 }
 
-.qcld-chatbot-reset-btn, .qcld-chatbot-bargin-confirm-btn, .qcld-modal-bargin-confirm-add-to-cart , 
+.qcld-chatbot-reset-btn, .qcld-chatbot-bargin-confirm-btn, .qcld-modal-bargin-confirm-add-to-cart, .qcld-modal-bargin-bot-confirm-exit-intent, 
 .woo-chatbot-product-bargain-btn .qcld-modal-bargin-confirm-btn-checkout {
     display: inline-block;
     padding: 5px 12px;
     min-width: 100px;
+}
+.woo-chatbot-proactive-msg .qcld-chatbot-reset-btn, .woo-chatbot-proactive-msg .qcld-modal-bargin-bot-confirm-exit-intent{
+    min-width: 75px;
+}
+
+.qcld-modal-bargin-confirm-exit-intent-btn{
+    width:100%;
+    display: block;
+    padding-top:15px;
 }
 
 span.qcld-chatbot-product-category, span.qcld-chatbot-support-items, span.qcld-chatbot-wildcard, span.woo-chatbot-card-button, span.qcld-chatbot-suggest-email, span.qcld-chatbot-suggest-phone, span.qcld-chatbot-reset-btn, span.qcld-chatbot-bargin-confirm-btn, #woo-chatbot-loadmore {
@@ -1573,7 +1582,14 @@ span.qcld-chatbot-product-category, span.qcld-chatbot-support-items, span.qcld-c
     padding: 5px 12px;
     min-width: 100px;
 }
-span.qcld-chatbot-product-category, span.qcld-chatbot-support-items, span.qcld-chatbot-wildcard, span.qcld-chatbot-suggest-email,span.qcld-chatbot-suggest-phone, span.qcld-chatbot-reset-btn, span.qcld-chatbot-bargin-confirm-btn,span.qcld-chat-common,span.qcld-chatbot-site-search,span.qcld-chatbot-default, span.qcld-chatbot-custom-intent , #wp-chatbot-loadmore, .wp-chatbot-loadmore {
+span.qcld-chatbot-product-category, span.qcld-chatbot-support-items, 
+span.qcld-chatbot-wildcard, span.qcld-chatbot-suggest-email,
+span.qcld-chatbot-suggest-phone, span.qcld-chatbot-reset-btn, 
+span.qcld-chatbot-bargin-confirm-btn,span.qcld-chat-common,
+span.qcld-chatbot-site-search,span.qcld-chatbot-default, 
+span.qcld-chatbot-custom-intent , #wp-chatbot-loadmore, 
+span.qcld-modal-bargin-bot-confirm-exit-intent, 
+.wp-chatbot-loadmore {
     font-weight: bold;
     cursor: pointer;
     text-align: center;

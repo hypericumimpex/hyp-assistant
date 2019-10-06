@@ -52,6 +52,36 @@ $table    = $wpdb->prefix.'woobot_subscription';
                                             class="woowbot-admin-tab-icon"> <i class="fa fa-gear faa-spin"></i> </span> <span class="woowbot-admin-tab-name">
             <?php _e('ICONS & THEMES', 'woochatbot'); ?>
             </span> </a></li>
+			
+			<li tab-data="embed"><a href="<?php echo esc_attr($action); ?>&tab=embed"> <span
+                                            class="woowbot-admin-tab-icon"> <i class="fa fa-mobile"></i> </span> <span
+                                            class="woowbot-admin-tab-name">
+            <?php _e('Embed Code', 'woochatbot'); ?>
+            </span> </a></li>
+			
+			<li tab-data="target"><a href="<?php echo esc_attr($action); ?>&tab=target"> <span
+                                            class="woowbot-admin-tab-icon"> <i class="fa fa-retweet"></i> </span> <span
+                                            class="woowbot-admin-tab-name">
+            <?php _e('Retargeting ', 'woochatbot'); ?>
+            </span> </a></li>
+			
+			<li tab-data="hours"><a href="<?php echo esc_attr($action); ?>&tab=hours"> <span
+                                            class="woowbot-admin-tab-icon"> <i class="fa fa-calendar"></i> </span> <span
+                                            class="woowbot-admin-tab-name">
+            <?php _e('Bot Activity Hour', 'woochatbot'); ?>
+            </span> </a></li>
+			<li tab-data="social"><a href="<?php echo esc_attr($action); ?>&tab=social"> <span
+                                            class="woowbot-admin-tab-icon"> <i class="fa fa-share"></i> </span> <span
+                                            class="woowbot-admin-tab-name">
+            <?php _e('BUTTON INTEGRATION', 'woochatbot'); ?>
+            </span> </a></li>
+			
+			<li tab-data="ai"><a href="<?php echo esc_attr($action); ?>&tab=ai"> <span
+                                            class="woowbot-admin-tab-icon"> <i class="fa fa-500px"></i> </span> <span
+                                            class="woowbot-admin-tab-name">
+            <?php _e('Dialogflow', 'woochatbot'); ?>
+            </span> </a></li>
+			
           <li tab-data="support"><a href="<?php echo esc_attr($action); ?>&tab=support"> <span
                                             class="woowbot-admin-tab-icon"> <i class="fa fa-list"></i> </span> <span
                                             class="woowbot-admin-tab-name">
@@ -66,37 +96,13 @@ $table    = $wpdb->prefix.'woobot_subscription';
                                             class="woowbot-admin-tab-name">
             <?php _e('LANGUAGE CENTER', 'woochatbot'); ?>
             </span> </a></li>
-          <li tab-data="social"><a href="<?php echo esc_attr($action); ?>&tab=social"> <span
-                                            class="woowbot-admin-tab-icon"> <i class="fa fa-share"></i> </span> <span
-                                            class="woowbot-admin-tab-name">
-            <?php _e('INTEGRATION', 'woochatbot'); ?>
-            </span> </a></li>
-          <li tab-data="target"><a href="<?php echo esc_attr($action); ?>&tab=target"> <span
-                                            class="woowbot-admin-tab-icon"> <i class="fa fa-retweet"></i> </span> <span
-                                            class="woowbot-admin-tab-name">
-            <?php _e('Retargeting ', 'woochatbot'); ?>
-            </span> </a></li>
+          
+          
           <li tab-data="subscription"><a href="<?php echo esc_attr($action); ?>&tab=subscription"> <span class="woowbot-admin-tab-icon"> <i class="fa fa-envelope-o"></i> </span> <span class="woowbot-admin-tab-name"><?php _e('Email Subscription ', 'woochatbot'); ?></span> </a></li>
-          <li tab-data="hours"><a href="<?php echo esc_attr($action); ?>&tab=hours"> <span
-                                            class="woowbot-admin-tab-icon"> <i class="fa fa-calendar"></i> </span> <span
-                                            class="woowbot-admin-tab-name">
-            <?php _e('Bot Activity Hour', 'woochatbot'); ?>
-            </span> </a></li>
-          <li tab-data="ai"><a href="<?php echo esc_attr($action); ?>&tab=ai"> <span
-                                            class="woowbot-admin-tab-icon"> <i class="fa fa-500px"></i> </span> <span
-                                            class="woowbot-admin-tab-name">
-            <?php _e('Artificial intelligence', 'woochatbot'); ?>
-            </span> </a></li>
-          <!--<li tab-data="app"><a href="<?php echo esc_attr($action); ?>&tab=app"> <span
-                                            class="woowbot-admin-tab-icon"> <i class="fa fa-mobile"></i> </span> <span
-                                            class="woowbot-admin-tab-name">
-            <?php _e('MOBILE APP', 'woochatbot'); ?>
-            </span> </a></li>-->
-          <li tab-data="embed"><a href="<?php echo esc_attr($action); ?>&tab=embed"> <span
-                                            class="woowbot-admin-tab-icon"> <i class="fa fa-mobile"></i> </span> <span
-                                            class="woowbot-admin-tab-name">
-            <?php _e('Embed Code', 'woochatbot'); ?>
-            </span> </a></li>
+          
+          
+
+          
           <li tab-data="custom"><a href="<?php echo esc_attr($action); ?>&tab=custom"> <span
                                             class="woowbot-admin-tab-icon"> <i class="fa fa-code"></i> </span> <span
                                             class="woowbot-admin-tab-name">
@@ -304,112 +310,7 @@ $table    = $wpdb->prefix.'woobot_subscription';
 					</div>
 				</div>
 			</div>
-			
-            <div class="row">
-              <div class="col-xs-12">
-                <h3 class="qc-opt-title">
-                  <?php _e(woowbot_text().' Custom Color Options', 'woochatbot'); ?>
-                </h3>
-                <div class="cxsc-settings-blocks">
-                  <input value="1" id="enable_woo_chatbot_custom_color" type="checkbox"
-                                                   name="enable_woo_chatbot_custom_color" <?php echo(get_option('enable_woo_chatbot_custom_color') == 1 ? 'checked' : ''); ?>>
-                  <label for="enable_woo_chatbot_custom_color">
-                    <?php _e('Enable Custom Colors for '.woowbot_text(), 'woochatbot'); ?>
-                  </label>
-                </div>
-                <br>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Text Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_text_color" type="hidden"
-                                                       name="woo_chatbot_text_color"
-                                                       value="<?php echo(get_option('woo_chatbot_text_color') != '' ? get_option('woo_chatbot_text_color') : '#37424c'); ?>"/>
-                  </div>
-                </div>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Link Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_link_color" type="hidden"
-                                                       name="woo_chatbot_link_color"
-                                                       value="<?php echo(get_option('woo_chatbot_link_color') != '' ? get_option('woo_chatbot_link_color') : '#e2cc1f'); ?>"/>
-                  </div>
-                </div>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Link Hover Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_link_hover_color" type="hidden"
-                                                       name="woo_chatbot_link_hover_color"
-                                                       value="<?php echo(get_option('woo_chatbot_link_hover_color') != '' ? get_option('woo_chatbot_link_hover_color') : '#734006'); ?>"/>
-                  </div>
-                </div>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Bot Message  Background Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_bot_msg_bg_color" type="hidden"
-                                                       name="woo_chatbot_bot_msg_bg_color"
-                                                       value="<?php echo(get_option('woo_chatbot_bot_msg_bg_color') != '' ? get_option('woo_chatbot_bot_msg_bg_color') : '#1f8ceb'); ?>"/>
-                  </div>
-                </div>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Bot Message Text Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_bot_msg_text_color" type="hidden"
-                                                       name="woo_chatbot_bot_msg_text_color"
-                                                       value="<?php echo(get_option('woo_chatbot_bot_msg_text_color') != '' ? get_option('woo_chatbot_bot_msg_text_color') : '#ffffff'); ?>"/>
-                  </div>
-                </div>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('User Message  Background Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_user_msg_bg_color" type="hidden"
-                                                       name="woo_chatbot_user_msg_bg_color"
-                                                       value="<?php echo(get_option('woo_chatbot_user_msg_bg_color') != '' ? get_option('woo_chatbot_user_msg_bg_color') : '#ffffff'); ?>"/>
-                  </div>
-                </div>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('User Message Text Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_user_msg_text_color" type="hidden"
-                                                       name="woo_chatbot_user_msg_text_color"
-                                                       value="<?php echo(get_option('woo_chatbot_user_msg_text_color') != '' ? get_option('woo_chatbot_user_msg_text_color') : '#000000'); ?>"/>
-                  </div>
-                </div>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Buttons  Background Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_buttons_bg_color" type="hidden"
-                                                       name="woo_chatbot_buttons_bg_color"
-                                                       value="<?php echo(get_option('woo_chatbot_buttons_bg_color') != '' ? get_option('woo_chatbot_buttons_bg_color') : '#1f8ceb'); ?>"/>
-                  </div>
-                </div>
-                <div class="cxsc-settings-blocks">
-                  <div class="form-group">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Buttons Text Color.', 'woochatbot'); ?>
-                    </h4>
-                    <input id="woo_chatbot_buttons_text_color" type="hidden"
-                                                       name="woo_chatbot_buttons_text_color"
-                                                       value="<?php echo(get_option('woo_chatbot_buttons_text_color') != '' ? get_option('woo_chatbot_buttons_text_color') : '#ffffff'); ?>"/>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <div class="row" style="background: #ededed">
               <div class="col-xs-12">
                 <div class="row">
@@ -1162,7 +1063,626 @@ $table    = $wpdb->prefix.'woobot_subscription';
               <!-- col-xs-12--> 
             </div>
 			
-			<div class="row">
+			
+			
+            <!--  row--> 
+          </div>
+          <!-- top-section--> 
+        </section>
+        <section id="section-flip-2">
+          
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#woo-chatbot-icon-theme-settings"><?php echo esc_html__('Icons & Themes', 'woochatbot'); ?></a></li>
+				<li><a data-toggle="tab" href="#woo-chatbot-custom-color-options"><?php echo esc_html__('Custom Color Options', 'woochatbot'); ?></a></li>
+				<li><a data-toggle="tab" href="#woo-chatbot-bottom-icons-setting"><?php echo esc_html__('Bottom Icon Settings', 'woochatbot'); ?></a></li>
+
+			</ul>
+			<div class="tab-content">
+			
+				<div id="woo-chatbot-icon-theme-settings" class="tab-pane fade in active"><!-- icon theme settings div -->
+
+					<div class="top-section">
+						<div class="row">
+						  <div class="col-xs-12">
+							<h4 class="qc-opt-title">
+							  <?php _e('Show '.woowbot_text().' on a Page', 'woochatbot'); ?>
+							</h4>
+							<div class="cxsc-settings-blocks">
+							  <p class="qc-opt-title-font">
+								<?php _e('Paste the shortcode', 'woochatbot'); ?>
+								<input disabled id="shirtcode-selector" type="text"
+																   value="[woowbot-page]">
+								<?php _e('on any page to display '.woowbot_text().' on that page.', 'woochatbot'); ?>
+							  </p>
+							</div>
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-xs-12">
+							<h4 class="qc-opt-title">
+							  <?php _e(woowbot_text().' Icon', 'woochatbot'); ?>
+							</h4>
+							<div class="cxsc-settings-blocks">
+							  <ul class="radio-list">
+								<li>
+								  <label for="woo_chatbot_icon_0" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-0.png"
+																			alt="">
+									<input id="woo_chatbot_icon_0" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-0.png' ? 'checked' : ''); ?>
+																		   value="icon-0.png">
+									<?php _e('Icon - 0', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_1" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-1.png"
+																			alt="">
+									<input id="woo_chatbot_icon_1" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-1.png' ? 'checked' : ''); ?>
+																		   value="icon-1.png">
+									<?php _e('Icon - 1', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_2" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-2.png"
+																			alt="">
+									<input id="woo_chatbot_icon_2" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-2.png' ? 'checked' : ''); ?>
+																		   value="icon-2.png">
+									<?php _e('Icon - 2', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_3" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-3.png"
+																			alt="">
+									<input id="woo_chatbot_icon_3" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-3.png' ? 'checked' : ''); ?>
+																		   value="icon-3.png">
+									<?php _e('Icon - 3', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_4" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-4.png"
+																			alt="">
+									<input id="woo_chatbot_icon_4" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-4.png' ? 'checked' : ''); ?>
+																		   value="icon-4.png">
+									<?php _e('Icon - 4', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_5" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-5.png"
+																			alt="">
+									<input id="woo_chatbot_icon_5" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-5.png' ? 'checked' : ''); ?>
+																		   value="icon-5.png">
+									<?php _e('Icon - 5', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_6" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-6.png"
+																			alt="">
+									<input id="woo_chatbot_icon_6" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-6.png' ? 'checked' : ''); ?>
+																		   value="icon-6.png">
+									<?php _e('Icon - 6', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_7" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-7.png"
+																			alt="">
+									<input id="woo_chatbot_icon_7" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-7.png' ? 'checked' : ''); ?>
+																		   value="icon-7.png">
+									<?php _e('Icon - 7', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_8" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-8.png"
+																			alt="">
+									<input id="woo_chatbot_icon_8" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-8.png' ? 'checked' : ''); ?>
+																		   value="icon-8.png">
+									<?php _e('Icon - 8', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_9" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-9.png"
+																			alt="">
+									<input id="woo_chatbot_icon_9" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-9.png' ? 'checked' : ''); ?>
+																		   value="icon-9.png">
+									<?php _e('Icon - 9', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_10" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-10.png"
+																			alt="">
+									<input id="woo_chatbot_icon_10" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-10.png' ? 'checked' : ''); ?>
+																		   value="icon-10.png">
+									<?php _e('Icon - 10', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_11" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-11.png"
+																			alt="">
+									<input id="woo_chatbot_icon_11" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-11.png' ? 'checked' : ''); ?>
+																		   value="icon-11.png">
+									<?php _e('Icon - 11', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <label for="woo_chatbot_icon_12" class="qc-opt-dcs-font"><img
+																			src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-12.png"
+																			alt="">
+									<input id="woo_chatbot_icon_12" type="radio"
+																		   name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-12.png' ? 'checked' : ''); ?>
+																		   value="icon-12.png">
+									<?php _e('Icon - 12', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <?php
+																if (get_option('woo_chatbot_custom_icon_path') != "") {
+																	$woo_chatbot_custom_icon_path = get_option('woo_chatbot_custom_icon_path');
+																} else {
+																	$woo_chatbot_custom_icon_path = QCLD_WOOCHATBOT_IMG_URL . 'custom.png';
+																}
+																?>
+								  <label for="woo_chatbot_custom_icon_input" class="qc-opt-dcs-font"> <img id="woo_chatbot_custom_icon_src"
+																		 src="<?php echo $woo_chatbot_custom_icon_path; ?>" alt="">
+									<input id="woo_chatbot_custom_icon_input" type="radio"
+																		   name="woo_chatbot_icon"
+																		   value="custom.png" <?php echo(get_option('woo_chatbot_icon') == 'custom.png' ? 'checked' : ''); ?>>
+									<?php _e('Custom Icon', 'woochatbot'); ?>
+								  </label>
+								</li>
+							  </ul>
+							</div>
+							<!--  cxsc-settings-blocks--> 
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-xs-12">
+							<h4 class="qc-opt-title">
+							  <?php _e(' Upload custom Icon ', 'woochatbot'); ?>
+							</h4>
+							<div class="cxsc-settings-blocks">
+							  <input type="hidden" name="woo_chatbot_custom_icon_path"
+															   id="woo_chatbot_custom_icon_path"
+															   value="<?php echo $woo_chatbot_custom_icon_path; ?>"/>
+							  <button type="button" class="woo_chatbot_custom_icon_button button">
+							  <?php _e('Upload Icon', 'woochatbot'); ?>
+							  </button>
+							</div>
+							<!--                                        cxsc-settings-blocks--> 
+						  </div>
+						</div>
+					  </div>
+					  <hr>
+					  <div class="top-section">
+						<div class="row">
+						  <div class="col-xs-12">
+							<h4 class="qc-opt-title">
+							  <?php _e(woowbot_text().' Agent Image', 'woochatbot'); ?>
+							</h4>
+							<div class="cxsc-settings-blocks">
+							  <ul class="radio-list">
+								<li>
+								  <label for="woo_chatbot_agent_image_def" class="qc-opt-dcs-font"> <img src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>icon-0.png"
+																		 alt="">
+									<input id="woo_chatbot_agent_image_def" type="radio"
+																		   name="woo_chatbot_agent_image" <?php echo(get_option('woo_chatbot_agent_image') == 'agent-0.png' ? 'checked' : ''); ?>
+																		   value="agent-0.png">
+									<?php _e('Default Agent', 'woochatbot'); ?>
+								  </label>
+								</li>
+								<li>
+								  <?php
+																if (get_option('woo_chatbot_custom_agent_path') != "") {
+																	$woo_chatbot_custom_agent_path = get_option('woo_chatbot_custom_agent_path');
+																} else {
+																	$woo_chatbot_custom_agent_path = QCLD_WOOCHATBOT_IMG_URL . 'custom-agent.png';
+																}
+																?>
+								  <label for="woo_chatbot_agent_image_custom" class="qc-opt-dcs-font"> <img id="woo_chatbot_custom_agent_src"
+																		 src="<?php echo $woo_chatbot_custom_agent_path; ?>"
+																		 alt="Agent">
+									<input type="radio" name="woo_chatbot_agent_image"
+																		   id="woo_chatbot_agent_image_custom"
+																		   value="custom-agent.png" <?php echo(get_option('woo_chatbot_agent_image') == 'custom-agent.png' ? 'checked' : ''); ?>>
+									<?php _e('Custom Agent', 'woochatbot'); ?>
+								  </label>
+								</li>
+							  </ul>
+							</div>
+							<!--                                        cxsc-settings-blocks--> 
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-xs-12">
+							<h4 class="qc-opt-title">
+							  <?php _e('Custom Agent Icon', 'woochatbot'); ?>
+							</h4>
+							<div class="cxsc-settings-blocks">
+							  <input type="hidden" name="woo_chatbot_custom_agent_path"
+															   id="woo_chatbot_custom_agent_path"
+															   value="<?php echo $woo_chatbot_custom_agent_path; ?>"/>
+							  <button type="button" class="woo_chatbot_custom_agent_button button">
+							  <?php _e('Upload Agent Icon', 'woochatbot'); ?>
+							  </button>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					  <div id="top-section">
+						<div class="row">
+						  <div class="col-sm-12">
+							<h4 class="qc-opt-title">
+							  <?php _e(woowbot_text().' Themes', 'woochatbot'); ?>
+							</h4>
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-sm-3">
+							<div class="qcld_woo_chatbot_theme_box">
+							  <label for="qcld_woo_chatbot_theme_0"> <img class="thumbnail theme_prev"
+																									src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/template-00.JPG"
+																									alt="Theme Basic">
+								<input id="qcld_woo_chatbot_theme_0" type="radio"
+																   name="qcld_woo_chatbot_theme" <?php echo(get_option('qcld_woo_chatbot_theme') == 'template-00' ? 'checked' : ''); ?>
+																   value="template-00">
+								<?php _e('Theme Basic', 'woochatbot'); ?>
+							  </label>
+							</div>
+						  </div>
+						  <div class="col-sm-3">
+							<div class="qcld_woo_chatbot_theme_box">
+							  <label for="qcld_woo_chatbot_theme_1"> <img class="thumbnail theme_prev"
+																									src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/template-01.JPG"
+																									alt="Theme one">
+								<input id="qcld_woo_chatbot_theme_1" type="radio"
+																   name="qcld_woo_chatbot_theme" <?php echo(get_option('qcld_woo_chatbot_theme') == 'template-01' ? 'checked' : ''); ?>
+																   value="template-01">
+								<?php _e('Theme One', 'woochatbot'); ?>
+							  </label>
+							</div>
+						  </div>
+						  <div class="col-sm-3">
+							<div class="qcld_woo_chatbot_theme_box">
+							  <label for="qcld_woo_chatbot_theme_2"> <img class="thumbnail theme_prev"
+																									src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/template-02.JPG"
+																									alt="Theme Two">
+								<input id="qcld_woo_chatbot_theme_2" type="radio"
+																   name="qcld_woo_chatbot_theme"
+																   value="template-02" <?php echo(get_option('qcld_woo_chatbot_theme') == 'template-02' ? 'checked' : ''); ?>>
+								<?php _e('Theme Two', 'woochatbot'); ?>
+							  </label>
+							</div>
+						  </div>
+						  <div class="col-sm-3">
+							<div class="qcld_woo_chatbot_theme_box">
+							  <label for="qcld_woo_chatbot_theme_3"> <img class="thumbnail theme_prev"
+																									src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/template-03.JPG"
+																									alt="Theme Three">
+								<input id="qcld_woo_chatbot_theme_3" type="radio"
+																   name="qcld_woo_chatbot_theme"
+																   value="template-03" <?php echo(get_option('qcld_woo_chatbot_theme') == 'template-03' ? 'checked' : ''); ?>>
+								<?php _e('Theme Three', 'woochatbot'); ?>
+							  </label>
+							</div>
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-sm-3">
+							<div class="qcld_woo_chatbot_theme_box">
+							  <label for="qcld_woo_chatbot_theme_4"> <img class="thumbnail theme_prev"
+																									src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/mini-mode.jpg"
+																									alt="Theme Three">
+								<input id="qcld_woo_chatbot_theme_4" type="radio"
+																   name="qcld_woo_chatbot_theme"
+																   value="mini-mode" <?php echo(get_option('qcld_woo_chatbot_theme') == 'mini-mode' ? 'checked' : ''); ?>>
+								<?php _e('Mini Mode', 'woochatbot'); ?>
+							  </label>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					  <hr>
+					  <div id="top-section">
+						<div class="row" style="margin:10px 0 10px 0">
+						  <div class="col-sm-12">
+							<h4 class="qc-opt-title">
+							  <?php _e('Custom Operation Icons', 'woochatbot'); ?>
+							</h4>
+							<div class="cxsc-settings-blocks">
+							  <input value="1" id="qcld_woo_chatbot_custom_icons" type="checkbox"
+															   name="qcld_woo_chatbot_custom_icons" <?php echo(get_option('qcld_woo_chatbot_custom_icons') == 1 ? 'checked' : ''); ?>>
+							  <label for="qcld_woo_chatbot_custom_icons">
+								<?php _e('Use custom operation icons.', 'woochatbot'); ?>
+							  </label>
+							</div>
+						  </div>
+						</div>
+						<div class="row " style="margin:10px 0 10px 0">
+						  <div class="col-xs-2">
+							<div class="woow_icon_set align_center">
+							  <?php
+														if (get_option('qcld_woo_chatbot_custom_icon_help') != "") {
+															$qcld_woo_chatbot_custom_icon_help = get_option('qcld_woo_chatbot_custom_icon_help');
+														} else {
+															$qcld_woo_chatbot_custom_icon_help = QCLD_WOOCHATBOT_IMG_URL . '/icon-help.png';
+														}
+														?>
+							  <input type="hidden" name="qcld_woo_chatbot_custom_icon_help"
+															   id="qcld_woo_chatbot_custom_icon_help"
+															   value="<?php echo $qcld_woo_chatbot_custom_icon_help; ?>"/>
+							  Help Icon<br />
+							  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_help_img" src="<?php echo $qcld_woo_chatbot_custom_icon_help; ?>" />
+							  <button type="button" class="qcld_woo_chatbot_custom_icon_help button">
+							  <?php _e('Upload', 'woochatbot'); ?>
+							  </button>
+							</div>
+						  </div>
+						  <div class="col-xs-2">
+							<div class="woow_icon_set align_center">
+							  <?php
+														if (get_option('qcld_woo_chatbot_custom_icon_support') != "") {
+															$qcld_woo_chatbot_custom_icon_support = get_option('qcld_woo_chatbot_custom_icon_support');
+														} else {
+															$qcld_woo_chatbot_custom_icon_support = QCLD_WOOCHATBOT_IMG_URL . '/icon-support.png';
+														}
+														?>
+							  <input type="hidden" name="qcld_woo_chatbot_custom_icon_support"
+															   id="qcld_woo_chatbot_custom_icon_support"
+															   value="<?php echo $qcld_woo_chatbot_custom_icon_support; ?>"/>
+							  Support Icon<br />
+							  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_support_img" src="<?php echo $qcld_woo_chatbot_custom_icon_support; ?>" />
+							  <button type="button" class="qcld_woo_chatbot_custom_icon_support button">
+							  <?php _e('Upload', 'woochatbot'); ?>
+							  </button>
+							</div>
+						  </div>
+						  <div class="col-xs-2">
+							<div class="woow_icon_set align_center">
+							  <?php
+														if (get_option('qcld_woo_chatbot_custom_icon_recent') != "") {
+															$qcld_woo_chatbot_custom_icon_recent = get_option('qcld_woo_chatbot_custom_icon_recent');
+														} else {
+															$qcld_woo_chatbot_custom_icon_recent = QCLD_WOOCHATBOT_IMG_URL . '/icon-recent.png';
+														}
+														?>
+							  <input type="hidden" name="qcld_woo_chatbot_custom_icon_recent"
+															   id="qcld_woo_chatbot_custom_icon_recent"
+															   value="<?php echo $qcld_woo_chatbot_custom_icon_recent; ?>"/>
+							  Recent Products<br />
+							  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_recent_img" src="<?php echo $qcld_woo_chatbot_custom_icon_recent; ?>" />
+							  <button type="button" class="qcld_woo_chatbot_custom_icon_recent button">
+							  <?php _e('Upload', 'woochatbot'); ?>
+							  </button>
+							</div>
+						  </div>
+						  <div class="col-xs-2">
+							<div class="woow_icon_set align_center">
+							  <?php
+														if (get_option('qcld_woo_chatbot_custom_icon_cart') != "") {
+															$qcld_woo_chatbot_custom_icon_cart = get_option('qcld_woo_chatbot_custom_icon_cart');
+														} else {
+															$qcld_woo_chatbot_custom_icon_cart = QCLD_WOOCHATBOT_IMG_URL . '/icon-cart.png';
+														}
+														?>
+							  <input type="hidden" name="qcld_woo_chatbot_custom_icon_cart"
+															   id="qcld_woo_chatbot_custom_icon_cart"
+															   value="<?php echo $qcld_woo_chatbot_custom_icon_cart; ?>"/>
+							  Cart Icon<br />
+							  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_cart_img" src="<?php echo $qcld_woo_chatbot_custom_icon_cart; ?>" />
+							  <button type="button" class="qcld_woo_chatbot_custom_icon_cart button">
+							  <?php _e('Upload', 'woochatbot'); ?>
+							  </button>
+							</div>
+						  </div>
+						  <div class="col-xs-2">
+							<div class="woow_icon_set align_center">
+							  <?php
+													if (get_option('qcld_woo_chatbot_custom_icon_chat') != "") {
+														$qcld_woo_chatbot_custom_icon_chat = get_option('qcld_woo_chatbot_custom_icon_chat');
+													} else {
+														$qcld_woo_chatbot_custom_icon_chat = QCLD_WOOCHATBOT_IMG_URL . '/icon-chat.png';
+													}
+													?>
+							  <input type="hidden" name="qcld_woo_chatbot_custom_icon_chat"
+														   id="qcld_woo_chatbot_custom_icon_chat"
+														   value="<?php echo $qcld_woo_chatbot_custom_icon_chat; ?>"/>
+							  Chat Icon<br />
+							  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_chat_img" src="<?php echo $qcld_woo_chatbot_custom_icon_chat; ?>" />
+							  <button type="button" class="qcld_woo_chatbot_custom_icon_chat button">
+							  <?php _e('Upload', 'woochatbot'); ?>
+							  </button>
+							</div>
+						  </div>
+						  
+						  <!--                                    col-xs-6--> 
+						  
+						</div>
+					  </div>
+					  <hr>
+					  <div id="top-section">
+						<div class="row">
+						  <div class="col-sm-12">
+							<h4 class="qc-opt-title">
+							  <?php _e('Custom Backgroud', 'woochatbot'); ?>
+							</h4>
+							<div class="cxsc-settings-blocks">
+							  <input value="1" id="qcld_woo_chatbot_change_bg" type="checkbox"
+															   name="qcld_woo_chatbot_change_bg" <?php echo(get_option('qcld_woo_chatbot_change_bg') == 1 ? 'checked' : ''); ?>>
+							  <label for="qcld_woo_chatbot_change_bg">
+								<?php _e('Change the '.woowbot_text().' message board background imge (except mini mode).', 'woochatbot'); ?>
+							  </label>
+							</div>
+						  </div>
+						</div>
+						<div class="row qcld-woo-chatbot-board-bg-container" <?php if (get_option('qcld_woo_chatbot_change_bg') != 1) {
+												echo 'style="display:none"';
+											} ?>>
+						  <div class="col-xs-6">
+							<p class="woo-chatbot-settings-instruction">
+							  <?php _e('Upload '.woowbot_text().' message board background (Ideal image size 376px X 688px).', 'woochatbot'); ?>
+							</p>
+							<div class="cxsc-settings-blocks">
+							  <?php
+														if (get_option('qcld_woo_chatbot_board_bg_path') != "") {
+															$qcld_woo_chatbot_board_bg_path = get_option('qcld_woo_chatbot_board_bg_path');
+														} else {
+															$qcld_woo_chatbot_board_bg_path = QCLD_WOOCHATBOT_IMG_URL . 'background/background.png';
+														}
+														?>
+							  <input type="hidden" name="qcld_woo_chatbot_board_bg_path"
+															   id="qcld_woo_chatbot_board_bg_path"
+															   value="<?php echo $qcld_woo_chatbot_board_bg_path; ?>"/>
+							  <button type="button" class="qcld_woo_chatbot_board_bg_button button">
+							  <?php _e('Upload  '.woowbot_text().' background.', 'woochatbot'); ?>
+							  </button>
+							</div>
+						  </div>
+						  <!--                                    col-xs-6-->
+						  <div class="col-xs-6">
+							<p class="woo-chatbot-settings-instruction">
+							  <?php _e('Custom message board background', 'woochatbot'); ?>
+							</p>
+							<img id="qcld_woo_chatbot_board_bg_image" style="height:100%;width:100%"
+														 src="<?php echo $qcld_woo_chatbot_board_bg_path; ?>"
+														 alt="Custom Background"></div>
+						</div>
+					</div>				
+				
+				</div> <!-- end of icon theme settings div -->
+				
+				<div id="woo-chatbot-custom-color-options" class="tab-pane fade"><!-- custom color div -->
+				
+					<div class="row">
+					  <div class="col-xs-12">
+						<h3 class="qc-opt-title">
+						  <?php _e(woowbot_text().' Custom Color Options', 'woochatbot'); ?>
+						</h3>
+						<div class="cxsc-settings-blocks">
+						  <input value="1" id="enable_woo_chatbot_custom_color" type="checkbox"
+														   name="enable_woo_chatbot_custom_color" <?php echo(get_option('enable_woo_chatbot_custom_color') == 1 ? 'checked' : ''); ?>>
+						  <label for="enable_woo_chatbot_custom_color">
+							<?php _e('Enable Custom Colors for '.woowbot_text(), 'woochatbot'); ?>
+						  </label>
+						</div>
+						<br>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('Text Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_text_color" type="hidden"
+															   name="woo_chatbot_text_color"
+															   value="<?php echo(get_option('woo_chatbot_text_color') != '' ? get_option('woo_chatbot_text_color') : '#37424c'); ?>"/>
+						  </div>
+						</div>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('Link Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_link_color" type="hidden"
+															   name="woo_chatbot_link_color"
+															   value="<?php echo(get_option('woo_chatbot_link_color') != '' ? get_option('woo_chatbot_link_color') : '#e2cc1f'); ?>"/>
+						  </div>
+						</div>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('Link Hover Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_link_hover_color" type="hidden"
+															   name="woo_chatbot_link_hover_color"
+															   value="<?php echo(get_option('woo_chatbot_link_hover_color') != '' ? get_option('woo_chatbot_link_hover_color') : '#734006'); ?>"/>
+						  </div>
+						</div>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('Bot Message  Background Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_bot_msg_bg_color" type="hidden"
+															   name="woo_chatbot_bot_msg_bg_color"
+															   value="<?php echo(get_option('woo_chatbot_bot_msg_bg_color') != '' ? get_option('woo_chatbot_bot_msg_bg_color') : '#1f8ceb'); ?>"/>
+						  </div>
+						</div>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('Bot Message Text Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_bot_msg_text_color" type="hidden"
+															   name="woo_chatbot_bot_msg_text_color"
+															   value="<?php echo(get_option('woo_chatbot_bot_msg_text_color') != '' ? get_option('woo_chatbot_bot_msg_text_color') : '#ffffff'); ?>"/>
+						  </div>
+						</div>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('User Message  Background Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_user_msg_bg_color" type="hidden"
+															   name="woo_chatbot_user_msg_bg_color"
+															   value="<?php echo(get_option('woo_chatbot_user_msg_bg_color') != '' ? get_option('woo_chatbot_user_msg_bg_color') : '#ffffff'); ?>"/>
+						  </div>
+						</div>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('User Message Text Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_user_msg_text_color" type="hidden"
+															   name="woo_chatbot_user_msg_text_color"
+															   value="<?php echo(get_option('woo_chatbot_user_msg_text_color') != '' ? get_option('woo_chatbot_user_msg_text_color') : '#000000'); ?>"/>
+						  </div>
+						</div>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('Buttons  Background Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_buttons_bg_color" type="hidden"
+															   name="woo_chatbot_buttons_bg_color"
+															   value="<?php echo(get_option('woo_chatbot_buttons_bg_color') != '' ? get_option('woo_chatbot_buttons_bg_color') : '#1f8ceb'); ?>"/>
+						  </div>
+						</div>
+						<div class="cxsc-settings-blocks">
+						  <div class="form-group">
+							<h4 class="qc-opt-title">
+							  <?php _e('Buttons Text Color.', 'woochatbot'); ?>
+							</h4>
+							<input id="woo_chatbot_buttons_text_color" type="hidden"
+															   name="woo_chatbot_buttons_text_color"
+															   value="<?php echo(get_option('woo_chatbot_buttons_text_color') != '' ? get_option('woo_chatbot_buttons_text_color') : '#ffffff'); ?>"/>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				
+				</div><!-- end of custom color div -->
+				
+				<div id="woo-chatbot-bottom-icons-setting" class="tab-pane fade"><!-- Bottom Icon div -->
+				
+				<div class="row">
               <div class="col-xs-12">
                 <h3 class="qc-opt-title">
                   <?php _e('Bottom Icon Settings', 'woochatbot'); ?>
@@ -1257,499 +1777,1245 @@ $table    = $wpdb->prefix.'woobot_subscription';
 				</div>
 			  </div>
 			</div>
+				
+				</div> <!-- Bottom Icon div end -->
 			
-            <!--  row--> 
-          </div>
-          <!-- top-section--> 
+			</div>
         </section>
-        <section id="section-flip-2">
-          <div class="top-section">
-            <div class="row">
-              <div class="col-xs-12">
-                <h4 class="qc-opt-title">
-                  <?php _e('Show '.woowbot_text().' on a Page', 'woochatbot'); ?>
-                </h4>
-                <div class="cxsc-settings-blocks">
-                  <p class="qc-opt-title-font">
-                    <?php _e('Paste the shortcode', 'woochatbot'); ?>
-                    <input disabled id="shirtcode-selector" type="text"
-                                                       value="[woowbot-page]">
-                    <?php _e('on any page to display '.woowbot_text().' on that page.', 'woochatbot'); ?>
-                  </p>
+		
+		<section id="section-flip-12">
+			  <div class="top-section">
+				<div class="row">
+				  <div class="col-xs-12">
+					<p >
+					  <?php _e('Use [WoowBot-page] shortcode in order to embed woowbot in a wordpress page.', 'woochatbot'); ?>
+					</p>
+					<h4 class="qc-opt-dcs">
+					  <?php _e('Iframe Integration.', 'woochatbot'); ?>
+					</h4>
+					<span style="font-size:15px; font-weight:bold; color:#F00; display:block">
+					<?php _e('[This feature is still experimental.]', 'woochatbot'); ?>
+					</span>
+					<p>
+					  <?php _e('Copy the below code & add to any page before closing the body tag. Please note that some features like retargeting will not work on embedded pages.', 'woochatbot'); ?>
+					</p>
+					<?php
+												$woo_chatbot_css_url = plugins_url(basename(plugin_dir_path(__FILE__)) . '/css/common-style.css');
+												$page = get_page_by_title('WoowBot Mobile App');
+												$woo_chatbot_custom_icon_path = '';
+												if (get_option('woo_chatbot_icon') == "custom.png") {
+													$woo_chatbot_custom_icon_path = get_option('woo_chatbot_custom_icon_path');
+												} else if (get_option('woo_chatbot_icon') != "custom.png") {
+													$woo_chatbot_custom_icon_path = QCLD_WOOCHATBOT_IMG_URL . get_option('woo_chatbot_icon');
+												} else {
+													$woo_chatbot_custom_icon_path = QCLD_WOOCHATBOT_IMG_URL . 'custom.png';
+												}
+
+												?>
+					<textarea
+														style="width:100%;height:300px;font-size: 14px;"><?php echo htmlentities('<link rel="stylesheet" href="' . $woo_chatbot_css_url . '"/><div id="woo-chatbot-chat-container" class=" " style="right: 50px; bottom: 50px;"><div id="woo-chatbot-ball-container" class="woo-chatbot-template-01" style="display:none;"><div class="woo-chatbot-container"><div style="border: 1px solid #e0e0e0;" id="woo-chatbot-board-container" class="woo-chatbot-board-container active-chat-board"><div class="woo-chatbot-header" style="background: #1f8ceb;color: #fff;border-radius: unset;"><h3>Welcome to Demo Site</h3></div><div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto;">
+												 <div class="woo-chatbot-ball-inner woo-chatbot-content" style="padding:0px !important;height:570px ; overflow: hidden; width: auto;"><iframe style="border:none;" src="' . (isset($page->guid)?$page->guid:'') . '" scrolling="no" width="100%" height="570"></iframe></div></div></div></div></div><div id="woo-chatbot-ball" class=""><div class="woo-chatbot-ball woo-chatbot-animation-active"><img src="' . $woo_chatbot_custom_icon_path . '" alt="wooChatIcon"></div></div></div><script>document.getElementById("woo-chatbot-ball").addEventListener("click", displayDate);function displayDate(){var x=document.getElementById("woo-chatbot-ball-container");if (x.style.display==="none"){x.style.display="block";}else{x.style.display="none";}}</script>'); ?>
+												</textarea>
+				  </div>
+				</div>
+				<!--                                row--> 
+			  </div>
+		</section>		
+		
+		<section id="section-flip-7">
+        <div class="woo-chatbot-language-center-summmery">
+          <p>
+            <?php _e('On Site Retargeting  ', 'woochatbot'); ?>
+          </p>
+        </div>
+        <div class="top-section">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="form-group interaction-re-target">
+                    <label for="qlcd_woo_chatbot_ret_greet">
+                      <?php _e('Hello (When available, we will use user name)', 'woochatbot'); ?>
+                    </label>
+                    <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_ret_greet"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_ret_greet') != '' ? get_option('qlcd_woo_chatbot_ret_greet') : 'Hello'); ?>">
+                  </div>
                 </div>
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <p style="margin-top: 35px;">
+                      <?php _e('(GREETING + SHOPPER DEMO NAME)', 'woochatbot'); ?>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="cxsc-settings-blocks">
+                <div class="form-group">
+                  <h4 class="qc-opt-title">
+                    <?php _e('Retargeting Message Container Background Color.', 'woochatbot'); ?>
+                  </h4>
+                  <input id="woo_chatbot_proactive_bg_color" type="hidden"
+                                                       name="woo_chatbot_proactive_bg_color"
+                                                       value="<?php echo(get_option('woo_chatbot_proactive_bg_color') != '' ? get_option('woo_chatbot_proactive_bg_color') : '#b9c315ad'); ?>"/>
+                </div>
+              </div>
+              <div class="cxsc-settings-blocks">
+                <div class="form-group">
+                  <h4 class="qc-opt-title">
+                    <?php _e('Retargeting Message Text Color.', 'woochatbot'); ?>
+                  </h4>
+                  <input id="woo_chatbot_proactive_text_color" type="hidden"
+                                                       name="woo_chatbot_proactive_text_color"
+                                                       value="<?php echo(get_option('woo_chatbot_proactive_text_color') != '' ? get_option('woo_chatbot_proactive_text_color') : '#c34d15ad'); ?>"/>
+                </div>
+              </div>
+              <div class="cxsc-settings-blocks">
+                <h4 class="qc-opt-title">
+                  <?php _e('Retargeting Sound', 'woochatbot'); ?>
+                </h4>
+                <div class="form-group">
+                  <input value="1" id="enable_woo_chatbot_ret_sound" type="checkbox"
+                                                       name="enable_woo_chatbot_ret_sound" <?php echo(get_option('enable_woo_chatbot_ret_sound') == 1 ? 'checked' : ''); ?>>
+                  <label for="enable_woo_chatbot_ret_sound">
+                    <?php _e('Enable to play sound on Exit-Intent, Scroll Opening etc', 'woochatbot'); ?>
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="cxsc-settings-blocks">
+                <h4 class="qc-opt-title">
+                  <?php _e('Window Focus Title', 'woochatbot'); ?>
+                </h4>
+                <div class="form-group">
+                  <input value="1" id="enable_woo_chatbot_meta_title" type="checkbox"
+                                                       name="enable_woo_chatbot_meta_title" <?php echo(get_option('enable_woo_chatbot_meta_title') == 1 ? 'checked' : ''); ?>>
+                  <label for="enable_woo_chatbot_meta_title">
+                    <?php _e('Focus window with a short message appended to page title', 'woochatbot'); ?>
+                  </label>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="qlcd_woo_chatbot_meta_label">
+                    <?php _e('Custom Meta Title', 'woochatbot'); ?>
+                  </label>
+                  <input type="text" class="form-control qc-opt-dcs-font"
+                                                       name="qlcd_woo_chatbot_meta_label"
+                                                       value="<?php echo(get_option('qlcd_woo_chatbot_meta_label') != '' ? get_option('qlcd_woo_chatbot_meta_label') : '***New Messages'); ?>">
+                </div>
+              </div>
+
+             
+              <div class="cxsc-settings-blocks">
+                <h4 class="qc-opt-title">
+                  <?php _e('User Exit Intent', 'woochatbot'); ?>
+                  (
+                  <?php _e('Show Message when mouse pointer moves out of browser viewport', 'woochatbot'); ?>
+                  )</h4>
+                <div class="form-group">
+                  <input value="1" id="woo_chatbot_exit_intent_bargain_pro_single_page" type="checkbox"
+                                                       name="woo_chatbot_exit_intent_bargain_pro_single_page" <?php echo(get_option('woo_chatbot_exit_intent_bargain_pro_single_page') == 1 ? 'checked' : ''); ?>>
+                  <label for="woo_chatbot_exit_intent_bargain_pro_single_page">
+                    <?php _e('Trigger bargain bot on Exit Intent for product single pages', 'woochatbot'); ?>
+                  </label>
+                </div>
+              </div>
+              <br>  
+              <div class="cxsc-settings-blocks">
+                <div class="form-group">
+                  <input value="1" id="enable_woo_chatbot_exit_intent" type="checkbox"
+                                                       name="enable_woo_chatbot_exit_intent" <?php echo(get_option('enable_woo_chatbot_exit_intent') == 1 ? 'checked' : ''); ?>>
+                  <label for="enable_woo_chatbot_exit_intent">
+                    <?php _e('Enable to show On Exit-Intent Message', 'woochatbot'); ?>
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="cxsc-settings-blocks">
+                <div class="form-group">
+                  <input value="1" id="woo_chatbot_exit_intent_once" type="checkbox"
+                                                       name="woo_chatbot_exit_intent_once" <?php echo(get_option('woo_chatbot_exit_intent_once') == 1 ? 'checked' : ''); ?>>
+                  <label for="woo_chatbot_exit_intent_once">
+                    <?php _e('Show only once per visit.', 'woochatbot'); ?>
+                  </label>
+                </div>
+              </div>
+              <br>
+
+			  
+				<div class="row">
+					<div class="col-md-3"> <span class="qc-opt-title-font">
+					  <?php _e('Trigger on  pages', 'woochatbot'); ?>
+					  </span>
+					</div>
+					<div class="col-md-9">
+					  <label class="radio-inline">
+						<input class="woo-chatbot-exitintent-show-pages" type="radio"
+															   name="woo_chatbot_exitintent_show_pages"
+															   value="on" <?php echo(get_option('woo_chatbot_exitintent_show_pages') == 'on' ? 'checked' : ''); ?>>
+						<?php _e('All Pages', 'woochatbot'); ?>
+					  </label>
+					  <label class="radio-inline">
+						<input class="woo-chatbot-exitintent-show-pages" type="radio"
+															   name="woo_chatbot_exitintent_show_pages"
+															   value="off" <?php echo(get_option('woo_chatbot_exitintent_show_pages') == 'off' ? 'checked' : ''); ?>>
+						<?php _e('Selected Pages Only ', 'woochatbot'); ?>
+					  </label>
+					  <div id="woo-chatbot-exitintent-show-pages-list">
+						<ul class="checkbox-list">
+						  <?php
+						$woo_chatbot_pages = get_pages();
+						$woo_chatbot_select_pages = unserialize(get_option('woo_chatbot_exitintent_show_pages_list'));
+						foreach ($woo_chatbot_pages as $woo_chatbot_page) {
+							?>
+						  <li>
+							<input id="woo_chatbot_exitintent_show_page_<?php echo $woo_chatbot_page->ID; ?>"
+									type="checkbox"
+									name="woo_chatbot_exitintent_show_pages_list[]"
+									value="<?php echo $woo_chatbot_page->ID; ?>" <?php if (!empty($woo_chatbot_select_pages) && in_array($woo_chatbot_page->ID, $woo_chatbot_select_pages) == true) {
+								echo 'checked';
+							} ?> >
+							<label for="woo_chatbot_exitintent_show_page_<?php echo $woo_chatbot_page->ID; ?>"> <?php echo $woo_chatbot_page->post_title; ?></label>
+						  </li>
+						  <?php } ?>
+						</ul>
+					  </div>
+					</div>
+				  </div>	
+			  
+        
+              <div class="cxsc-settings-blocks" class="woo_chatbot_exit_intent_body">
+              <h4 class="qc-opt-title">
+                <?php _e('Your Message', 'woochatbot'); ?>
+              </h4>
+              <?php $exit_intent_settings = array('textarea_name' =>
+                                                'woo_chatbot_exit_intent_msg',
+                                                'textarea_rows' => 20,
+                                                'editor_height' => 100,
+                                                'disabled' => 'disabled',
+                                                'media_buttons' => false,
+                                                'tinymce' => array(
+                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
+                                            );
+                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_exit_intent_msg'))), 'woo_chatbot_exit_intent_msg', $exit_intent_settings); ?>
+            </div>
+			       <br>
+              <div class="cxsc-settings-blocks" class="woo_chatbot_exit_intent_body">
+              <h4 class="qc-opt-title">
+                <?php _e('Your Bargain Message', 'woochatbot'); ?>
+              </h4>
+              <?php $exit_intent_bargain_settings = array('textarea_name' =>
+                                                'woo_chatbot_exit_intent_bargain_msg',
+                                                'textarea_rows' => 20,
+                                                'editor_height' => 100,
+                                                'disabled' => 'disabled',
+                                                'media_buttons' => false,
+                                                'tinymce' => array(
+                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
+                                            );
+                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_exit_intent_bargain_msg'))), 'woo_chatbot_exit_intent_bargain_msg', $exit_intent_bargain_settings); ?>
+            </div>
+
+
+          </div>
+          <div class="col-xs-12"><br>
+            <h4 class="qc-opt-title">
+              <?php _e('Scroll Down', 'woochatbot'); ?>
+            </h4>
+            <div class="cxsc-settings-blocks">
+              <div class="form-group">
+                <input value="1" id="enable_woo_chatbot_scroll_open" type="checkbox"
+                                                       name="enable_woo_chatbot_scroll_open" <?php echo(get_option('enable_woo_chatbot_scroll_open') == 1 ? 'checked' : ''); ?>>
+                <label for="enable_woo_chatbot_scroll_open">
+                  <?php _e('Enable to show message once user scrolls down a page', 'woochatbot'); ?>
+                </label>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <h4 class="qc-opt-title">
-                  <?php _e(woowbot_text().' Icon', 'woochatbot'); ?>
-                </h4>
-                <div class="cxsc-settings-blocks">
-                  <ul class="radio-list">
-                    <li>
-                      <label for="woo_chatbot_icon_0" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-0.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_0" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-0.png' ? 'checked' : ''); ?>
-                                                               value="icon-0.png">
-                        <?php _e('Icon - 0', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_1" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-1.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_1" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-1.png' ? 'checked' : ''); ?>
-                                                               value="icon-1.png">
-                        <?php _e('Icon - 1', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_2" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-2.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_2" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-2.png' ? 'checked' : ''); ?>
-                                                               value="icon-2.png">
-                        <?php _e('Icon - 2', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_3" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-3.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_3" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-3.png' ? 'checked' : ''); ?>
-                                                               value="icon-3.png">
-                        <?php _e('Icon - 3', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_4" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-4.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_4" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-4.png' ? 'checked' : ''); ?>
-                                                               value="icon-4.png">
-                        <?php _e('Icon - 4', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_5" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-5.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_5" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-5.png' ? 'checked' : ''); ?>
-                                                               value="icon-5.png">
-                        <?php _e('Icon - 5', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_6" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-6.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_6" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-6.png' ? 'checked' : ''); ?>
-                                                               value="icon-6.png">
-                        <?php _e('Icon - 6', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_7" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-7.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_7" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-7.png' ? 'checked' : ''); ?>
-                                                               value="icon-7.png">
-                        <?php _e('Icon - 7', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_8" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-8.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_8" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-8.png' ? 'checked' : ''); ?>
-                                                               value="icon-8.png">
-                        <?php _e('Icon - 8', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_9" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-9.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_9" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-9.png' ? 'checked' : ''); ?>
-                                                               value="icon-9.png">
-                        <?php _e('Icon - 9', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_10" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-10.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_10" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-10.png' ? 'checked' : ''); ?>
-                                                               value="icon-10.png">
-                        <?php _e('Icon - 10', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_11" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-11.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_11" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-11.png' ? 'checked' : ''); ?>
-                                                               value="icon-11.png">
-                        <?php _e('Icon - 11', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="woo_chatbot_icon_12" class="qc-opt-dcs-font"><img
-                                                                src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>/icon-12.png"
-                                                                alt="">
-                        <input id="woo_chatbot_icon_12" type="radio"
-                                                               name="woo_chatbot_icon" <?php echo(get_option('woo_chatbot_icon') == 'icon-12.png' ? 'checked' : ''); ?>
-                                                               value="icon-12.png">
-                        <?php _e('Icon - 12', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <?php
-                                                    if (get_option('woo_chatbot_custom_icon_path') != "") {
-                                                        $woo_chatbot_custom_icon_path = get_option('woo_chatbot_custom_icon_path');
-                                                    } else {
-                                                        $woo_chatbot_custom_icon_path = QCLD_WOOCHATBOT_IMG_URL . 'custom.png';
-                                                    }
-                                                    ?>
-                      <label for="woo_chatbot_custom_icon_input" class="qc-opt-dcs-font"> <img id="woo_chatbot_custom_icon_src"
-                                                             src="<?php echo $woo_chatbot_custom_icon_path; ?>" alt="">
-                        <input id="woo_chatbot_custom_icon_input" type="radio"
-                                                               name="woo_chatbot_icon"
-                                                               value="custom.png" <?php echo(get_option('woo_chatbot_icon') == 'custom.png' ? 'checked' : ''); ?>>
-                        <?php _e('Custom Icon', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <!--  cxsc-settings-blocks--> 
+            <div class="cxsc-settings-blocks"> <span class="qc-opt-dcs-font">
+              <?php _e(woowbot_text().' will be shown after scrolling down ', 'woochatbot'); ?>
+              </span>
+              <input type="number" name="woo_chatbot_scroll_percent"
+                                                   value="<?php echo(get_option('woo_chatbot_scroll_percent') != '' ? get_option('woo_chatbot_scroll_percent') : 50); ?>">
+              <span class="qc-opt-dcs-font">
+              <?php _e('percent', 'woochatbot'); ?>
+              </span></div>
+            <div class="cxsc-settings-blocks">
+              <div class="form-group">
+                <input value="1" id="woo_chatbot_scroll_once" type="checkbox"
+                                                       name="woo_chatbot_scroll_once" <?php echo(get_option('woo_chatbot_scroll_once') == 1 ? 'checked' : ''); ?>>
+                <label for="woo_chatbot_scroll_once">
+                  <?php _e('Show only once per visit.', 'woochatbot'); ?>
+                </label>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <h4 class="qc-opt-title">
-                  <?php _e(' Upload custom Icon ', 'woochatbot'); ?>
-                </h4>
-                <div class="cxsc-settings-blocks">
-                  <input type="hidden" name="woo_chatbot_custom_icon_path"
-                                                   id="woo_chatbot_custom_icon_path"
-                                                   value="<?php echo $woo_chatbot_custom_icon_path; ?>"/>
-                  <button type="button" class="woo_chatbot_custom_icon_button button">
-                  <?php _e('Upload Icon', 'woochatbot'); ?>
-                  </button>
-                </div>
-                <!--                                        cxsc-settings-blocks--> 
+            <br>
+            <div class="cxsc-settings-blocks" id="woo_chatbot_scroll_open_body">
+              <h4 class="qc-opt-title">
+                <?php _e('Your Message', 'woochatbot'); ?>
+              </h4>
+              <?php $scroll_open_msg_settings = array('textarea_name' =>
+                                                'woo_chatbot_scroll_open_msg',
+                                                'textarea_rows' => 20,
+                                                'editor_height' => 100,
+                                                'disabled' => 'disabled',
+                                                'media_buttons' => false,
+                                                'tinymce' => array(
+                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
+                                            );
+                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_scroll_open_msg'))), 'woo_chatbot_scroll_open_msg', $scroll_open_msg_settings); ?>
+            </div>
+            <br>
+          </div>
+          <div class="col-xs-12">
+            <h4 class="qc-opt-title">
+              <?php _e('Show Message After "X" Seconds', 'woochatbot'); ?>
+            </h4>
+            <div class="cxsc-settings-blocks">
+              <div class="form-group">
+                <input value="1" id="enable_woo_chatbot_auto_open" type="checkbox"
+                                                       name="enable_woo_chatbot_auto_open" <?php echo(get_option('enable_woo_chatbot_auto_open') == 1 ? 'checked' : ''); ?>>
+                <label for="enable_woo_chatbot_auto_open">
+                  <?php _e('Show message after X seconds', 'woochatbot'); ?>
+                </label>
               </div>
+            </div>
+            <div class="cxsc-settings-blocks"> <span class="qc-opt-dcs-font">
+              <?php _e(woowbot_text().' will be opened automatically after ', 'woochatbot'); ?>
+              </span>
+              <input type="number" name="woo_chatbot_auto_open_time"
+                                                   value="<?php echo(get_option('woo_chatbot_auto_open_time') != '' ? get_option('woo_chatbot_auto_open_time') : 300); ?>">
+              <span class="qc-opt-dcs-font">
+              <?php _e('seconds', 'woochatbot'); ?>
+              </span></div>
+            <div class="cxsc-settings-blocks">
+              <div class="form-group">
+                <input value="1" id="woo_chatbot_auto_open_once" type="checkbox"
+                                                       name="woo_chatbot_auto_open_once" <?php echo(get_option('woo_chatbot_auto_open_once') == 1 ? 'checked' : ''); ?>>
+                <label for="woo_chatbot_auto_open_once">
+                  <?php _e('Show only once per visit.', 'woochatbot'); ?>
+                </label>
+              </div>
+            </div>
+            <br>
+            <div class="cxsc-settings-blocks" id="woo_chatbot_auto_open_body">
+              <h4 class="qc-opt-title">
+                <?php _e('Your Message', 'woochatbot'); ?>
+              </h4>
+              <?php $auto_open_msg_settings = array('textarea_name' =>
+                                                'woo_chatbot_auto_open_msg',
+                                                'textarea_rows' => 20,
+                                                'editor_height' => 100,
+                                                'disabled' => 'disabled',
+                                                'media_buttons' => false,
+                                                'tinymce' => array(
+                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
+                                            );
+                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_auto_open_msg'))), 'woo_chatbot_auto_open_msg', $auto_open_msg_settings); ?>
             </div>
           </div>
-          <hr>
-          <div class="top-section">
-            <div class="row">
-              <div class="col-xs-12">
-                <h4 class="qc-opt-title">
-                  <?php _e(woowbot_text().' Agent Image', 'woochatbot'); ?>
-                </h4>
-                <div class="cxsc-settings-blocks">
-                  <ul class="radio-list">
-                    <li>
-                      <label for="woo_chatbot_agent_image_def" class="qc-opt-dcs-font"> <img src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>icon-0.png"
-                                                             alt="">
-                        <input id="woo_chatbot_agent_image_def" type="radio"
-                                                               name="woo_chatbot_agent_image" <?php echo(get_option('woo_chatbot_agent_image') == 'agent-0.png' ? 'checked' : ''); ?>
-                                                               value="agent-0.png">
-                        <?php _e('Default Agent', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                    <li>
-                      <?php
-                                                    if (get_option('woo_chatbot_custom_agent_path') != "") {
-                                                        $woo_chatbot_custom_agent_path = get_option('woo_chatbot_custom_agent_path');
-                                                    } else {
-                                                        $woo_chatbot_custom_agent_path = QCLD_WOOCHATBOT_IMG_URL . 'custom-agent.png';
-                                                    }
-                                                    ?>
-                      <label for="woo_chatbot_agent_image_custom" class="qc-opt-dcs-font"> <img id="woo_chatbot_custom_agent_src"
-                                                             src="<?php echo $woo_chatbot_custom_agent_path; ?>"
-                                                             alt="Agent">
-                        <input type="radio" name="woo_chatbot_agent_image"
-                                                               id="woo_chatbot_agent_image_custom"
-                                                               value="custom-agent.png" <?php echo(get_option('woo_chatbot_agent_image') == 'custom-agent.png' ? 'checked' : ''); ?>>
-                        <?php _e('Custom Agent', 'woochatbot'); ?>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <!--                                        cxsc-settings-blocks--> 
+          <div class="col-xs-12"><br>
+            <h4 class="qc-opt-title">
+              <?php _e('Show message to complete checkout (when user has products in the cart)', 'woochatbot'); ?>
+            </h4>
+            <div class="cxsc-settings-blocks">
+              <div class="form-group">
+                <input value="1" id="enable_woo_chatbot_ret_user_show" type="checkbox"
+                                                       name="enable_woo_chatbot_ret_user_show" <?php echo(get_option('enable_woo_chatbot_ret_user_show') == 1 ? 'checked' : ''); ?>>
+                <label for="enable_woo_chatbot_ret_user_show">
+                  <?php _e('Show message when the user returns to the site', 'woochatbot'); ?>
+                </label>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <h4 class="qc-opt-title">
-                  <?php _e('Custom Agent Icon', 'woochatbot'); ?>
-                </h4>
-                <div class="cxsc-settings-blocks">
-                  <input type="hidden" name="woo_chatbot_custom_agent_path"
-                                                   id="woo_chatbot_custom_agent_path"
-                                                   value="<?php echo $woo_chatbot_custom_agent_path; ?>"/>
-                  <button type="button" class="woo_chatbot_custom_agent_button button">
-                  <?php _e('Upload Agent Icon', 'woochatbot'); ?>
-                  </button>
-                </div>
+            <br>
+            <div class="cxsc-settings-blocks">
+              <div class="form-group">
+                <input value="1" id="enable_woo_chatbot_inactive_time_show"
+                                                       type="checkbox"
+                                                       name="enable_woo_chatbot_inactive_time_show" <?php echo(get_option('enable_woo_chatbot_inactive_time_show') == 1 ? 'checked' : ''); ?>>
+                <label for="enable_woo_chatbot_inactive_time_show">
+                  <?php _e('Show message when user inactive.', 'woochatbot'); ?>
+                </label>
               </div>
             </div>
-          </div>
-          <div id="top-section">
-            <div class="row">
-              <div class="col-sm-12">
-                <h4 class="qc-opt-title">
-                  <?php _e(woowbot_text().' Themes', 'woochatbot'); ?>
-                </h4>
+            <div class="cxsc-settings-blocks"> <span class="qc-opt-dcs-font">
+              <?php _e(woowbot_text().' will be opened for inactive user after', 'woochatbot'); ?>
+              </span>
+              <input type="number" name="woo_chatbot_inactive_time"
+                                                   value="<?php echo(get_option('woo_chatbot_inactive_time') != '' ? get_option('woo_chatbot_inactive_time') : 10); ?>">
+              <span class="qc-opt-dcs-font">
+              <?php _e('seconds', 'woochatbot'); ?>
+              </span></div>
+            <div class="cxsc-settings-blocks">
+              <div class="form-group">
+                <input value="1" id="woo_chatbot_inactive_once" type="checkbox"
+                                                       name="woo_chatbot_inactive_once" <?php echo(get_option('woo_chatbot_inactive_once') == 1 ? 'checked' : ''); ?>>
+                <label for="woo_chatbot_inactive_once">
+                  <?php _e('Show only once per visit for inactive users.', 'woochatbot'); ?>
+                </label>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="qcld_woo_chatbot_theme_box">
-                  <label for="qcld_woo_chatbot_theme_0"> <img class="thumbnail theme_prev"
-                                                                                        src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/template-00.JPG"
-                                                                                        alt="Theme Basic">
-                    <input id="qcld_woo_chatbot_theme_0" type="radio"
-                                                       name="qcld_woo_chatbot_theme" <?php echo(get_option('qcld_woo_chatbot_theme') == 'template-00' ? 'checked' : ''); ?>
-                                                       value="template-00">
-                    <?php _e('Theme Basic', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="qcld_woo_chatbot_theme_box">
-                  <label for="qcld_woo_chatbot_theme_1"> <img class="thumbnail theme_prev"
-                                                                                        src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/template-01.JPG"
-                                                                                        alt="Theme one">
-                    <input id="qcld_woo_chatbot_theme_1" type="radio"
-                                                       name="qcld_woo_chatbot_theme" <?php echo(get_option('qcld_woo_chatbot_theme') == 'template-01' ? 'checked' : ''); ?>
-                                                       value="template-01">
-                    <?php _e('Theme One', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="qcld_woo_chatbot_theme_box">
-                  <label for="qcld_woo_chatbot_theme_2"> <img class="thumbnail theme_prev"
-                                                                                        src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/template-02.JPG"
-                                                                                        alt="Theme Two">
-                    <input id="qcld_woo_chatbot_theme_2" type="radio"
-                                                       name="qcld_woo_chatbot_theme"
-                                                       value="template-02" <?php echo(get_option('qcld_woo_chatbot_theme') == 'template-02' ? 'checked' : ''); ?>>
-                    <?php _e('Theme Two', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="qcld_woo_chatbot_theme_box">
-                  <label for="qcld_woo_chatbot_theme_3"> <img class="thumbnail theme_prev"
-                                                                                        src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/template-03.JPG"
-                                                                                        alt="Theme Three">
-                    <input id="qcld_woo_chatbot_theme_3" type="radio"
-                                                       name="qcld_woo_chatbot_theme"
-                                                       value="template-03" <?php echo(get_option('qcld_woo_chatbot_theme') == 'template-03' ? 'checked' : ''); ?>>
-                    <?php _e('Theme Three', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="qcld_woo_chatbot_theme_box">
-                  <label for="qcld_woo_chatbot_theme_4"> <img class="thumbnail theme_prev"
-                                                                                        src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>templates/mini-mode.jpg"
-                                                                                        alt="Theme Three">
-                    <input id="qcld_woo_chatbot_theme_4" type="radio"
-                                                       name="qcld_woo_chatbot_theme"
-                                                       value="mini-mode" <?php echo(get_option('qcld_woo_chatbot_theme') == 'mini-mode' ? 'checked' : ''); ?>>
-                    <?php _e('Mini Mode', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
+            <br>
+            <div class="cxsc-settings-blocks" id="woo_chatbot_checkout_open_body">
+              <h4 class="qc-opt-title">
+                <?php _e('Your Message', 'woochatbot'); ?>
+              </h4>
+              <?php $checkout_msg_settings = array('textarea_name' =>
+                                                'woo_chatbot_checkout_msg',
+                                                'textarea_rows' => 20,
+                                                'editor_height' => 100,
+                                                'disabled' => 'disabled',
+                                                'media_buttons' => false,
+                                                'tinymce' => array(
+                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
+                                            );
+                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_checkout_msg'))), 'woo_chatbot_checkout_msg', $checkout_msg_settings); ?>
             </div>
           </div>
-          <hr>
-          <div id="top-section">
-            <div class="row" style="margin:10px 0 10px 0">
-              <div class="col-sm-12">
-                <h4 class="qc-opt-title">
-                  <?php _e('Custom Operation Icons', 'woochatbot'); ?>
-                </h4>
-                <div class="cxsc-settings-blocks">
-                  <input value="1" id="qcld_woo_chatbot_custom_icons" type="checkbox"
-                                                   name="qcld_woo_chatbot_custom_icons" <?php echo(get_option('qcld_woo_chatbot_custom_icons') == 1 ? 'checked' : ''); ?>>
-                  <label for="qcld_woo_chatbot_custom_icons">
-                    <?php _e('Use custom operation icons.', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
+        </div>
+      </div>
+      <!-- top-section--> 
+    </section>
+		
+		    <section id="section-flip-8">
+      <div class="top-section">
+        <div class="woo-chatbot-language-center-summmery">
+          <p>
+            <?php _e(woowbot_text().' will be opened based on the following settings', 'woochatbot'); ?>
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4 class="qc-opt-title">
+              <?php _e('Enable Bot Activity Hour', 'woochatbot'); ?>
+            </h4>
+            <div class="cxsc-settings-blocks" style="padding:0 20px;">
+              <input value="1" id="enable_woo_chatbot_opening_hour" type="checkbox"
+                                                   name="enable_woo_chatbot_opening_hour" <?php echo(get_option('enable_woo_chatbot_opening_hour') == 1 ? 'checked' : ''); ?>>
+              <label for="enable_woo_chatbot_opening_hour">
+                <?php _e('If enabled '.woowbot_text().' will show only during the time schedule you set below. The timezone you set from WordPress general settings will be used.', 'woochatbot'); ?>
+              </label>
             </div>
-            <div class="row " style="margin:10px 0 10px 0">
-              <div class="col-xs-2">
-                <div class="woow_icon_set align_center">
-                  <?php
-                                            if (get_option('qcld_woo_chatbot_custom_icon_help') != "") {
-                                                $qcld_woo_chatbot_custom_icon_help = get_option('qcld_woo_chatbot_custom_icon_help');
-                                            } else {
-                                                $qcld_woo_chatbot_custom_icon_help = QCLD_WOOCHATBOT_IMG_URL . '/icon-help.png';
-                                            }
-                                            ?>
-                  <input type="hidden" name="qcld_woo_chatbot_custom_icon_help"
-                                                   id="qcld_woo_chatbot_custom_icon_help"
-                                                   value="<?php echo $qcld_woo_chatbot_custom_icon_help; ?>"/>
-                  Help Icon<br />
-                  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_help_img" src="<?php echo $qcld_woo_chatbot_custom_icon_help; ?>" />
-                  <button type="button" class="qcld_woo_chatbot_custom_icon_help button">
-                  <?php _e('Upload', 'woochatbot'); ?>
-                  </button>
-                </div>
-              </div>
-              <div class="col-xs-2">
-                <div class="woow_icon_set align_center">
-                  <?php
-                                            if (get_option('qcld_woo_chatbot_custom_icon_support') != "") {
-                                                $qcld_woo_chatbot_custom_icon_support = get_option('qcld_woo_chatbot_custom_icon_support');
-                                            } else {
-                                                $qcld_woo_chatbot_custom_icon_support = QCLD_WOOCHATBOT_IMG_URL . '/icon-support.png';
-                                            }
-                                            ?>
-                  <input type="hidden" name="qcld_woo_chatbot_custom_icon_support"
-                                                   id="qcld_woo_chatbot_custom_icon_support"
-                                                   value="<?php echo $qcld_woo_chatbot_custom_icon_support; ?>"/>
-                  Support Icon<br />
-                  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_support_img" src="<?php echo $qcld_woo_chatbot_custom_icon_support; ?>" />
-                  <button type="button" class="qcld_woo_chatbot_custom_icon_support button">
-                  <?php _e('Upload', 'woochatbot'); ?>
-                  </button>
-                </div>
-              </div>
-              <div class="col-xs-2">
-                <div class="woow_icon_set align_center">
-                  <?php
-                                            if (get_option('qcld_woo_chatbot_custom_icon_recent') != "") {
-                                                $qcld_woo_chatbot_custom_icon_recent = get_option('qcld_woo_chatbot_custom_icon_recent');
-                                            } else {
-                                                $qcld_woo_chatbot_custom_icon_recent = QCLD_WOOCHATBOT_IMG_URL . '/icon-recent.png';
-                                            }
-                                            ?>
-                  <input type="hidden" name="qcld_woo_chatbot_custom_icon_recent"
-                                                   id="qcld_woo_chatbot_custom_icon_recent"
-                                                   value="<?php echo $qcld_woo_chatbot_custom_icon_recent; ?>"/>
-                  Recent Products<br />
-                  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_recent_img" src="<?php echo $qcld_woo_chatbot_custom_icon_recent; ?>" />
-                  <button type="button" class="qcld_woo_chatbot_custom_icon_recent button">
-                  <?php _e('Upload', 'woochatbot'); ?>
-                  </button>
-                </div>
-              </div>
-              <div class="col-xs-2">
-                <div class="woow_icon_set align_center">
-                  <?php
-                                            if (get_option('qcld_woo_chatbot_custom_icon_cart') != "") {
-                                                $qcld_woo_chatbot_custom_icon_cart = get_option('qcld_woo_chatbot_custom_icon_cart');
-                                            } else {
-                                                $qcld_woo_chatbot_custom_icon_cart = QCLD_WOOCHATBOT_IMG_URL . '/icon-cart.png';
-                                            }
-                                            ?>
-                  <input type="hidden" name="qcld_woo_chatbot_custom_icon_cart"
-                                                   id="qcld_woo_chatbot_custom_icon_cart"
-                                                   value="<?php echo $qcld_woo_chatbot_custom_icon_cart; ?>"/>
-                  Cart Icon<br />
-                  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_cart_img" src="<?php echo $qcld_woo_chatbot_custom_icon_cart; ?>" />
-                  <button type="button" class="qcld_woo_chatbot_custom_icon_cart button">
-                  <?php _e('Upload', 'woochatbot'); ?>
-                  </button>
-                </div>
-              </div>
-              <div class="col-xs-2">
-                <div class="woow_icon_set align_center">
-                  <?php
-                                        if (get_option('qcld_woo_chatbot_custom_icon_chat') != "") {
-                                            $qcld_woo_chatbot_custom_icon_chat = get_option('qcld_woo_chatbot_custom_icon_chat');
+          </div>
+        </div>
+        <style>
+                                    .woo-chatbot-hours-container {
+                                        padding: 0px 0 15px 0;
+                                        display: flex;
+                                        justify-content: space-between;
+                                    }
+
+                                    .woo-chatbot-hours {
+                                        /*width:75%;*/
+                                        display: inline-block;
+                                    }
+
+                                    .woo-chatbot-hours input {
+                                        display: inline-block;
+                                        width: 40%;
+                                        padding-right: 10px;
+                                        text-align: center;
+                                    }
+
+                                    .woo-chatbot-hours-remove {
+                                        display: inline-block;
+                                        /*width:20%;*/
+                                    }
+                                </style>
+        <div class="row" id="woo-chatbot-hours-wrapper">
+          <div class="col-xs-12">
+            <h4 class="qc-opt-title">
+              <?php _e(woowbot_text().' Bot Activity Hours', 'woochatbot'); ?>
+            </h4>
+            <?php
+
+                                        if (get_option('woowbot_hours')) {
+                                            $woowbot_times = unserialize(get_option('woowbot_hours'));
                                         } else {
-                                            $qcld_woo_chatbot_custom_icon_chat = QCLD_WOOCHATBOT_IMG_URL . '/icon-chat.png';
+                                            $woowbot_times = array();
                                         }
                                         ?>
-                  <input type="hidden" name="qcld_woo_chatbot_custom_icon_chat"
-                                               id="qcld_woo_chatbot_custom_icon_chat"
-                                               value="<?php echo $qcld_woo_chatbot_custom_icon_chat; ?>"/>
-                  Chat Icon<br />
-                  <img class="custom_icons" id="qcld_woo_chatbot_custom_icon_chat_img" src="<?php echo $qcld_woo_chatbot_custom_icon_chat; ?>" />
-                  <button type="button" class="qcld_woo_chatbot_custom_icon_chat button">
-                  <?php _e('Upload', 'woochatbot'); ?>
-                  </button>
-                </div>
+            <div class="row">
+              <div class="col-xs-3">Monday</div>
+              <div class="col-xs-4 woo-chatbot-day">
+                <?php
+                                                $this->woo_chatbot_opening_hours('monday', $woowbot_times);
+                                                ?>
               </div>
-              
-              <!--                                    col-xs-6--> 
-              
+              <div class="col-xs-3">
+                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
+                                                        type="button" data-day="monday"><i class="fa fa-plus"
+                                                                                           aria-hidden="true"></i> Add </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Tuesday</div>
+              <div class="col-xs-4 woo-chatbot-day">
+                <?php
+                                                $this->woo_chatbot_opening_hours('tuesday', $woowbot_times);
+                                                ?>
+              </div>
+              <div class="col-xs-3">
+                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
+                                                        type="button" data-day="tuesday"><i class="fa fa-plus"
+                                                                                            aria-hidden="true"></i> Add </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Wednesday</div>
+              <div class="col-xs-4 woo-chatbot-day">
+                <?php
+                                                $this->woo_chatbot_opening_hours('wednesday', $woowbot_times);
+                                                ?>
+              </div>
+              <div class="col-xs-3">
+                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
+                                                        type="button" data-day="wednesday"><i class="fa fa-plus"
+                                                                                              aria-hidden="true"></i> Add </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Thursday</div>
+              <div class="col-xs-4 woo-chatbot-day">
+                <?php
+                                                $this->woo_chatbot_opening_hours('thursday', $woowbot_times);
+                                                ?>
+              </div>
+              <div class="col-xs-3">
+                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
+                                                        type="button" data-day="thursday"><i class="fa fa-plus"
+                                                                                             aria-hidden="true"></i> Add </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Friday</div>
+              <div class="col-xs-4 woo-chatbot-day">
+                <?php
+                                                $this->woo_chatbot_opening_hours('friday', $woowbot_times);
+                                                ?>
+              </div>
+              <div class="col-xs-3">
+                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
+                                                        type="button" data-day="friday"><i class="fa fa-plus"
+                                                                                           aria-hidden="true"></i> Add </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Saturday</div>
+              <div class="col-xs-4 woo-chatbot-day">
+                <?php
+                                                $this->woo_chatbot_opening_hours('saturday', $woowbot_times);
+                                                ?>
+              </div>
+              <div class="col-xs-3">
+                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
+                                                        type="button" data-day="saturday"><i class="fa fa-plus"
+                                                                                             aria-hidden="true"></i> Add </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Sunday</div>
+              <div class="col-xs-4 woo-chatbot-day">
+                <?php
+                                                $this->woo_chatbot_opening_hours('sunday', $woowbot_times);
+                                                ?>
+              </div>
+              <div class="col-xs-3">
+                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
+                                                        type="button" data-day="sunday"><i class="fa fa-plus"
+                                                                                           aria-hidden="true"></i> Add </button>
+              </div>
             </div>
           </div>
-          <hr>
-          <div id="top-section">
-            <div class="row">
-              <div class="col-sm-12">
-                <h4 class="qc-opt-title">
-                  <?php _e('Custom Backgroud', 'woochatbot'); ?>
-                </h4>
-                <div class="cxsc-settings-blocks">
-                  <input value="1" id="qcld_woo_chatbot_change_bg" type="checkbox"
-                                                   name="qcld_woo_chatbot_change_bg" <?php echo(get_option('qcld_woo_chatbot_change_bg') == 1 ? 'checked' : ''); ?>>
-                  <label for="qcld_woo_chatbot_change_bg">
-                    <?php _e('Change the '.woowbot_text().' message board background imge (except mini mode).', 'woochatbot'); ?>
-                  </label>
+        </div>
+      </div>
+      <!-- top-section--> 
+    </section>
+		
+		<section id="section-flip-6">
+          <div class="woo-chatbot-language-center-summmery">
+            <p>
+              <?php _e(woowbot_text().' integration like Facebook Messenger, WhatApps etc.', 'woochatbot'); ?>
+            </p>
+          </div>
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#woo-chatbot-scl-fb">
+              <?php _e('Messenger', 'woochatbot'); ?>
+              </a></li>
+            <li><a data-toggle="tab" href="#woo-chatbot-scl-skype">
+              <?php _e('Skype', 'woochatbot'); ?>
+              </a></li>
+            <li><a data-toggle="tab" href="#woo-chatbot-scl-whats">
+              <?php _e('WhatsApp', 'woochatbot'); ?>
+              </a></li>
+            <li><a data-toggle="tab" href="#woo-chatbot-scl-viber">
+              <?php _e('Viber', 'woochatbot'); ?>
+              </a></li>
+            <li><a data-toggle="tab" href="#woo-chatbot-scl-link">
+              <?php _e('Web Link', 'woochatbot'); ?>
+              </a></li>
+            <li><a data-toggle="tab" href="#woo-chatbot-scl-phone">
+              <?php _e('Phone', 'woochatbot'); ?>
+              </a></li>
+            <li><a data-toggle="tab" href="#woo-chatbot-scl-livechat">
+              <?php _e('Live Chat', 'woochatbot'); ?>
+              </a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="woo-chatbot-scl-fb" class="tab-pane fade in active">
+              <div class="top-section">
+                <div class="row">
+                  <div class="col-xs-12" id="woo-chatbot-interaction-section">
+                    <h4 class="qc-opt-title">
+                      <?php _e('Enable Messenger (if enabled it will show as option during chat and support)', 'woochatbot'); ?>
+                    </h4>
+                    <p>
+                      <?php _e('Create', 'woochatbot'); ?>
+                      <a href="https://www.facebook.com/business/help/104002523024878"
+                                                       target="_blank">
+                      <?php _e('Facebook Page Id', 'woochatbot'); ?>
+                      </a>
+                      <?php _e('and', 'woochatbot'); ?>
+                      <a href="https://developers.facebook.com/docs/apps/register"
+                                                       target="_blank">
+                      <?php _e('Facebook App ID', 'woochatbot'); ?>
+                      </a>.</p>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_messenger" type="checkbox"
+                                                           name="enable_woo_chatbot_messenger" <?php echo(get_option('enable_woo_chatbot_messenger') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_messenger">
+                        <?php _e('Enable Messenger', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <?php
+                                                    $messenger_options = unserialize(get_option('qlcd_woo_chatbot_messenger_label'));
+                                                    $messenger_option = 'qlcd_woo_chatbot_messenger_label';
+                                                    $messenger_text = __('Chat with Us on Facebook Messenger', 'woochatbot');
+                                                    $this->qcld_woo_chatbot_dynamic_multi_option($messenger_options, $messenger_option, $messenger_text);
+                                                    ?>
+                    </div>
+                    <h4 class="qc-opt-title">
+                      <?php _e('Show Messenger Icon beside '.woowbot_text().' Icon', 'woochatbot'); ?>
+                    </h4>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_messenger_floating_icon"
+                                                           type="checkbox"
+                                                           name="enable_woo_chatbot_messenger_floating_icon" <?php echo(get_option('enable_woo_chatbot_messenger_floating_icon') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_messenger_floating_icon">
+                        <?php _e('Enable to display Messenger Icon beside '.woowbot_text().' Icon', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Facebook App ID', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_fb_app_id"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_app_id') != '' ? get_option('qlcd_woo_chatbot_fb_app_id') : ''); ?>"
+                                                           placeholder="<?php _e('Facebook App ID', 'woochatbot'); ?>">
+                    </div>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Facebook Page ID', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_fb_page_id"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_page_id') != '' ? get_option('qlcd_woo_chatbot_fb_page_id') : ''); ?>"
+                                                           placeholder="<?php _e('Facebook Page ID', 'woochatbot'); ?>">
+                    </div>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Messenger Color', 'woochatbot'); ?>
+                      </h4>
+                      <input id="qlcd_woo_chatbot_fb_color" type="hidden"
+                                                           name="qlcd_woo_chatbot_fb_color"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_color') != '' ? get_option('qlcd_woo_chatbot_fb_color') : '#0084ff'); ?>"/>
+                    </div>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Logged In Welcome Message', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_fb_in_msg"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_in_msg') != '' ? get_option('qlcd_woo_chatbot_fb_in_msg') : 'Welcome to Our Store!'); ?>"
+                                                           placeholder="<?php _e('Facebook logged in welcome message', 'woochatbot'); ?>">
+                    </div>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Logged Out Welcome Message', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_fb_out_msg"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_out_msg') != '' ? get_option('qlcd_woo_chatbot_fb_out_msg') : 'You are not logged in'); ?>"
+                                                           placeholder="<?php _e('Facebook logged out welcome message', 'woochatbot'); ?>">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="row qcld-woo-chatbot-board-bg-container" <?php if (get_option('qcld_woo_chatbot_change_bg') != 1) {
-                                    echo 'style="display:none"';
-                                } ?>>
-              <div class="col-xs-6">
-                <p class="woo-chatbot-settings-instruction">
-                  <?php _e('Upload '.woowbot_text().' message board background (Ideal image size 376px X 688px).', 'woochatbot'); ?>
-                </p>
-                <div class="cxsc-settings-blocks">
-                  <?php
-                                            if (get_option('qcld_woo_chatbot_board_bg_path') != "") {
-                                                $qcld_woo_chatbot_board_bg_path = get_option('qcld_woo_chatbot_board_bg_path');
+            <div id="woo-chatbot-scl-skype" class="tab-pane fade">
+              <div class="top-section">
+                <div class="row">
+                  <div class="col-xs-12" id="woo-chatbot-language-section">
+                    <h4 class="qc-opt-title">
+                      <?php _e('Show Skype Floating Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
+                    </h4>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_skype_floating_icon"
+                                                           type="checkbox"
+                                                           name="enable_woo_chatbot_skype_floating_icon" <?php echo(get_option('enable_woo_chatbot_skype_floating_icon') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_skype_floating_icon">
+                        <?php _e('Enable to display Skype Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Skype ID', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="enable_woo_chatbot_skype_id"
+                                                           value="<?php echo(get_option('enable_woo_chatbot_skype_id') != '' ? get_option('enable_woo_chatbot_skype_id') : ''); ?>"
+                                                           placeholder="<?php _e('Skype', 'woochatbot'); ?>">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="woo-chatbot-scl-whats" class="tab-pane fade">
+              <div class="top-section">
+                <div class="row">
+                  <div class="col-xs-12" id="woo-chatbot-language-section">
+                    <h4 class="qc-opt-title">
+                      <?php _e('Enable WhatsApp (if enabled it will show as option during chat and support)', 'woochatbot'); ?>
+                    </h4>
+                    <p>
+                      <?php _e('Find', 'woochatbot'); ?>
+                      <a target="_blank"
+                                                       href="https://faq.whatsapp.com/en/android/27585377/?category=5245246">
+                      <?php _e('WhatsApp phone number', 'woochatbot'); ?>
+                      </a>
+                      <?php _e('for settings', 'woochatbot'); ?>
+                      .</p>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_whats" type="checkbox"
+                                                           name="enable_woo_chatbot_whats" <?php echo(get_option('enable_woo_chatbot_whats') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_whats">
+                        <?php _e('Enable WhatsApp', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <?php
+                                                    $whatsapp_options = unserialize(get_option('qlcd_woo_chatbot_whats_label'));
+                                                    $whatsapp_option = 'qlcd_woo_chatbot_whats_label';
+                                                    $whatsapp_text = __('Chat with Us on WhatsApp', 'woochatbot');
+                                                    $this->qcld_woo_chatbot_dynamic_multi_option($whatsapp_options, $whatsapp_option, $whatsapp_text);
+                                                    ?>
+                    </div>
+                    <h4 class="qc-opt-title">
+                      <?php _e('Show WhatsApp Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
+                    </h4>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_floating_whats"
+                                                           type="checkbox"
+                                                           name="enable_woo_chatbot_floating_whats" <?php echo(get_option('enable_woo_chatbot_floating_whats') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_floating_whats">
+                        <?php _e('Enable to display WhatsApp Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('WhatsApp Phone Number', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_whats_num"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_whats_num') != '' ? get_option('qlcd_woo_chatbot_whats_num') : ''); ?>"
+                                                           placeholder="<?php _e('WhatsApp Phone Number', 'woochatbot'); ?>">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--                                    top-section--> 
+            </div>
+            <div id="woo-chatbot-scl-viber" class="tab-pane fade">
+              <div class="top-section">
+                <div class="row">
+                  <div class="col-xs-12" id="woo-chatbot-language-section">
+                    <h4 class="qc-opt-title">
+                      <?php _e('Show Viber Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
+                    </h4>
+                    <p>
+                      <?php _e('Create', 'woochatbot'); ?>
+                      <a href="https://support.viber.com/customer/en/portal/articles/2733413-get-started-with-a-public-account"
+                                                       target="_blank">
+                      <?php _e('Viber public Account ', 'woochatbot'); ?>
+                      </a>
+                      <?php _e('for settings', 'woochatbot'); ?>
+                      .</p>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_floating_viber"
+                                                           type="checkbox"
+                                                           name="enable_woo_chatbot_floating_viber" <?php echo(get_option('enable_woo_chatbot_floating_viber') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_floating_viber">
+                        <?php _e('Enable to display Viber Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Viber Account', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_viber_acc"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_viber_acc') != '' ? get_option('qlcd_woo_chatbot_viber_acc') : ''); ?>"
+                                                           placeholder="<?php _e('Viber Account', 'woochatbot'); ?>">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--                                    top-section--> 
+            </div>
+            <div id="woo-chatbot-scl-link" class="tab-pane fade">
+              <div class="top-section">
+                <div class="row">
+                  <div class="col-xs-12" id="woo-chatbot-language-section">
+                    <h4 class="qc-opt-title">
+                      <?php _e('Show Website Floating Link on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
+                    </h4>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_floating_link"
+                                                           type="checkbox"
+                                                           name="enable_woo_chatbot_floating_link" <?php echo(get_option('enable_woo_chatbot_floating_link') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_floating_link">
+                        <?php _e('Enable to display Website Floating Link on '.woowbot_text().' message board border.', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Website Url', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_weblink"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_weblink') != '' ? get_option('qlcd_woo_chatbot_weblink') : ''); ?>"
+                                                           placeholder="<?php _e('Website Url', 'woochatbot'); ?>">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--                                    top-section--> 
+            </div>
+            <div id="woo-chatbot-scl-phone" class="tab-pane fade">
+              <div class="top-section">
+                <div class="row">
+                  <div class="col-xs-12" id="woo-chatbot-language-section">
+                    <h4 class="qc-opt-title">
+                      <?php _e('Show Phone Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
+                    </h4>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_floating_phone"
+                                                           type="checkbox"
+                                                           name="enable_woo_chatbot_floating_phone" <?php echo(get_option('enable_woo_chatbot_floating_phone') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_floating_phone">
+                        <?php _e('Enable to display Phone Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Phone Number', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_phone"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_phone') != '' ? get_option('qlcd_woo_chatbot_phone') : ''); ?>"
+                                                           placeholder="<?php _e('Phone Number', 'woochatbot'); ?>">
+                    </div>
+                    <br>
+                    <br>
+                  </div>
+                </div>
+              </div>
+              <!--                                    top-section--> 
+            </div>
+            <div id="woo-chatbot-scl-livechat" class="tab-pane fade">
+              <div class="top-section">
+                <div class="row">
+                  <div class="col-xs-12" id="woo-chatbot-language-section">
+                    <h4 class="qc-opt-title">
+                      <?php _e('Show Live Chat Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
+                    </h4>
+                    <div class="cxsc-settings-blocks">
+                      <input value="1" id="enable_woo_chatbot_floating_livechat"
+                                                           type="checkbox"
+                                                           name="enable_woo_chatbot_floating_livechat" <?php echo(get_option('enable_woo_chatbot_floating_livechat') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_chatbot_floating_livechat">
+                        <?php _e('Enable to display Livechat Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+					<?php if(qcld_woowbot_is_active_livechat()!==true): ?>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Direct Chat Link', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_chatbot_livechatlink"
+                                                           value="<?php echo(get_option('qlcd_woo_chatbot_livechatlink') != '' ? get_option('qlcd_woo_chatbot_livechatlink') : ''); ?>"
+                                                           placeholder="<?php _e('Direct Chat Link', 'woochatbot'); ?>">
+                      <img src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>live-chat.jpg"
+                                                         alt=""></div>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Enable Display as 1st Item in Start Menu', 'woochatbot'); ?>
+                      </h4>
+                      <input value="1" id="enable_woo_custom_intent_livechat_button"
+                                                           type="checkbox"
+                                                           name="enable_woo_custom_intent_livechat_button" <?php echo(get_option('enable_woo_custom_intent_livechat_button') == 1 ? 'checked' : ''); ?>>
+                      <label for="enable_woo_custom_intent_livechat_button">
+                        <?php _e('Enable custom intent button for livechat.', 'woochatbot'); ?>
+                      </label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <h4 class="qc-opt-title">
+                        <?php _e('Livechat Button Label', 'woochatbot'); ?>
+                      </h4>
+                      <input type="text" class="form-control qc-opt-dcs-font"
+                                                           name="qlcd_woo_livechat_button_label"
+                                                           value="<?php echo(get_option('qlcd_woo_livechat_button_label') != '' ? stripslashes(get_option('qlcd_woo_livechat_button_label')) : ''); ?>"
+                                                           placeholder="<?php _e('Ex: Live Chat', 'woochatbot'); ?>">
+                    </div>
+                    <br>
+					<?php endif; ?>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <h4 class="qc-opt-title">
+                          <?php _e(' Upload custom Icon ', 'woochatbot'); ?>
+                        </h4>
+                        <div class="cxsc-settings-blocks">
+                          <input type="hidden" name="woo_custom_icon_livechat"
+                                                                   id="woo_custom_icon_livechat"
+                                                                   value="<?php echo(get_option('woo_custom_icon_livechat') != '' ? get_option('woo_custom_icon_livechat') : ''); ?>"/>
+                          <div id="woo_custom_icon_livechat_src">
+                            <?php if (get_option('woo_custom_icon_livechat') != ''): ?>
+                            <img src="<?php echo get_option('woo_custom_icon_livechat'); ?>"
+                                                                         alt="" width="50" height="50"/>
+                            <?php endif; ?>
+                          </div>
+                          <button type="button"
+                                                                    class="woo_custom_icon_livechat button">
+                          <?php _e('Upload Icon', 'woochatbot'); ?>
+                          </button>
+                          <?php if (get_option('woo_custom_icon_livechat') != ''): ?>
+                          <button type="button"
+                                                                        class="woo_custom_icon_livechat_remove button">
+                          <?php _e('Remove Icon', 'woochatbot'); ?>
+                          </button>
+                          <?php endif; ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--                                    top-section--> 
+            </div>
+          </div>
+          <!--                            tab-content--> 
+        </section>
+		
+		    <section id="section-flip-9">
+      <div class="top-section">
+        <div class="woo-chatbot-language-center-summmery">
+          <p>
+            <?php _e('DialogFlow as Artificial Intelligences Engine for '.woowbot_text(), 'woochatbot'); ?>
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4 class="qc-opt-title">
+              <?php _e('Enable DialogFlow as AI Engine to Detect Intent', 'woochatbot'); ?>
+            </h4>
+            <div class="cxsc-settings-blocks">
+              <input value="1" id="enable_woo_chatbot_dailogflow" type="checkbox"
+                                                   name="enable_woo_chatbot_dailogflow" <?php echo(get_option('enable_woo_chatbot_dailogflow') == 1 ? 'checked' : ''); ?>>
+              <label for="enable_woo_chatbot_dailogflow">
+                <?php _e('Enable DialogFlow AI Engine to process Natural Language commands from users.', 'woochatbot'); ?>
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-12"><br>
+            <p>
+              <?php _e('You will need an Access Token from DialogFlow. Log in to DialogFlow Console from', 'woochatbot'); ?>
+              <a style="text-decoration:underline;color:blue"
+                                               href="https://dialogflow.com/" target="_blank">
+              <?php _e('Here', 'woochatbot'); ?>
+              </a>
+              <?php _e('with your gmail account. Create a new agent and copy the Client Access Token from Settings.', 'woochatbot'); ?>
+            </p>
+            <p><a style="text-decoration:underline;color:blue"
+                                              href="<?php echo site_url() ?>/wp-content/plugins/woowbot-woocommerce-chatbot-pro/download/WoowBot.zip"
+                                              download>
+              <?php _e('Download', 'woochatbot'); ?>
+              </a>
+              <?php _e('the agent training data and import from DialogFlow->Settings->Export and Import tab. You can add your own intents in that agent but do not modify our following system intents which are', 'woochatbot'); ?>
+              <b>catalog, featured, get name, order, product, reset, site search, sale, support & start.</b> </p></p>
+          </div>
+		  
+          <div class="col-xs-12" id="woo-chatbot-dialflow-section">
+
+			<h4 class="qc-opt-title"><?php echo esc_html__('DialogFlow API Version', 'wpchatbot'); ?></h4>
+			<div class="form-group">
+
+				<label class="radio-inline">
+					<input id="woo-chatbot-df-api" type="radio"
+							name="woo_chatbot_df_api"
+							value="v1" <?php echo(get_option('woo_chatbot_df_api') == 'v1' ? 'checked' : ''); ?>>
+					<?php echo esc_html__('Dialogflow API V1', 'wpchatbot'); ?>
+				</label>
+				<label class="radio-inline">
+					<input id="woo-chatbot-df-api" type="radio"
+							name="woo_chatbot_df_api"
+							value="v2" <?php echo(get_option('woo_chatbot_df_api') == 'v2' ? 'checked' : ''); ?>>
+					<?php echo esc_html__('Dialogflow API V2', 'wpchatbot'); ?>
+				</label>
+
+			</div>
+
+			<div id="woo-chatbot-df-section-v2">
+				<!-- Dialogflow V2 Configuration -->
+				
+				<div class="form-group">
+					<h4 class="qc-opt-title"><?php echo esc_html__('DialogFlow Project ID', 'wpchatbot'); ?></h4>
+					<p>You can follow the <a href="https://dialogflow.com/docs/reference/v2-auth-setup" target="_blank">tutorial</a> to get the Project ID. </p>
+					<input type="text" class="form-control qc-opt-dcs-font"
+							name="qlcd_woo_chatbot_dialogflow_project_id"
+							value="<?php echo(get_option('qlcd_woo_chatbot_dialogflow_project_id') != '' ? get_option('qlcd_woo_chatbot_dialogflow_project_id') : ''); ?>" placeholder="<?php echo esc_html__('DialogFlow Project ID', 'wpchatbot'); ?>">
+				</div>
+
+				<div class="form-group">
+					<h4 class="qc-opt-title"><?php echo esc_html__('Private Key', 'wpchatbot'); ?></h4>
+					<p>Put your google service account's private key JSON string here. You can follow the <a href="https://dialogflow.com/docs/reference/v2-auth-setup" target="_blank">tutorial</a> to get private key JSON file. </p>
+					<textarea class="form-control" rows="20" name="qlcd_woo_chatbot_dialogflow_project_key"><?php echo(get_option('qlcd_woo_chatbot_dialogflow_project_key') != '' ? get_option('qlcd_woo_chatbot_dialogflow_project_key') : ''); ?></textarea>
+				</div>
+
+				<?php if(!file_exists(ABSPATH.QCLD_wooCHATBOT_GC_DIRNAME.'/autoload.php')): ?>
+				<div class="form-group">
+					
+					<br>
+					<h4 class="qc-opt-title" style="color:red"><?php echo esc_html__('For Interacting with Dialogflow V2 the Google Client Package is Required!', 'wpchatbot'); ?></h4>
+					<p>Please click the download button below to download the Google Client package. The package will be downloaded inside your Wordpress's <b>/wp-content</b> folder. This package is around <b>10 MB</b> in zip file format and it will be about <b>49 MB</b> after unzipping. Please make sure that your server has enough space to store that package.</p>
+					<div class="qcld-wpbot-gcdownload-area">
+						<button class="btn btn-primary" id="qc_wpbot_gc_download">Download Google Client</button>
+						<div class="qcld_wpbot_download_statuses">
+							
+						</div>
+					</div>
+					<br>
+					
+				</div>
+				<?php else: ?>
+				<div class="form-group">
+					<h4 class="qc-opt-title" style="color:green"><?php echo esc_html__('Google Client Package is Installed on Your System.', 'wpchatbot'); ?></h4>
+				</div>
+				<?php endif; ?>
+
+				<!-- End Dialogflow V2 Configuration -->
+			</div>
+
+			<div id="woo-chatbot-df-section-v1">
+
+				<div class="form-group">
+					<p style="color:red" class="qc-opt-title"><?php echo esc_html__('DialogFlow API V1 is going to be retired on October 23, 2019. Please move on to API V2 now so do not face any service interruption.', 'wpchatbot'); ?></>
+				</div>
+
+				<div class="form-group">
+					<h4 class="qc-opt-title"><?php echo esc_html__('DialogFlow client Access Token', 'wpchatbot'); ?></h4>
+					<input type="text" class="form-control qc-opt-dcs-font"
+						name="qlcd_woo_chatbot_dialogflow_client_token"
+						value="<?php echo(get_option('qlcd_woo_chatbot_dialogflow_client_token') != '' ? get_option('qlcd_woo_chatbot_dialogflow_client_token') : ''); ?>" placeholder="<?php echo esc_html__('DialogFlow Client Access Token', 'wpchatbot'); ?>">
+				</div>
+			</div>
+			
+			
+			
+			
+            <div class="form-group">
+              <h4 class="qc-opt-title">
+                <?php _e('DialofFlow Defualt reply', 'woochatbot'); ?>
+              </h4>
+              <input type="text" class="form-control qc-opt-dcs-font"
+                                                   name="qlcd_woo_chatbot_dialogflow_defualt_reply"
+                                                   value="<?php echo(get_option('qlcd_woo_chatbot_dialogflow_defualt_reply') != '' ? get_option('qlcd_woo_chatbot_dialogflow_defualt_reply') : 'Sorry, I did not understand you. You may browse'); ?>"
+                                                   placeholder="<?php _e('DialogFlow defualt reply', 'woochatbot'); ?>">
+            </div>
+            <div class="form-group">
+              <h4 class="qc-opt-title">
+                <?php _e('DialofFlow Agent Language (Ex: en)', 'woochatbot'); ?>
+              </h4>
+              <input type="text" class="form-control qc-opt-dcs-font"
+                                                   name="qlcd_woo_chatbot_dialogflow_agent_language"
+                                                   value="<?php echo(get_option('qlcd_woo_chatbot_dialogflow_agent_language') != '' ? get_option('qlcd_woo_chatbot_dialogflow_agent_language') : 'en'); ?>"
+                                                   placeholder="<?php _e('DialofFlow Agent Language (Ex: en)', 'woochatbot'); ?>">
+            </div>
+            <div class="form-group">
+              <h4 class="qc-opt-title">
+                <?php _e('Allow custom intent and reponse from DialogFlow', 'woochatbot'); ?>
+              </h4>
+              <input value="1" id="enable_woo_chatbot_custom_intent" type="checkbox"
+                                                   name="enable_woo_chatbot_custom_intent" <?php echo(get_option('enable_woo_chatbot_custom_intent') == 1 ? 'checked' : ''); ?>>
+              <label for="enable_woo_chatbot_custom_intent">
+                <?php _e('Enable to get Intents and Responses from the DialogFlow for the custom intents you create.', 'woochatbot'); ?>
+              </label>
+            </div>
+            <br>
+            <div class="form-group" style="padding: 15px !important;">
+              <h4 class="qc-opt-title">
+                <?php _e('Enable rich reponse from DialogFlow using Facebook Messenger', 'woochatbot'); ?>
+              </h4>
+              <input value="1" id="enable_woo_chatbot_rich_response" type="checkbox"
+                                                   name="enable_woo_chatbot_rich_response" <?php echo(get_option('enable_woo_chatbot_rich_response') == 1 ? 'checked' : ''); ?>>
+              <label for="enable_woo_chatbot_rich_response">
+                <?php _e(' If you enable this option you can create Responses for Facebook messenger for your intents which will support Images, Cards etc.', 'woochatbot'); ?>
+              </label>
+              <br>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="form-group" style="padding: 15px !important;">
+              <h2>Custom Intent Options</h2>
+              <p>Need to enable Artificial Intelligence for Custom Intent work. The intent name &amp; label must be added in training phrases. The intent name must match EXACTLY as in what you added in DialogFlow.</p>
+              <h4 class="qc-opt-title">
+                <?php _e('Enable Advanced Step by Step Search', 'woochatbot'); ?>
+              </h4>
+              <input value="1" id="enable_woo_chatbot_custom_search" type="checkbox"
+                                                   name="enable_woo_chatbot_custom_search" <?php echo(get_option('enable_woo_chatbot_custom_search') == 1 ? 'checked' : ''); ?>>
+              <label for="enable_woo_chatbot_custom_search">
+                <?php _e("You will Need to Create a Custom Question Tree in DialogFlow to Collect Search Criteria from User. Check the documentation's AI section for more details.", 'woochatbot'); ?>
+              </label>
+            </div>
+            <br>
+            <br>
+            <div class="block-intent-inner" id="block-intent-inner">
+              <h4 class="qc-opt-title">
+                <?php _e('Custom Intent Name & Label', 'woochatbot'); ?>
+              </h4>
+              <?php
+                                            $intent_names = $this->qcld_woo_chatbot_str_replace(unserialize(get_option('custom_intent_names')));
+                                            $intent_labels = $this->qcld_woo_chatbot_str_replace(unserialize(get_option('custom_intent_labels')));
+                                            $intent_keywords = $this->qcld_woo_chatbot_str_replace(unserialize(get_option('custom_intent_kewords')));
+                                            if (count($intent_names) >= 1) {
+                                                $indent_counter = 0;
+                                                foreach (array_combine($intent_names, $intent_labels) as $name => $label) {
+                                                    ?>
+              <div class="row">
+                <div class="col-xs-12">
+                  <button type="button"
+                                                                    class="btn btn-danger btn-sm woo-chatbot-remove-custom-intent pull-right"> <i class="fa fa-times" aria-hidden="true"></i></button>
+                  <div class="cxsc-settings-blocks">
+                    <p class="qc-opt-dcs-font">
+                      <?php _e('Intent Label (Will also show as Button Name in the fallback)', 'woochatbot'); ?>
+                    </p>
+                    <input type="text" class="form-control"
+                                                                       name="custom_intent_labels[]"
+                                                                       placeholder="<?php _e('Intent Label', 'woochatbot'); ?>"
+                                                                       value="<?php echo $label ?>">
+                  </div>
+                  <div class="cxsc-settings-blocks">
+                    <p class="qc-opt-dcs-font">
+                      <?php _e('Intent Name (Must match Exactly as the Intent Name you will create in DialogFlow)', 'woochatbot'); ?>
+                    </p>
+                    <input type="text" class="form-control"
+                                                                       name="custom_intent_names[]"
+                                                                       placeholder="<?php _e('Intent Name ', 'woochatbot'); ?>"
+                                                                       value="<?php echo $name ?>">
+                  </div>
+                  <div class="cxsc-settings-blocks">
+                    <p class="qc-opt-dcs-font">
+                      <?php _e('Intent Keyword (this is the keyword user must type to get into Step by Step search. You should add a prompt in the greeting to let your users know about the keyword.)', 'woochatbot'); ?>
+                    </p>
+                    <input type="text" class="form-control"
+                                                                       name="custom_intent_kewords[]"
+                                                                       placeholder="<?php _e('Intent System Keyword ', 'woochatbot'); ?>"
+                                                                       value="<?php if (isset($intent_keywords[$indent_counter])) {
+                                                                           echo $intent_keywords[$indent_counter];
+                                                                       } ?>">
+                  </div>
+                </div>
+              </div>
+              <?php
+                                                    $indent_counter++;
+                                                }
+                                                //}
                                             } else {
-                                                $qcld_woo_chatbot_board_bg_path = QCLD_WOOCHATBOT_IMG_URL . 'background/background.png';
+                                                ?>
+              <div class="row">
+                <div class="col-xs-12">
+                  <button type="button"
+                                                                class="btn btn-danger btn-sm woo-chatbot-remove-custom-intent pull-right"> <i class="fa fa-times" aria-hidden="true"></i></button>
+                  <div class="cxsc-settings-blocks">
+                    <p class="qc-opt-dcs-font">
+                      <?php _e('Intent Label (Will also show as Button Name in the fallback)', 'woochatbot'); ?>
+                    </p>
+                    <input type="text" class="form-control"
+                                                                   name="custom_intent_labels[]"
+                                                                   placeholder="<?php _e('Intent Label ', 'woochatbot'); ?>">
+                  </div>
+                  <div class="cxsc-settings-blocks">
+                    <p class="qc-opt-dcs-font">
+                      <?php _e('Intent Name (Must match Exactly as the Intent Name you will create in DialogFlow)', 'woochatbot'); ?>
+                    </p>
+                    <input type="text" class="form-control"
+                                                                   name="custom_intent_names[]"
+                                                                   placeholder="<?php _e('Intent Name ', 'woochatbot'); ?>">
+                  </div>
+                  <div class="cxsc-settings-blocks">
+                    <p class="qc-opt-dcs-font">
+                      <?php _e('Intent Keyword (this is the keyword user must type to get into Step by Step search. You should add a prompt in the greeting to let your users know about the keyword.)', 'woochatbot'); ?>
+                    </p>
+                    <input type="text" class="form-control"
+                                                                   name="custom_intent_kewords[]"
+                                                                   placeholder="<?php _e('Intent System Keyword', 'woochatbot'); ?>">
+                  </div>
+                </div>
+              </div>
+              <?php
                                             }
                                             ?>
-                  <input type="hidden" name="qcld_woo_chatbot_board_bg_path"
-                                                   id="qcld_woo_chatbot_board_bg_path"
-                                                   value="<?php echo $qcld_woo_chatbot_board_bg_path; ?>"/>
-                  <button type="button" class="qcld_woo_chatbot_board_bg_button button">
-                  <?php _e('Upload  '.woowbot_text().' background.', 'woochatbot'); ?>
-                  </button>
-                </div>
-              </div>
-              <!--                                    col-xs-6-->
-              <div class="col-xs-6">
-                <p class="woo-chatbot-settings-instruction">
-                  <?php _e('Custom message board background', 'woochatbot'); ?>
-                </p>
-                <img id="qcld_woo_chatbot_board_bg_image" style="height:100%;width:100%"
-                                             src="<?php echo $qcld_woo_chatbot_board_bg_path; ?>"
-                                             alt="Custom Background"></div>
             </div>
+            <div class="row">
+              <div class="col-sm-6 text-left"></div>
+              <div class="col-sm-6 text-right">
+                <button class="btn btn-success btn-sm" type="button"
+                                                        id="add-more-custom-intent"><i
+                                                            class="fa fa-plus" aria-hidden="true"></i>
+                <?php _e('Add More Custom Intent', 'woochatbot'); ?>
+                </button>
+              </div>
+            </div>
+            <br>
           </div>
-        </section>
+        </div>
+      </div>
+      <!-- top-section--> 
+    </section>
+		
         <section id="section-flip-3">
           <div class="row">
             <div class="col-xs-12">
@@ -2993,736 +4259,8 @@ $table    = $wpdb->prefix.'woobot_subscription';
           </div>
           <!--                            tab-content--> 
         </section>
-        <section id="section-flip-6">
-          <div class="woo-chatbot-language-center-summmery">
-            <p>
-              <?php _e(woowbot_text().' integration like Facebook Messenger, WhatApps etc.', 'woochatbot'); ?>
-            </p>
-          </div>
-          <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#woo-chatbot-scl-fb">
-              <?php _e('Messenger', 'woochatbot'); ?>
-              </a></li>
-            <li><a data-toggle="tab" href="#woo-chatbot-scl-skype">
-              <?php _e('Skype', 'woochatbot'); ?>
-              </a></li>
-            <li><a data-toggle="tab" href="#woo-chatbot-scl-whats">
-              <?php _e('WhatsApp', 'woochatbot'); ?>
-              </a></li>
-            <li><a data-toggle="tab" href="#woo-chatbot-scl-viber">
-              <?php _e('Viber', 'woochatbot'); ?>
-              </a></li>
-            <li><a data-toggle="tab" href="#woo-chatbot-scl-link">
-              <?php _e('Web Link', 'woochatbot'); ?>
-              </a></li>
-            <li><a data-toggle="tab" href="#woo-chatbot-scl-phone">
-              <?php _e('Phone', 'woochatbot'); ?>
-              </a></li>
-            <li><a data-toggle="tab" href="#woo-chatbot-scl-livechat">
-              <?php _e('Live Chat', 'woochatbot'); ?>
-              </a></li>
-          </ul>
-          <div class="tab-content">
-            <div id="woo-chatbot-scl-fb" class="tab-pane fade in active">
-              <div class="top-section">
-                <div class="row">
-                  <div class="col-xs-12" id="woo-chatbot-interaction-section">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Enable Messenger (if enabled it will show as option during chat and support)', 'woochatbot'); ?>
-                    </h4>
-                    <p>
-                      <?php _e('Create', 'woochatbot'); ?>
-                      <a href="https://www.facebook.com/business/help/104002523024878"
-                                                       target="_blank">
-                      <?php _e('Facebook Page Id', 'woochatbot'); ?>
-                      </a>
-                      <?php _e('and', 'woochatbot'); ?>
-                      <a href="https://developers.facebook.com/docs/apps/register"
-                                                       target="_blank">
-                      <?php _e('Facebook App ID', 'woochatbot'); ?>
-                      </a>.</p>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_messenger" type="checkbox"
-                                                           name="enable_woo_chatbot_messenger" <?php echo(get_option('enable_woo_chatbot_messenger') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_messenger">
-                        <?php _e('Enable Messenger', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <?php
-                                                    $messenger_options = unserialize(get_option('qlcd_woo_chatbot_messenger_label'));
-                                                    $messenger_option = 'qlcd_woo_chatbot_messenger_label';
-                                                    $messenger_text = __('Chat with Us on Facebook Messenger', 'woochatbot');
-                                                    $this->qcld_woo_chatbot_dynamic_multi_option($messenger_options, $messenger_option, $messenger_text);
-                                                    ?>
-                    </div>
-                    <h4 class="qc-opt-title">
-                      <?php _e('Show Messenger Icon beside '.woowbot_text().' Icon', 'woochatbot'); ?>
-                    </h4>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_messenger_floating_icon"
-                                                           type="checkbox"
-                                                           name="enable_woo_chatbot_messenger_floating_icon" <?php echo(get_option('enable_woo_chatbot_messenger_floating_icon') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_messenger_floating_icon">
-                        <?php _e('Enable to display Messenger Icon beside '.woowbot_text().' Icon', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Facebook App ID', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_fb_app_id"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_app_id') != '' ? get_option('qlcd_woo_chatbot_fb_app_id') : ''); ?>"
-                                                           placeholder="<?php _e('Facebook App ID', 'woochatbot'); ?>">
-                    </div>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Facebook Page ID', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_fb_page_id"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_page_id') != '' ? get_option('qlcd_woo_chatbot_fb_page_id') : ''); ?>"
-                                                           placeholder="<?php _e('Facebook Page ID', 'woochatbot'); ?>">
-                    </div>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Messenger Color', 'woochatbot'); ?>
-                      </h4>
-                      <input id="qlcd_woo_chatbot_fb_color" type="hidden"
-                                                           name="qlcd_woo_chatbot_fb_color"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_color') != '' ? get_option('qlcd_woo_chatbot_fb_color') : '#0084ff'); ?>"/>
-                    </div>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Logged In Welcome Message', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_fb_in_msg"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_in_msg') != '' ? get_option('qlcd_woo_chatbot_fb_in_msg') : 'Welcome to Our Store!'); ?>"
-                                                           placeholder="<?php _e('Facebook logged in welcome message', 'woochatbot'); ?>">
-                    </div>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Logged Out Welcome Message', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_fb_out_msg"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_fb_out_msg') != '' ? get_option('qlcd_woo_chatbot_fb_out_msg') : 'You are not logged in'); ?>"
-                                                           placeholder="<?php _e('Facebook logged out welcome message', 'woochatbot'); ?>">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="woo-chatbot-scl-skype" class="tab-pane fade">
-              <div class="top-section">
-                <div class="row">
-                  <div class="col-xs-12" id="woo-chatbot-language-section">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Show Skype Floating Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
-                    </h4>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_skype_floating_icon"
-                                                           type="checkbox"
-                                                           name="enable_woo_chatbot_skype_floating_icon" <?php echo(get_option('enable_woo_chatbot_skype_floating_icon') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_skype_floating_icon">
-                        <?php _e('Enable to display Skype Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Skype ID', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="enable_woo_chatbot_skype_id"
-                                                           value="<?php echo(get_option('enable_woo_chatbot_skype_id') != '' ? get_option('enable_woo_chatbot_skype_id') : ''); ?>"
-                                                           placeholder="<?php _e('Skype', 'woochatbot'); ?>">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="woo-chatbot-scl-whats" class="tab-pane fade">
-              <div class="top-section">
-                <div class="row">
-                  <div class="col-xs-12" id="woo-chatbot-language-section">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Enable WhatsApp (if enabled it will show as option during chat and support)', 'woochatbot'); ?>
-                    </h4>
-                    <p>
-                      <?php _e('Find', 'woochatbot'); ?>
-                      <a target="_blank"
-                                                       href="https://faq.whatsapp.com/en/android/27585377/?category=5245246">
-                      <?php _e('WhatsApp phone number', 'woochatbot'); ?>
-                      </a>
-                      <?php _e('for settings', 'woochatbot'); ?>
-                      .</p>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_whats" type="checkbox"
-                                                           name="enable_woo_chatbot_whats" <?php echo(get_option('enable_woo_chatbot_whats') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_whats">
-                        <?php _e('Enable WhatsApp', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <?php
-                                                    $whatsapp_options = unserialize(get_option('qlcd_woo_chatbot_whats_label'));
-                                                    $whatsapp_option = 'qlcd_woo_chatbot_whats_label';
-                                                    $whatsapp_text = __('Chat with Us on WhatsApp', 'woochatbot');
-                                                    $this->qcld_woo_chatbot_dynamic_multi_option($whatsapp_options, $whatsapp_option, $whatsapp_text);
-                                                    ?>
-                    </div>
-                    <h4 class="qc-opt-title">
-                      <?php _e('Show WhatsApp Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
-                    </h4>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_floating_whats"
-                                                           type="checkbox"
-                                                           name="enable_woo_chatbot_floating_whats" <?php echo(get_option('enable_woo_chatbot_floating_whats') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_floating_whats">
-                        <?php _e('Enable to display WhatsApp Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('WhatsApp Phone Number', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_whats_num"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_whats_num') != '' ? get_option('qlcd_woo_chatbot_whats_num') : ''); ?>"
-                                                           placeholder="<?php _e('WhatsApp Phone Number', 'woochatbot'); ?>">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--                                    top-section--> 
-            </div>
-            <div id="woo-chatbot-scl-viber" class="tab-pane fade">
-              <div class="top-section">
-                <div class="row">
-                  <div class="col-xs-12" id="woo-chatbot-language-section">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Show Viber Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
-                    </h4>
-                    <p>
-                      <?php _e('Create', 'woochatbot'); ?>
-                      <a href="https://support.viber.com/customer/en/portal/articles/2733413-get-started-with-a-public-account"
-                                                       target="_blank">
-                      <?php _e('Viber public Account ', 'woochatbot'); ?>
-                      </a>
-                      <?php _e('for settings', 'woochatbot'); ?>
-                      .</p>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_floating_viber"
-                                                           type="checkbox"
-                                                           name="enable_woo_chatbot_floating_viber" <?php echo(get_option('enable_woo_chatbot_floating_viber') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_floating_viber">
-                        <?php _e('Enable to display Viber Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Viber Account', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_viber_acc"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_viber_acc') != '' ? get_option('qlcd_woo_chatbot_viber_acc') : ''); ?>"
-                                                           placeholder="<?php _e('Viber Account', 'woochatbot'); ?>">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--                                    top-section--> 
-            </div>
-            <div id="woo-chatbot-scl-link" class="tab-pane fade">
-              <div class="top-section">
-                <div class="row">
-                  <div class="col-xs-12" id="woo-chatbot-language-section">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Show Website Floating Link on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
-                    </h4>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_floating_link"
-                                                           type="checkbox"
-                                                           name="enable_woo_chatbot_floating_link" <?php echo(get_option('enable_woo_chatbot_floating_link') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_floating_link">
-                        <?php _e('Enable to display Website Floating Link on '.woowbot_text().' message board border.', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Website Url', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_weblink"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_weblink') != '' ? get_option('qlcd_woo_chatbot_weblink') : ''); ?>"
-                                                           placeholder="<?php _e('Website Url', 'woochatbot'); ?>">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--                                    top-section--> 
-            </div>
-            <div id="woo-chatbot-scl-phone" class="tab-pane fade">
-              <div class="top-section">
-                <div class="row">
-                  <div class="col-xs-12" id="woo-chatbot-language-section">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Show Phone Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
-                    </h4>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_floating_phone"
-                                                           type="checkbox"
-                                                           name="enable_woo_chatbot_floating_phone" <?php echo(get_option('enable_woo_chatbot_floating_phone') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_floating_phone">
-                        <?php _e('Enable to display Phone Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Phone Number', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_phone"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_phone') != '' ? get_option('qlcd_woo_chatbot_phone') : ''); ?>"
-                                                           placeholder="<?php _e('Phone Number', 'woochatbot'); ?>">
-                    </div>
-                    <br>
-                    <br>
-                  </div>
-                </div>
-              </div>
-              <!--                                    top-section--> 
-            </div>
-            <div id="woo-chatbot-scl-livechat" class="tab-pane fade">
-              <div class="top-section">
-                <div class="row">
-                  <div class="col-xs-12" id="woo-chatbot-language-section">
-                    <h4 class="qc-opt-title">
-                      <?php _e('Show Live Chat Icon on '.woowbot_text().' Message Board Border', 'woochatbot'); ?>
-                    </h4>
-                    <div class="cxsc-settings-blocks">
-                      <input value="1" id="enable_woo_chatbot_floating_livechat"
-                                                           type="checkbox"
-                                                           name="enable_woo_chatbot_floating_livechat" <?php echo(get_option('enable_woo_chatbot_floating_livechat') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_chatbot_floating_livechat">
-                        <?php _e('Enable to display Livechat Floating Icon on '.woowbot_text().' message board border.', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-					<?php if(qcld_woowbot_is_active_livechat()!==true): ?>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Direct Chat Link', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_livechatlink"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_livechatlink') != '' ? get_option('qlcd_woo_chatbot_livechatlink') : ''); ?>"
-                                                           placeholder="<?php _e('Direct Chat Link', 'woochatbot'); ?>">
-                      <img src="<?php echo QCLD_WOOCHATBOT_IMG_URL; ?>live-chat.jpg"
-                                                         alt=""></div>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Enable Display as 1st Item in Start Menu', 'woochatbot'); ?>
-                      </h4>
-                      <input value="1" id="enable_woo_custom_intent_livechat_button"
-                                                           type="checkbox"
-                                                           name="enable_woo_custom_intent_livechat_button" <?php echo(get_option('enable_woo_custom_intent_livechat_button') == 1 ? 'checked' : ''); ?>>
-                      <label for="enable_woo_custom_intent_livechat_button">
-                        <?php _e('Enable custom intent button for livechat.', 'woochatbot'); ?>
-                      </label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      <h4 class="qc-opt-title">
-                        <?php _e('Livechat Button Label', 'woochatbot'); ?>
-                      </h4>
-                      <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_livechat_button_label"
-                                                           value="<?php echo(get_option('qlcd_woo_livechat_button_label') != '' ? stripslashes(get_option('qlcd_woo_livechat_button_label')) : ''); ?>"
-                                                           placeholder="<?php _e('Ex: Live Chat', 'woochatbot'); ?>">
-                    </div>
-                    <br>
-					<?php endif; ?>
-                    <div class="row">
-                      <div class="col-xs-12">
-                        <h4 class="qc-opt-title">
-                          <?php _e(' Upload custom Icon ', 'woochatbot'); ?>
-                        </h4>
-                        <div class="cxsc-settings-blocks">
-                          <input type="hidden" name="woo_custom_icon_livechat"
-                                                                   id="woo_custom_icon_livechat"
-                                                                   value="<?php echo(get_option('woo_custom_icon_livechat') != '' ? get_option('woo_custom_icon_livechat') : ''); ?>"/>
-                          <div id="woo_custom_icon_livechat_src">
-                            <?php if (get_option('woo_custom_icon_livechat') != ''): ?>
-                            <img src="<?php echo get_option('woo_custom_icon_livechat'); ?>"
-                                                                         alt="" width="50" height="50"/>
-                            <?php endif; ?>
-                          </div>
-                          <button type="button"
-                                                                    class="woo_custom_icon_livechat button">
-                          <?php _e('Upload Icon', 'woochatbot'); ?>
-                          </button>
-                          <?php if (get_option('woo_custom_icon_livechat') != ''): ?>
-                          <button type="button"
-                                                                        class="woo_custom_icon_livechat_remove button">
-                          <?php _e('Remove Icon', 'woochatbot'); ?>
-                          </button>
-                          <?php endif; ?>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--                                    top-section--> 
-            </div>
-          </div>
-          <!--                            tab-content--> 
-        </section>
-        <section id="section-flip-7">
-        <div class="woo-chatbot-language-center-summmery">
-          <p>
-            <?php _e('On Site Retargeting  ', 'woochatbot'); ?>
-          </p>
-        </div>
-        <div class="top-section">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="form-group interaction-re-target">
-                    <label for="qlcd_woo_chatbot_ret_greet">
-                      <?php _e('Hello (When available, we will use user name)', 'woochatbot'); ?>
-                    </label>
-                    <input type="text" class="form-control qc-opt-dcs-font"
-                                                           name="qlcd_woo_chatbot_ret_greet"
-                                                           value="<?php echo(get_option('qlcd_woo_chatbot_ret_greet') != '' ? get_option('qlcd_woo_chatbot_ret_greet') : 'Hello'); ?>">
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="form-group">
-                    <p style="margin-top: 35px;">
-                      <?php _e('(GREETING + SHOPPER DEMO NAME)', 'woochatbot'); ?>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="cxsc-settings-blocks">
-                <div class="form-group">
-                  <h4 class="qc-opt-title">
-                    <?php _e('Retargeting Message Container Background Color.', 'woochatbot'); ?>
-                  </h4>
-                  <input id="woo_chatbot_proactive_bg_color" type="hidden"
-                                                       name="woo_chatbot_proactive_bg_color"
-                                                       value="<?php echo(get_option('woo_chatbot_proactive_bg_color') != '' ? get_option('woo_chatbot_proactive_bg_color') : '#b9c315ad'); ?>"/>
-                </div>
-              </div>
-              <div class="cxsc-settings-blocks">
-                <div class="form-group">
-                  <h4 class="qc-opt-title">
-                    <?php _e('Retargeting Message Text Color.', 'woochatbot'); ?>
-                  </h4>
-                  <input id="woo_chatbot_proactive_text_color" type="hidden"
-                                                       name="woo_chatbot_proactive_text_color"
-                                                       value="<?php echo(get_option('woo_chatbot_proactive_text_color') != '' ? get_option('woo_chatbot_proactive_text_color') : '#c34d15ad'); ?>"/>
-                </div>
-              </div>
-              <div class="cxsc-settings-blocks">
-                <h4 class="qc-opt-title">
-                  <?php _e('Retargeting Sound', 'woochatbot'); ?>
-                </h4>
-                <div class="form-group">
-                  <input value="1" id="enable_woo_chatbot_ret_sound" type="checkbox"
-                                                       name="enable_woo_chatbot_ret_sound" <?php echo(get_option('enable_woo_chatbot_ret_sound') == 1 ? 'checked' : ''); ?>>
-                  <label for="enable_woo_chatbot_ret_sound">
-                    <?php _e('Enable to play sound on Exit-Intent, Scroll Opening etc', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
-              <br>
-              <div class="cxsc-settings-blocks">
-                <h4 class="qc-opt-title">
-                  <?php _e('Window Focus Title', 'woochatbot'); ?>
-                </h4>
-                <div class="form-group">
-                  <input value="1" id="enable_woo_chatbot_meta_title" type="checkbox"
-                                                       name="enable_woo_chatbot_meta_title" <?php echo(get_option('enable_woo_chatbot_meta_title') == 1 ? 'checked' : ''); ?>>
-                  <label for="enable_woo_chatbot_meta_title">
-                    <?php _e('Focus window with a short message appended to page title', 'woochatbot'); ?>
-                  </label>
-                </div>
-                <br>
-                <div class="form-group">
-                  <label for="qlcd_woo_chatbot_meta_label">
-                    <?php _e('Custom Meta Title', 'woochatbot'); ?>
-                  </label>
-                  <input type="text" class="form-control qc-opt-dcs-font"
-                                                       name="qlcd_woo_chatbot_meta_label"
-                                                       value="<?php echo(get_option('qlcd_woo_chatbot_meta_label') != '' ? get_option('qlcd_woo_chatbot_meta_label') : '***New Messages'); ?>">
-                </div>
-              </div>
-              <div class="cxsc-settings-blocks">
-                <h4 class="qc-opt-title">
-                  <?php _e('User Exit Intent', 'woochatbot'); ?>
-                  (
-                  <?php _e('Show Message when mouse pointer moves out of browser viewport', 'woochatbot'); ?>
-                  )</h4>
-                <div class="form-group">
-                  <input value="1" id="enable_woo_chatbot_exit_intent" type="checkbox"
-                                                       name="enable_woo_chatbot_exit_intent" <?php echo(get_option('enable_woo_chatbot_exit_intent') == 1 ? 'checked' : ''); ?>>
-                  <label for="enable_woo_chatbot_exit_intent">
-                    <?php _e('Enable to show On Exit-Intent Message', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
-              <br>
-              <div class="cxsc-settings-blocks">
-                <div class="form-group">
-                  <input value="1" id="woo_chatbot_exit_intent_once" type="checkbox"
-                                                       name="woo_chatbot_exit_intent_once" <?php echo(get_option('woo_chatbot_exit_intent_once') == 1 ? 'checked' : ''); ?>>
-                  <label for="woo_chatbot_exit_intent_once">
-                    <?php _e('Show only once per visit.', 'woochatbot'); ?>
-                  </label>
-                </div>
-              </div>
-              <br>
 
-			  
-				<div class="row">
-					<div class="col-md-3"> <span class="qc-opt-title-font">
-					  <?php _e('Trigger on  pages', 'woochatbot'); ?>
-					  </span>
-					</div>
-					<div class="col-md-9">
-					  <label class="radio-inline">
-						<input class="woo-chatbot-exitintent-show-pages" type="radio"
-															   name="woo_chatbot_exitintent_show_pages"
-															   value="on" <?php echo(get_option('woo_chatbot_exitintent_show_pages') == 'on' ? 'checked' : ''); ?>>
-						<?php _e('All Pages', 'woochatbot'); ?>
-					  </label>
-					  <label class="radio-inline">
-						<input class="woo-chatbot-exitintent-show-pages" type="radio"
-															   name="woo_chatbot_exitintent_show_pages"
-															   value="off" <?php echo(get_option('woo_chatbot_exitintent_show_pages') == 'off' ? 'checked' : ''); ?>>
-						<?php _e('Selected Pages Only ', 'woochatbot'); ?>
-					  </label>
-					  <div id="woo-chatbot-exitintent-show-pages-list">
-						<ul class="checkbox-list">
-						  <?php
-						$woo_chatbot_pages = get_pages();
-						$woo_chatbot_select_pages = unserialize(get_option('woo_chatbot_exitintent_show_pages_list'));
-						foreach ($woo_chatbot_pages as $woo_chatbot_page) {
-							?>
-						  <li>
-							<input id="woo_chatbot_exitintent_show_page_<?php echo $woo_chatbot_page->ID; ?>"
-									type="checkbox"
-									name="woo_chatbot_exitintent_show_pages_list[]"
-									value="<?php echo $woo_chatbot_page->ID; ?>" <?php if (!empty($woo_chatbot_select_pages) && in_array($woo_chatbot_page->ID, $woo_chatbot_select_pages) == true) {
-								echo 'checked';
-							} ?> >
-							<label for="woo_chatbot_exitintent_show_page_<?php echo $woo_chatbot_page->ID; ?>"> <?php echo $woo_chatbot_page->post_title; ?></label>
-						  </li>
-						  <?php } ?>
-						</ul>
-					  </div>
-					</div>
-				  </div>			  
-			  
-			  
-              <div class="cxsc-settings-blocks" class="woo_chatbot_exit_intent_body">
-              <h4 class="qc-opt-title">
-                <?php _e('Your Message', 'woochatbot'); ?>
-              </h4>
-              <?php $exit_intent_settings = array('textarea_name' =>
-                                                'woo_chatbot_exit_intent_msg',
-                                                'textarea_rows' => 20,
-                                                'editor_height' => 100,
-                                                'disabled' => 'disabled',
-                                                'media_buttons' => false,
-                                                'tinymce' => array(
-                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
-                                            );
-                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_exit_intent_msg'))), 'woo_chatbot_exit_intent_msg', $exit_intent_settings); ?>
-            </div>
-          </div>
-          <div class="col-xs-12"><br>
-            <h4 class="qc-opt-title">
-              <?php _e('Scroll Down', 'woochatbot'); ?>
-            </h4>
-            <div class="cxsc-settings-blocks">
-              <div class="form-group">
-                <input value="1" id="enable_woo_chatbot_scroll_open" type="checkbox"
-                                                       name="enable_woo_chatbot_scroll_open" <?php echo(get_option('enable_woo_chatbot_scroll_open') == 1 ? 'checked' : ''); ?>>
-                <label for="enable_woo_chatbot_scroll_open">
-                  <?php _e('Enable to show message once user scrolls down a page', 'woochatbot'); ?>
-                </label>
-              </div>
-            </div>
-            <div class="cxsc-settings-blocks"> <span class="qc-opt-dcs-font">
-              <?php _e(woowbot_text().' will be shown after scrolling down ', 'woochatbot'); ?>
-              </span>
-              <input type="number" name="woo_chatbot_scroll_percent"
-                                                   value="<?php echo(get_option('woo_chatbot_scroll_percent') != '' ? get_option('woo_chatbot_scroll_percent') : 50); ?>">
-              <span class="qc-opt-dcs-font">
-              <?php _e('percent', 'woochatbot'); ?>
-              </span></div>
-            <div class="cxsc-settings-blocks">
-              <div class="form-group">
-                <input value="1" id="woo_chatbot_scroll_once" type="checkbox"
-                                                       name="woo_chatbot_scroll_once" <?php echo(get_option('woo_chatbot_scroll_once') == 1 ? 'checked' : ''); ?>>
-                <label for="woo_chatbot_scroll_once">
-                  <?php _e('Show only once per visit.', 'woochatbot'); ?>
-                </label>
-              </div>
-            </div>
-            <br>
-            <div class="cxsc-settings-blocks" id="woo_chatbot_scroll_open_body">
-              <h4 class="qc-opt-title">
-                <?php _e('Your Message', 'woochatbot'); ?>
-              </h4>
-              <?php $scroll_open_msg_settings = array('textarea_name' =>
-                                                'woo_chatbot_scroll_open_msg',
-                                                'textarea_rows' => 20,
-                                                'editor_height' => 100,
-                                                'disabled' => 'disabled',
-                                                'media_buttons' => false,
-                                                'tinymce' => array(
-                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
-                                            );
-                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_scroll_open_msg'))), 'woo_chatbot_scroll_open_msg', $scroll_open_msg_settings); ?>
-            </div>
-            <br>
-          </div>
-          <div class="col-xs-12">
-            <h4 class="qc-opt-title">
-              <?php _e('Show Message After "X" Seconds', 'woochatbot'); ?>
-            </h4>
-            <div class="cxsc-settings-blocks">
-              <div class="form-group">
-                <input value="1" id="enable_woo_chatbot_auto_open" type="checkbox"
-                                                       name="enable_woo_chatbot_auto_open" <?php echo(get_option('enable_woo_chatbot_auto_open') == 1 ? 'checked' : ''); ?>>
-                <label for="enable_woo_chatbot_auto_open">
-                  <?php _e('Show message after X seconds', 'woochatbot'); ?>
-                </label>
-              </div>
-            </div>
-            <div class="cxsc-settings-blocks"> <span class="qc-opt-dcs-font">
-              <?php _e(woowbot_text().' will be opened automatically after ', 'woochatbot'); ?>
-              </span>
-              <input type="number" name="woo_chatbot_auto_open_time"
-                                                   value="<?php echo(get_option('woo_chatbot_auto_open_time') != '' ? get_option('woo_chatbot_auto_open_time') : 300); ?>">
-              <span class="qc-opt-dcs-font">
-              <?php _e('seconds', 'woochatbot'); ?>
-              </span></div>
-            <div class="cxsc-settings-blocks">
-              <div class="form-group">
-                <input value="1" id="woo_chatbot_auto_open_once" type="checkbox"
-                                                       name="woo_chatbot_auto_open_once" <?php echo(get_option('woo_chatbot_auto_open_once') == 1 ? 'checked' : ''); ?>>
-                <label for="woo_chatbot_auto_open_once">
-                  <?php _e('Show only once per visit.', 'woochatbot'); ?>
-                </label>
-              </div>
-            </div>
-            <br>
-            <div class="cxsc-settings-blocks" id="woo_chatbot_auto_open_body">
-              <h4 class="qc-opt-title">
-                <?php _e('Your Message', 'woochatbot'); ?>
-              </h4>
-              <?php $auto_open_msg_settings = array('textarea_name' =>
-                                                'woo_chatbot_auto_open_msg',
-                                                'textarea_rows' => 20,
-                                                'editor_height' => 100,
-                                                'disabled' => 'disabled',
-                                                'media_buttons' => false,
-                                                'tinymce' => array(
-                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
-                                            );
-                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_auto_open_msg'))), 'woo_chatbot_auto_open_msg', $auto_open_msg_settings); ?>
-            </div>
-          </div>
-          <div class="col-xs-12"><br>
-            <h4 class="qc-opt-title">
-              <?php _e('Show message to complete checkout (when user has products in the cart)', 'woochatbot'); ?>
-            </h4>
-            <div class="cxsc-settings-blocks">
-              <div class="form-group">
-                <input value="1" id="enable_woo_chatbot_ret_user_show" type="checkbox"
-                                                       name="enable_woo_chatbot_ret_user_show" <?php echo(get_option('enable_woo_chatbot_ret_user_show') == 1 ? 'checked' : ''); ?>>
-                <label for="enable_woo_chatbot_ret_user_show">
-                  <?php _e('Show message when the user returns to the site', 'woochatbot'); ?>
-                </label>
-              </div>
-            </div>
-            <br>
-            <div class="cxsc-settings-blocks">
-              <div class="form-group">
-                <input value="1" id="enable_woo_chatbot_inactive_time_show"
-                                                       type="checkbox"
-                                                       name="enable_woo_chatbot_inactive_time_show" <?php echo(get_option('enable_woo_chatbot_inactive_time_show') == 1 ? 'checked' : ''); ?>>
-                <label for="enable_woo_chatbot_inactive_time_show">
-                  <?php _e('Show message when user inactive.', 'woochatbot'); ?>
-                </label>
-              </div>
-            </div>
-            <div class="cxsc-settings-blocks"> <span class="qc-opt-dcs-font">
-              <?php _e(woowbot_text().' will be opened for inactive user after', 'woochatbot'); ?>
-              </span>
-              <input type="number" name="woo_chatbot_inactive_time"
-                                                   value="<?php echo(get_option('woo_chatbot_inactive_time') != '' ? get_option('woo_chatbot_inactive_time') : 10); ?>">
-              <span class="qc-opt-dcs-font">
-              <?php _e('seconds', 'woochatbot'); ?>
-              </span></div>
-            <div class="cxsc-settings-blocks">
-              <div class="form-group">
-                <input value="1" id="woo_chatbot_inactive_once" type="checkbox"
-                                                       name="woo_chatbot_inactive_once" <?php echo(get_option('woo_chatbot_inactive_once') == 1 ? 'checked' : ''); ?>>
-                <label for="woo_chatbot_inactive_once">
-                  <?php _e('Show only once per visit for inactive users.', 'woochatbot'); ?>
-                </label>
-              </div>
-            </div>
-            <br>
-            <div class="cxsc-settings-blocks" id="woo_chatbot_checkout_open_body">
-              <h4 class="qc-opt-title">
-                <?php _e('Your Message', 'woochatbot'); ?>
-              </h4>
-              <?php $checkout_msg_settings = array('textarea_name' =>
-                                                'woo_chatbot_checkout_msg',
-                                                'textarea_rows' => 20,
-                                                'editor_height' => 100,
-                                                'disabled' => 'disabled',
-                                                'media_buttons' => false,
-                                                'tinymce' => array(
-                                                    'toolbar1' => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',)
-                                            );
-                                            wp_editor(html_entity_decode(stripcslashes(get_option('woo_chatbot_checkout_msg'))), 'woo_chatbot_checkout_msg', $checkout_msg_settings); ?>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- top-section--> 
-    </section>
+
     <section id="section-flip-12">
       <div class="top-section">
         <div class="woo-chatbot-language-center-summmery">
@@ -3744,465 +4282,10 @@ $table    = $wpdb->prefix.'woobot_subscription';
         </div>
       </div>
     </section>
-    <section id="section-flip-8">
-      <div class="top-section">
-        <div class="woo-chatbot-language-center-summmery">
-          <p>
-            <?php _e(woowbot_text().' will be opened based on the following settings', 'woochatbot'); ?>
-          </p>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <h4 class="qc-opt-title">
-              <?php _e('Enable Bot Activity Hour', 'woochatbot'); ?>
-            </h4>
-            <div class="cxsc-settings-blocks" style="padding:0 20px;">
-              <input value="1" id="enable_woo_chatbot_opening_hour" type="checkbox"
-                                                   name="enable_woo_chatbot_opening_hour" <?php echo(get_option('enable_woo_chatbot_opening_hour') == 1 ? 'checked' : ''); ?>>
-              <label for="enable_woo_chatbot_opening_hour">
-                <?php _e('If enabled '.woowbot_text().' will show only during the time schedule you set below. The timezone you set from WordPress general settings will be used.', 'woochatbot'); ?>
-              </label>
-            </div>
-          </div>
-        </div>
-        <style>
-                                    .woo-chatbot-hours-container {
-                                        padding: 0px 0 15px 0;
-                                        display: flex;
-                                        justify-content: space-between;
-                                    }
 
-                                    .woo-chatbot-hours {
-                                        /*width:75%;*/
-                                        display: inline-block;
-                                    }
 
-                                    .woo-chatbot-hours input {
-                                        display: inline-block;
-                                        width: 40%;
-                                        padding-right: 10px;
-                                        text-align: center;
-                                    }
 
-                                    .woo-chatbot-hours-remove {
-                                        display: inline-block;
-                                        /*width:20%;*/
-                                    }
-                                </style>
-        <div class="row" id="woo-chatbot-hours-wrapper">
-          <div class="col-xs-12">
-            <h4 class="qc-opt-title">
-              <?php _e(woowbot_text().' Bot Activity Hours', 'woochatbot'); ?>
-            </h4>
-            <?php
-
-                                        if (get_option('woowbot_hours')) {
-                                            $woowbot_times = unserialize(get_option('woowbot_hours'));
-                                        } else {
-                                            $woowbot_times = array();
-                                        }
-                                        ?>
-            <div class="row">
-              <div class="col-xs-3">Monday</div>
-              <div class="col-xs-4 woo-chatbot-day">
-                <?php
-                                                $this->woo_chatbot_opening_hours('monday', $woowbot_times);
-                                                ?>
-              </div>
-              <div class="col-xs-3">
-                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
-                                                        type="button" data-day="monday"><i class="fa fa-plus"
-                                                                                           aria-hidden="true"></i> Add </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Tuesday</div>
-              <div class="col-xs-4 woo-chatbot-day">
-                <?php
-                                                $this->woo_chatbot_opening_hours('tuesday', $woowbot_times);
-                                                ?>
-              </div>
-              <div class="col-xs-3">
-                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
-                                                        type="button" data-day="tuesday"><i class="fa fa-plus"
-                                                                                            aria-hidden="true"></i> Add </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Wednesday</div>
-              <div class="col-xs-4 woo-chatbot-day">
-                <?php
-                                                $this->woo_chatbot_opening_hours('wednesday', $woowbot_times);
-                                                ?>
-              </div>
-              <div class="col-xs-3">
-                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
-                                                        type="button" data-day="wednesday"><i class="fa fa-plus"
-                                                                                              aria-hidden="true"></i> Add </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Thursday</div>
-              <div class="col-xs-4 woo-chatbot-day">
-                <?php
-                                                $this->woo_chatbot_opening_hours('thursday', $woowbot_times);
-                                                ?>
-              </div>
-              <div class="col-xs-3">
-                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
-                                                        type="button" data-day="thursday"><i class="fa fa-plus"
-                                                                                             aria-hidden="true"></i> Add </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Friday</div>
-              <div class="col-xs-4 woo-chatbot-day">
-                <?php
-                                                $this->woo_chatbot_opening_hours('friday', $woowbot_times);
-                                                ?>
-              </div>
-              <div class="col-xs-3">
-                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
-                                                        type="button" data-day="friday"><i class="fa fa-plus"
-                                                                                           aria-hidden="true"></i> Add </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Saturday</div>
-              <div class="col-xs-4 woo-chatbot-day">
-                <?php
-                                                $this->woo_chatbot_opening_hours('saturday', $woowbot_times);
-                                                ?>
-              </div>
-              <div class="col-xs-3">
-                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
-                                                        type="button" data-day="saturday"><i class="fa fa-plus"
-                                                                                             aria-hidden="true"></i> Add </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Sunday</div>
-              <div class="col-xs-4 woo-chatbot-day">
-                <?php
-                                                $this->woo_chatbot_opening_hours('sunday', $woowbot_times);
-                                                ?>
-              </div>
-              <div class="col-xs-3">
-                <button class="btn btn-success btn-sm woo-chatbot-hours-add-btn"
-                                                        type="button" data-day="sunday"><i class="fa fa-plus"
-                                                                                           aria-hidden="true"></i> Add </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- top-section--> 
-    </section>
-    <section id="section-flip-9">
-      <div class="top-section">
-        <div class="woo-chatbot-language-center-summmery">
-          <p>
-            <?php _e('DialogFlow as Artificial Intelligences Engine for '.woowbot_text(), 'woochatbot'); ?>
-          </p>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <h4 class="qc-opt-title">
-              <?php _e('Enable DialogFlow as AI Engine to Detect Intent', 'woochatbot'); ?>
-            </h4>
-            <div class="cxsc-settings-blocks">
-              <input value="1" id="enable_woo_chatbot_dailogflow" type="checkbox"
-                                                   name="enable_woo_chatbot_dailogflow" <?php echo(get_option('enable_woo_chatbot_dailogflow') == 1 ? 'checked' : ''); ?>>
-              <label for="enable_woo_chatbot_dailogflow">
-                <?php _e('Enable DialogFlow AI Engine to process Natural Language commands from users.', 'woochatbot'); ?>
-              </label>
-            </div>
-          </div>
-          <div class="col-xs-12"><br>
-            <p>
-              <?php _e('You will need an Access Token from DialogFlow. Log in to DialogFlow Console from', 'woochatbot'); ?>
-              <a style="text-decoration:underline;color:blue"
-                                               href="https://dialogflow.com/" target="_blank">
-              <?php _e('Here', 'woochatbot'); ?>
-              </a>
-              <?php _e('with your gmail account. Create a new agent and copy the Client Access Token from Settings.', 'woochatbot'); ?>
-            </p>
-            <p><a style="text-decoration:underline;color:blue"
-                                              href="<?php echo site_url() ?>/wp-content/plugins/woowbot-woocommerce-chatbot-pro/download/WoowBot.zip"
-                                              download>
-              <?php _e('Download', 'woochatbot'); ?>
-              </a>
-              <?php _e('the agent training data and import from DialogFlow->Settings->Export and Import tab. You can add your own intents in that agent but do not modify our following system intents which are', 'woochatbot'); ?>
-              <b>catalog, featured, get name, order, product, reset, site search, sale, support & start.</b> </p></p>
-          </div>
-          <div class="col-xs-12" id="woo-chatbot-dialflow-section">
-            <div class="form-group">
-              <h4 class="qc-opt-title">
-                <?php _e('DialogFlow client Access Token', 'woochatbot'); ?>
-              </h4>
-              <input type="text" class="form-control qc-opt-dcs-font"
-                                                   name="qlcd_woo_chatbot_dialogflow_client_token"
-                                                   value="<?php echo(get_option('qlcd_woo_chatbot_dialogflow_client_token') != '' ? get_option('qlcd_woo_chatbot_dialogflow_client_token') : ''); ?>"
-                                                   placeholder="<?php _e('DialogFlow Client Access Token', 'woochatbot'); ?>">
-            </div>
-            <div class="form-group">
-              <h4 class="qc-opt-title">
-                <?php _e('DialofFlow Defualt reply', 'woochatbot'); ?>
-              </h4>
-              <input type="text" class="form-control qc-opt-dcs-font"
-                                                   name="qlcd_woo_chatbot_dialogflow_defualt_reply"
-                                                   value="<?php echo(get_option('qlcd_woo_chatbot_dialogflow_defualt_reply') != '' ? get_option('qlcd_woo_chatbot_dialogflow_defualt_reply') : 'Sorry, I did not understand you. You may browse'); ?>"
-                                                   placeholder="<?php _e('DialogFlow defualt reply', 'woochatbot'); ?>">
-            </div>
-            <div class="form-group">
-              <h4 class="qc-opt-title">
-                <?php _e('DialofFlow Agent Language (Ex: en)', 'woochatbot'); ?>
-              </h4>
-              <input type="text" class="form-control qc-opt-dcs-font"
-                                                   name="qlcd_woo_chatbot_dialogflow_agent_language"
-                                                   value="<?php echo(get_option('qlcd_woo_chatbot_dialogflow_agent_language') != '' ? get_option('qlcd_woo_chatbot_dialogflow_agent_language') : 'en'); ?>"
-                                                   placeholder="<?php _e('DialofFlow Agent Language (Ex: en)', 'woochatbot'); ?>">
-            </div>
-            <div class="form-group">
-              <h4 class="qc-opt-title">
-                <?php _e('Allow custom intent and reponse from DialogFlow', 'woochatbot'); ?>
-              </h4>
-              <input value="1" id="enable_woo_chatbot_custom_intent" type="checkbox"
-                                                   name="enable_woo_chatbot_custom_intent" <?php echo(get_option('enable_woo_chatbot_custom_intent') == 1 ? 'checked' : ''); ?>>
-              <label for="enable_woo_chatbot_custom_intent">
-                <?php _e('Enable to get Intents and Responses from the DialogFlow for the custom intents you create.', 'woochatbot'); ?>
-              </label>
-            </div>
-            <br>
-            <div class="form-group" style="padding: 15px !important;">
-              <h4 class="qc-opt-title">
-                <?php _e('Enable rich reponse from DialogFlow using Facebook Messenger', 'woochatbot'); ?>
-              </h4>
-              <input value="1" id="enable_woo_chatbot_rich_response" type="checkbox"
-                                                   name="enable_woo_chatbot_rich_response" <?php echo(get_option('enable_woo_chatbot_rich_response') == 1 ? 'checked' : ''); ?>>
-              <label for="enable_woo_chatbot_rich_response">
-                <?php _e(' If you enable this option you can create Responses for Facebook messenger for your intents which will support Images, Cards etc.', 'woochatbot'); ?>
-              </label>
-              <br>
-            </div>
-            <br>
-            <hr>
-            <br>
-            <div class="form-group" style="padding: 15px !important;">
-              <h2>Custom Intent Options</h2>
-              <p>Need to enable Artificial Intelligence for Custom Intent work. The intent name &amp; label must be added in training phrases. The intent name must match EXACTLY as in what you added in DialogFlow.</p>
-              <h4 class="qc-opt-title">
-                <?php _e('Enable Advanced Step by Step Search', 'woochatbot'); ?>
-              </h4>
-              <input value="1" id="enable_woo_chatbot_custom_search" type="checkbox"
-                                                   name="enable_woo_chatbot_custom_search" <?php echo(get_option('enable_woo_chatbot_custom_search') == 1 ? 'checked' : ''); ?>>
-              <label for="enable_woo_chatbot_custom_search">
-                <?php _e("You will Need to Create a Custom Question Tree in DialogFlow to Collect Search Criteria from User. Check the documentation's AI section for more details.", 'woochatbot'); ?>
-              </label>
-            </div>
-            <br>
-            <br>
-            <div class="block-intent-inner" id="block-intent-inner">
-              <h4 class="qc-opt-title">
-                <?php _e('Custom Intent Name & Label', 'woochatbot'); ?>
-              </h4>
-              <?php
-                                            $intent_names = $this->qcld_woo_chatbot_str_replace(unserialize(get_option('custom_intent_names')));
-                                            $intent_labels = $this->qcld_woo_chatbot_str_replace(unserialize(get_option('custom_intent_labels')));
-                                            $intent_keywords = $this->qcld_woo_chatbot_str_replace(unserialize(get_option('custom_intent_kewords')));
-                                            if (count($intent_names) >= 1) {
-                                                $indent_counter = 0;
-                                                foreach (array_combine($intent_names, $intent_labels) as $name => $label) {
-                                                    ?>
-              <div class="row">
-                <div class="col-xs-12">
-                  <button type="button"
-                                                                    class="btn btn-danger btn-sm woo-chatbot-remove-custom-intent pull-right"> <i class="fa fa-times" aria-hidden="true"></i></button>
-                  <div class="cxsc-settings-blocks">
-                    <p class="qc-opt-dcs-font">
-                      <?php _e('Intent Label (Will also show as Button Name in the fallback)', 'woochatbot'); ?>
-                    </p>
-                    <input type="text" class="form-control"
-                                                                       name="custom_intent_labels[]"
-                                                                       placeholder="<?php _e('Intent Label', 'woochatbot'); ?>"
-                                                                       value="<?php echo $label ?>">
-                  </div>
-                  <div class="cxsc-settings-blocks">
-                    <p class="qc-opt-dcs-font">
-                      <?php _e('Intent Name (Must match Exactly as the Intent Name you will create in DialogFlow)', 'woochatbot'); ?>
-                    </p>
-                    <input type="text" class="form-control"
-                                                                       name="custom_intent_names[]"
-                                                                       placeholder="<?php _e('Intent Name ', 'woochatbot'); ?>"
-                                                                       value="<?php echo $name ?>">
-                  </div>
-                  <div class="cxsc-settings-blocks">
-                    <p class="qc-opt-dcs-font">
-                      <?php _e('Intent Keyword (this is the keyword user must type to get into Step by Step search. You should add a prompt in the greeting to let your users know about the keyword.)', 'woochatbot'); ?>
-                    </p>
-                    <input type="text" class="form-control"
-                                                                       name="custom_intent_kewords[]"
-                                                                       placeholder="<?php _e('Intent System Keyword ', 'woochatbot'); ?>"
-                                                                       value="<?php if (isset($intent_keywords[$indent_counter])) {
-                                                                           echo $intent_keywords[$indent_counter];
-                                                                       } ?>">
-                  </div>
-                </div>
-              </div>
-              <?php
-                                                    $indent_counter++;
-                                                }
-                                                //}
-                                            } else {
-                                                ?>
-              <div class="row">
-                <div class="col-xs-12">
-                  <button type="button"
-                                                                class="btn btn-danger btn-sm woo-chatbot-remove-custom-intent pull-right"> <i class="fa fa-times" aria-hidden="true"></i></button>
-                  <div class="cxsc-settings-blocks">
-                    <p class="qc-opt-dcs-font">
-                      <?php _e('Intent Label (Will also show as Button Name in the fallback)', 'woochatbot'); ?>
-                    </p>
-                    <input type="text" class="form-control"
-                                                                   name="custom_intent_labels[]"
-                                                                   placeholder="<?php _e('Intent Label ', 'woochatbot'); ?>">
-                  </div>
-                  <div class="cxsc-settings-blocks">
-                    <p class="qc-opt-dcs-font">
-                      <?php _e('Intent Name (Must match Exactly as the Intent Name you will create in DialogFlow)', 'woochatbot'); ?>
-                    </p>
-                    <input type="text" class="form-control"
-                                                                   name="custom_intent_names[]"
-                                                                   placeholder="<?php _e('Intent Name ', 'woochatbot'); ?>">
-                  </div>
-                  <div class="cxsc-settings-blocks">
-                    <p class="qc-opt-dcs-font">
-                      <?php _e('Intent Keyword (this is the keyword user must type to get into Step by Step search. You should add a prompt in the greeting to let your users know about the keyword.)', 'woochatbot'); ?>
-                    </p>
-                    <input type="text" class="form-control"
-                                                                   name="custom_intent_kewords[]"
-                                                                   placeholder="<?php _e('Intent System Keyword', 'woochatbot'); ?>">
-                  </div>
-                </div>
-              </div>
-              <?php
-                                            }
-                                            ?>
-            </div>
-            <div class="row">
-              <div class="col-sm-6 text-left"></div>
-              <div class="col-sm-6 text-right">
-                <button class="btn btn-success btn-sm" type="button"
-                                                        id="add-more-custom-intent"><i
-                                                            class="fa fa-plus" aria-hidden="true"></i>
-                <?php _e('Add More Custom Intent', 'woochatbot'); ?>
-                </button>
-              </div>
-            </div>
-            <br>
-          </div>
-        </div>
-      </div>
-      <!-- top-section--> 
-    </section>
-    <!--<section id="section-flip-11">
-      <div class="woo-chatbot-language-center-summmery">
-        <p>
-          <?php _e('Enable the Mobile App feature ONLY if you bought ', 'woochatbot'); ?>
-          <a target="_blank"
-                                       href="https://www.quantumcloud.com/products/woocommerce-chatbot-woowbot/#app">
-          <?php _e(' the Mobile App Addon.', 'woochatbot'); ?>
-          </a> 
-      </div>
-      <div class="top-section">
-        <div class="row">
-          <div class="col-xs-12">
-            <h4 class="qc-opt-title">
-              <?php _e('Mobile App Pages', 'woochatbot'); ?>
-            </h4>
-            <div class="cxsc-settings-blocks">
-              <input value="1" id="woo_chatbot_app_pages" type="checkbox"
-                                                   name="woo_chatbot_app_pages" <?php echo(get_option('woo_chatbot_app_pages') == 1 ? 'checked' : ''); ?>>
-              <label for="woo_chatbot_app_pages">
-                <?php _e('Create pages for WoowBot Mobile App', 'woochatbot'); ?>
-              </label>
-            </div>
-            <br>
-            <p class="qc-opt-title-font">
-              <?php _e('Following pages will be created to use in', 'woochatbot'); ?>
-              <strong>
-              <?php _e('WoowBot', 'woochatbot'); ?>
-              </strong>
-              <?php _e(' Android or IOS Mobile App', 'woochatbot'); ?>
-              .</p>
-            <ol>
-              <li>
-                <?php _e('WoowBot Mobile App', 'woochatbot'); ?>
-              </li>
-              <li>
-                <?php _e('WoowBot App Checkout', 'woochatbot'); ?>
-              </li>
-              <li>
-                <?php _e('WoowBot App Order Thank You', 'woochatbot'); ?>
-              </li>
-            </ol>
-            <p class="qc-opt-title-font">
-              <?php _e('Follow the', 'woochatbot'); ?>
-              <strong>
-              <?php _e('Documentation', 'woochatbot'); ?>
-              </strong>
-              <?php _e('to build & publish a Mobile Application (Android or IOS ) for your store using any of', 'woochatbot'); ?>
-            </p>
-            <ol>
-              <li>
-                <?php _e('WoowBot Ionic FrameWork package', 'woochatbot'); ?>
-              </li>
-              <li>
-                <?php _e('WoowBot PhoneGap package', 'woochatbot'); ?>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>-->
-    <section id="section-flip-12">
-      <div class="top-section">
-        <div class="row">
-          <div class="col-xs-12">
-            <p >
-              <?php _e('Use [WoowBot-page] shortcode in order to embed woowbot in a wordpress page.', 'woochatbot'); ?>
-            </p>
-            <h4 class="qc-opt-dcs">
-              <?php _e('Iframe Integration.', 'woochatbot'); ?>
-            </h4>
-            <span style="font-size:15px; font-weight:bold; color:#F00; display:block">
-            <?php _e('[This feature is still experimental.]', 'woochatbot'); ?>
-            </span>
-            <p>
-              <?php _e('Copy the below code & add to any page before closing the body tag. Please note that some features like retargeting will not work on embedded pages.', 'woochatbot'); ?>
-            </p>
-            <?php
-                                        $woo_chatbot_css_url = plugins_url(basename(plugin_dir_path(__FILE__)) . '/css/common-style.css');
-                                        $page = get_page_by_title('WoowBot Mobile App');
-                                        $woo_chatbot_custom_icon_path = '';
-                                        if (get_option('woo_chatbot_icon') == "custom.png") {
-                                            $woo_chatbot_custom_icon_path = get_option('woo_chatbot_custom_icon_path');
-                                        } else if (get_option('woo_chatbot_icon') != "custom.png") {
-                                            $woo_chatbot_custom_icon_path = QCLD_WOOCHATBOT_IMG_URL . get_option('woo_chatbot_icon');
-                                        } else {
-                                            $woo_chatbot_custom_icon_path = QCLD_WOOCHATBOT_IMG_URL . 'custom.png';
-                                        }
-
-                                        ?>
-            <textarea
-                                                style="width:100%;height:300px;font-size: 14px;"><?php echo htmlentities('<link rel="stylesheet" href="' . $woo_chatbot_css_url . '"/><div id="woo-chatbot-chat-container" class=" " style="right: 50px; bottom: 50px;"><div id="woo-chatbot-ball-container" class="woo-chatbot-template-01" style="display:none;"><div class="woo-chatbot-container"><div style="border: 1px solid #e0e0e0;" id="woo-chatbot-board-container" class="woo-chatbot-board-container active-chat-board"><div class="woo-chatbot-header" style="background: #1f8ceb;color: #fff;border-radius: unset;"><h3>Welcome to Demo Site</h3></div><div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto;">
-                                         <div class="woo-chatbot-ball-inner woo-chatbot-content" style="padding:0px !important;height:570px ; overflow: hidden; width: auto;"><iframe style="border:none;" src="' . (isset($page->guid)?$page->guid:'') . '" scrolling="no" width="100%" height="570"></iframe></div></div></div></div></div><div id="woo-chatbot-ball" class=""><div class="woo-chatbot-ball woo-chatbot-animation-active"><img src="' . $woo_chatbot_custom_icon_path . '" alt="wooChatIcon"></div></div></div><script>document.getElementById("woo-chatbot-ball").addEventListener("click", displayDate);function displayDate(){var x=document.getElementById("woo-chatbot-ball-container");if (x.style.display==="none"){x.style.display="block";}else{x.style.display="none";}}</script>'); ?>
-                                        </textarea>
-          </div>
-        </div>
-        <!--                                row--> 
-      </div>
-    </section>
+    
     <section id="section-flip-13">
       <div class="top-section">
         <div class="row">
